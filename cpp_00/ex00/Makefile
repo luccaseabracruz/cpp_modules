@@ -1,5 +1,5 @@
 CPP			= c++
-CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
+CPP_FLAGS	= -Wall -Wextra -Werror
 CPP_VERSION	= -std=c++98
 
 RM = rm -f
@@ -16,7 +16,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(OBJ) -o $(NAME)
 
-%.c: %.o
+%.o: %.cpp
 	$(CPP) $(CPP_FLAGS) -c $< -o $@
 
 clean:
