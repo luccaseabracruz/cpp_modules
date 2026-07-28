@@ -17,7 +17,7 @@ $(NAME): $(OBJ)
 	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CPP) $(CPP_FLAGS) -c $< -o $@
+	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
