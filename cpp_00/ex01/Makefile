@@ -1,0 +1,64 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/07/28 13:24:49 by lseabra-          #+#    #+#              #
+#    Updated: 2026/07/28 14:36:16 by lseabra-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#==============================================================================#
+#                                  VARIABLES                                   #
+#==============================================================================#
+
+# NAMES
+NAME = my_awesome_phonebook
+
+# PATHS
+SRC_PATH	= src
+BUILD_PATH	= build
+INC_PATH	= include
+
+# SOURCES
+SRC =  $(addprefix $(SRC_PATH)/, main.cpp)
+OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
+
+# FLAGS
+CPP			= c++
+CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
+CPP_VERSION	= -std=c++98
+
+# COMMANDS
+MKDIRP = mkdir -p
+RM = rm -f
+RMDIR = rm -f
+
+#==============================================================================#
+#                                    RULES                                     #
+#==============================================================================#
+
+vpath %.cpp $(SRC_PATH)
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+	
+$(NAME): $(OBJ)
+	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(OBJ) -o $(NAME)
+
+$(BUILD_PATH)/%.o: %.cpp | $(BUILD_PATH)
+	$(CPP) $(CPP_FLAGS) -c $< -o $@
+
+$(BUILD_PATH):
+	$(MKDIRP) $(BUILD_PATH)
+
+clean:
+	$(RMDIR) $(BUILD_PATH)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
