@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 13:07:31 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/07/28 14:25:01 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/07/29 14:26:17 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ class	Contact
 		std::string	nickname;
 		std::string	phone_number;
 		std::string	dark_secret;
-}
+};
 
 #endif
