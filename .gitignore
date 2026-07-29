@@ -40,6 +40,7 @@
 # debug information files
 *.dwo
 
-# Executables
+# My Miscellaneos
 megaphone
 my_awesome_phonebook
+build/
