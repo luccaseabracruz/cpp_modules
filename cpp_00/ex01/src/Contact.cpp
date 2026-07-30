@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/28 13:07:31 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/07/30 17:16:39 by lseabra-         ###   ########.fr       */
+/*   Created: 2026/07/30 17:04:09 by lseabra-          #+#    #+#             */
+/*   Updated: 2026/07/30 17:16:55 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#include "Contact.hpp"
 
-class	Contact
+Contact::Contact(){}
+Contact::~Contact(){}
+
+Contact::set_first_name(const std::string& str)
 {
-	private:
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	dark_secret;
-
-	public:
-		Contact();
-		~Contact();
-	// Todo(): setters and getters()
-};
-
-#endif
+	
+}
