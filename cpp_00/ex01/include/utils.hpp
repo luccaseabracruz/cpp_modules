@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   utils.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/28 12:51:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/08 11:51:43 by lucca            ###   ########.fr       */
+/*   Created: 2026/08/06 16:33:15 by lucca             #+#    #+#             */
+/*   Updated: 2026/08/07 20:25:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef UTILS_HPP
+#define UTILS_HPP
+
 #include <iostream>
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
-#include "utils.hpp"
 
-int	main(void)
-{
-	PhoneBook book;
-	
-	while (true)
-	{
-		std::string	input;
+# define MSG_OPERATION "Choose a command (ADD | SEARCH | EXIT): "
+# define ERR_PREFIX "[Error] "
+# define INV_INPUT "invalid input"
 
-		if(getInput(MSG_OPERATION, input) == false)
-			break ;
-		if (input == "ADD" && !book.addContact())
-				break ;
-		else if (input == "SEARCH")
-			std::cout << "SEARCH" << std::endl;
-		else if (input == "EXIT")
-		{
-			std::cout << "Goodbye!\n";
-			break ;
-		}
-	}
-	return (0);
-};
+bool	getInput(const std::string& msg, std::string& input);
+bool	createContact(Contact contact);
+
+#endif

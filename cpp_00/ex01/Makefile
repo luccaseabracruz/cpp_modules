@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
+#    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 13:24:49 by lseabra-          #+#    #+#              #
-#    Updated: 2026/07/30 17:02:17 by lseabra-         ###   ########.fr        #
+#    Updated: 2026/08/08 11:55:51 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,12 @@ BUILD_PATH	= build
 INC_PATH	= include
 
 # SOURCES
-SRC =  $(addprefix $(SRC_PATH)/, main.cpp)
+SRC =  $(addprefix $(SRC_PATH)/, \
+	main.cpp \
+	Contact.cpp \
+	PhoneBook.cpp \
+	utils.cpp \
+)
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS

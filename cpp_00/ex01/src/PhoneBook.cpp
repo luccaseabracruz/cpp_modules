@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/28 12:51:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/08 11:51:43 by lucca            ###   ########.fr       */
+/*   Created: 2026/08/05 12:31:06 by lucca             #+#    #+#             */
+/*   Updated: 2026/08/08 10:43:28 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
 #include "utils.hpp"
 
-int	main(void)
-{
-	PhoneBook book;
-	
-	while (true)
-	{
-		std::string	input;
 
-		if(getInput(MSG_OPERATION, input) == false)
-			break ;
-		if (input == "ADD" && !book.addContact())
-				break ;
-		else if (input == "SEARCH")
-			std::cout << "SEARCH" << std::endl;
-		else if (input == "EXIT")
-		{
-			std::cout << "Goodbye!\n";
-			break ;
-		}
-	}
-	return (0);
-};
+PhoneBook::PhoneBook(): counter_(0){};
+
+PhoneBook::~PhoneBook()
+{
+}
+
+bool	PhoneBook::addContact()
+{
+	Contact	contact;
+
+	if (!createContact(contact))
+		return false;
+	contacts_[counter_ % 8] = contact;
+	counter_++;
+	return true;
+}

@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 18:28:28 by lucca             #+#    #+#             */
-/*   Updated: 2026/07/29 18:58:22 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/07 20:41:59 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@
 
 class	PhoneBook
 {
+	private:
+		Contact contacts_[8];
+		int		counter_;
 	public:
-		Contact contacts[8];
+		PhoneBook();
+		~PhoneBook();
+		bool	addContact();
 };
 
 #endif

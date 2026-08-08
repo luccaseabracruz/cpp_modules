@@ -1,7 +1,7 @@
 # Project Diary
 File to register concepts learned, experience and insights.
 
-> ## OOP Pillars
+## OOP Pillars
 
 - **1. Encapsulation**: bundling data and methods, hiding internal state. Protection.
 - **2. Inheritance**: class can use another as base to build more specialized structure.

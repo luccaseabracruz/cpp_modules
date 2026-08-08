@@ -18,7 +18,8 @@
 
 ### References
 
-- [GeeksforGeeks — Physical Components of Computer Network](https://www.geeksforgeeks.org/computer-networks/)
+- []()
+- []()
 
 ### AI usage
 

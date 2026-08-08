@@ -3,19 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/30 17:04:09 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/07/30 17:16:55 by lseabra-         ###   ########.fr       */
+/*   Created: 2026/08/05 13:08:44 by lucca             #+#    #+#             */
+/*   Updated: 2026/08/08 11:56:44 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Contact.hpp"
+#include "utils.hpp"
 
-Contact::Contact(){}
+Contact::Contact(void)
+		:	firstName_(""), lastName_(""), nickname_(""),
+			phoneNumber_(""), darkestSecret_("")
+{}
+Contact::Contact(const std::string& firstName, const std::string& lastName, 
+				const std::string& nickname, const std::string& phoneNumber,
+				const std::string& darkestSecret)
+		:	firstName_(firstName), lastName_(lastName), nickname_(nickname),
+			phoneNumber_(phoneNumber),	darkestSecret_(darkestSecret)
+{}
+
 Contact::~Contact(){}
-
-Contact::set_first_name(const std::string& str)
-{
-	
-}
