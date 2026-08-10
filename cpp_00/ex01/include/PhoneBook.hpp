@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/29 18:28:28 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 14:09:35 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 15:15:39 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@ class	PhoneBook
 	private:
 		Contact contacts_[8];
 		int		counter_;
+		void	putItem_(const std::string& str, bool endPipe);
+		void	displayContacts_();
 	public:
 		PhoneBook();
 		~PhoneBook();
 		bool	addContact();
+		bool	searchContact();
 };
 
 #endif

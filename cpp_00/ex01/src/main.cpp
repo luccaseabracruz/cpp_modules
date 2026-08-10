@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 12:51:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/08 11:51:43 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 14:14:26 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	main(void)
 		if (input == "ADD" && !book.addContact())
 				break ;
 		else if (input == "SEARCH")
-			std::cout << "SEARCH" << std::endl;
+		{
+			book.searchContact();
+		}
 		else if (input == "EXIT")
 		{
 			std::cout << "Goodbye!\n";

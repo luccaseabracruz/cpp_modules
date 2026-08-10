@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 16:33:15 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 14:00:43 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 15:33:39 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define INV_INPUT "invalid input"
 
 bool	getInput(const std::string& msg, std::string& input);
-bool	createContact(Contact contact);
+bool	createContact(Contact& contact);
 bool	putErr(const std::string& msg);
 
 #endif

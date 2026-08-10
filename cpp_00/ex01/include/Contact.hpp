@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 13:07:31 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/08 11:56:33 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 14:41:16 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,17 @@ class	Contact
 		std::string	nickname_;
 		std::string	phoneNumber_;
 		std::string	darkestSecret_;
+
 	public:
 		Contact(void);
 		Contact(const std::string& firstName, const std::string& lastName, 
 				const std::string& nickname, const std::string& phoneNumber,
 				const std::string& darkestSecret);
 		~Contact();
+		std::string	getFirstName() const;
+		std::string	getLastName() const;
+		std::string	getNickname() const;
+		std::string	getPhoneNumber() const;
 };
 
 #endif
