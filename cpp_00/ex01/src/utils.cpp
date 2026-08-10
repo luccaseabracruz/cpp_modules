@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 17:33:26 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 14:00:18 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 15:33:07 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool	getField(const std::string& msg, std::string& field, Validator isVal
 	return true;
 }
 
-bool	createContact(Contact contact)
+bool	createContact(Contact& contact)
 {
 	std::string	firstName, lastName, nickname, phoneNumber, darkestSecret;
 
