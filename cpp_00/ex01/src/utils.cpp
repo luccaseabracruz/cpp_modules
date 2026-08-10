@@ -6,29 +6,17 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 17:33:26 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/08 10:49:37 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 14:00:18 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Contact.hpp"
 #include "utils.hpp"
+#include "validate.hpp"
+#include "colors.hpp"
 
-static bool	isEmptySpaceStr(const std::string& str)
-{
-	size_t	len = str.length();
-
-	if (len < 1)
-		return true;
-	for (size_t i = 0; i < len; i++)
-	{
-		if (!isspace(static_cast<unsigned char>(str[i])))
-			return false;
-	}
-	return true;
-}
-
-static bool	getField(const std::string& msg, std::string& field)
+static bool	getField(const std::string& msg, std::string& field, Validator isValid)
 {
 	while (true)
 	{
@@ -38,8 +26,8 @@ static bool	getField(const std::string& msg, std::string& field)
 				return false;
 			continue ;
 		}
-		else if (isEmptySpaceStr(field))
-			std::cout << ERR_PREFIX << "this field cannot be empty.\n";
+		else if (isValid && !isValid(field))
+			continue ;
 		else
 			break ;
 	}
@@ -50,11 +38,11 @@ bool	createContact(Contact contact)
 {
 	std::string	firstName, lastName, nickname, phoneNumber, darkestSecret;
 
-	if (!getField("First Name: ", firstName)
-		|| !getField("Last Name: ", lastName)
-		|| !getField("Nickname: ", nickname)
-		|| !getField("Phone Number: ", phoneNumber)
-		|| !getField("Darkest Secret: ", darkestSecret))
+	if (!getField("First Name: ", firstName, &isNotEmptyField)
+		|| !getField("Last Name: ", lastName, &isNotEmptyField)
+		|| !getField("Nickname: ", nickname, &isNotEmptyField)
+		|| !getField("Phone Number: ", phoneNumber, &validatePhoneNumber)
+		|| !getField("Darkest Secret: ", darkestSecret, &isNotEmptyField))
 	{
 		return false;
 	}
@@ -69,3 +57,9 @@ bool	getInput(const std::string& msg, std::string& input)
 		return false;
 	return true;
 };
+
+bool	putErr(const std::string& msg)
+{
+	std::cerr << RED << ERR_PREFIX << msg << RESET;
+	return false;
+}

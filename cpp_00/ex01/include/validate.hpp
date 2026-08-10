@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   validate.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/06 16:33:15 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 14:00:43 by lucca            ###   ########.fr       */
+/*   Created: 2026/08/10 11:27:36 by lucca             #+#    #+#             */
+/*   Updated: 2026/08/10 12:00:08 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_HPP
-# define UTILS_HPP
+#ifndef VALIDATE_HPP
+# define VALIDATE_HPP
 
-# include <iostream>
-# include "Contact.hpp"
+typedef bool	(*Validator)(const std::string&);
 
-# define MSG_OPERATION "Choose a command (ADD | SEARCH | EXIT): "
-# define ERR_PREFIX "[Error] "
-# define INV_INPUT "invalid input"
-
-bool	getInput(const std::string& msg, std::string& input);
-bool	createContact(Contact contact);
-bool	putErr(const std::string& msg);
+bool	isNotEmptyField(const std::string& str);
+bool	validatePhoneNumber(const std::string& phoneNumber);
 
 #endif

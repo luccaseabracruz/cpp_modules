@@ -6,7 +6,7 @@
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 13:24:49 by lseabra-          #+#    #+#              #
-#    Updated: 2026/08/08 11:55:51 by lucca            ###   ########.fr        #
+#    Updated: 2026/08/10 11:56:40 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,13 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	Contact.cpp \
 	PhoneBook.cpp \
 	utils.cpp \
+	validate.cpp \
 )
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
 CPP			= c++
-CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
+CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
 CPP_VERSION	= -std=c++98
 INC			= -I$(INC_PATH)
 
