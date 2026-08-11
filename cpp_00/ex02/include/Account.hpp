@@ -7,6 +7,11 @@
 //                                                                            //
 // ************************************************************************** //
 
+/*
+ * Exercise-provided file.
+ * This file was supplied as part of the assignment and is included
+ * unchanged for reference/testing purposes.
+ */
 
 #pragma once
 #ifndef __ACCOUNT_H__

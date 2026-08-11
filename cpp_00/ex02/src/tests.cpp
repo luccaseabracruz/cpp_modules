@@ -7,6 +7,12 @@
 //                                                                            //
 // ************************************************************************** //
 
+/*
+ * Exercise-provided file.
+ * This file was supplied as part of the assignment and is included
+ * unchanged for reference/testing purposes.
+ */
+
 #include <vector>
 #include <algorithm>
 #include <functional>
