@@ -1,5 +1,13 @@
+# Learnings
+## ex00
+- 
+## ex01
+- 
+## ex02
+- 
+
 # Open Questions
 - [X] Makefile: is it necessary to use CPP_VERSION to compile .o files?
-	Yes, it is necessary
-- [ ] what is the difference between char * and std::string in c++?
+	R: Yes, it is necessary
+
 - [ ] 

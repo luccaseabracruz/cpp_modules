@@ -46,4 +46,5 @@ File to register concepts learned, experience and insights.
 
 ## C++
 
-### Sintaxe
+
+
