@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 12:31:06 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 16:52:19 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/11 14:09:59 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,24 +65,24 @@ void	PhoneBook::displayContacts_() const
 	putItem_("first name", true);
 	putItem_("last name", true);
 	putItem_("nickname", false);
-	std::cout << "\n";
+	std::cout << '\n';
 	for (int i = 0; i < limit ; i++)
 	{
 		std::cout << std::right << std::setw(10) << i << "|";
 		putItem_(contacts_[i].getFirstName(), true);
 		putItem_(contacts_[i].getLastName(), true);
 		putItem_(contacts_[i].getNickname(), false);
-		std::cout << "\n";
+		std::cout << '\n';
 	}
 }
 
 static void	displayContactInfo(const Contact contact)
 {
-	std::cout << GREEN << "First Name: " << RESET << contact.getFirstName() << "\n";
-	std::cout << GREEN << "Last Name: " << RESET << contact.getLastName() << "\n";
-	std::cout << GREEN << "Nickname: " << RESET << contact.getNickname() << "\n";
-	std::cout << GREEN << "Phone Number: " << RESET << contact.getPhoneNumber() << "\n";
-	std::cout << GREEN << "Darkest Secret: " << RESET << contact.getDarkestSecret() << "\n";
+	std::cout << GREEN << "First Name: " << RESET << contact.getFirstName() << '\n';
+	std::cout << GREEN << "Last Name: " << RESET << contact.getLastName() << '\n';
+	std::cout << GREEN << "Nickname: " << RESET << contact.getNickname() << '\n';
+	std::cout << GREEN << "Phone Number: " << RESET << contact.getPhoneNumber() << '\n';
+	std::cout << GREEN << "Darkest Secret: " << RESET << contact.getDarkestSecret() << '\n';
 }
 
 bool	PhoneBook::searchContact() const

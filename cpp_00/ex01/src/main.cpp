@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 12:51:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/10 16:54:13 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/11 14:09:52 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(void)
 		}
 		else
 		{
-			putErr("invalid operation: " + input + "\n");
+			putErr("invalid operation: " + input + '\n');
 		}
 	}
 	return (0);
