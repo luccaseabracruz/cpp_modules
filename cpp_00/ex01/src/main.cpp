@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 12:51:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/10 14:14:26 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 16:54:13 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ int	main(void)
 	{
 		std::string	input;
 
-		if(getInput(MSG_OPERATION, input) == false)
+		if(!getInput(MSG_OPERATION, input))
 			break ;
-		if (input == "ADD" && !book.addContact())
+		else if (input == "ADD")
+		{
+			if (!book.addContact())
 				break ;
+		}
 		else if (input == "SEARCH")
 		{
 			book.searchContact();
@@ -35,6 +38,10 @@ int	main(void)
 		{
 			std::cout << "Goodbye!\n";
 			break ;
+		}
+		else
+		{
+			putErr("invalid operation: " + input + "\n");
 		}
 	}
 	return (0);

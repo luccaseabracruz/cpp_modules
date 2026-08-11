@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 11:25:50 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 14:07:09 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/11 09:56:05 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,28 @@ bool	validatePhoneNumber(const std::string& phoneNumber)
 			return false;
 		}
 		i++;
+	}
+	return true;
+}
+
+bool	validateIndex(const std::string& index, const int counter)
+{
+	size_t	len = index.length();
+
+	if (len < 1 || !isNotEmptyField(index))
+	{
+		putErr("input cannot be empty.\n");
+		return false;
+	}
+	else if (len > 1 || !std::isdigit(index[0]))
+	{
+		putErr("invalid Index: '" + index + "'\n");
+		return false;
+	}
+	else if (index[0] - '0' >= counter)
+	{
+		putErr("index out of range.\n");
+		return false;
 	}
 	return true;
 }

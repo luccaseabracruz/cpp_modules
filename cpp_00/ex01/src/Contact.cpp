@@ -6,13 +6,14 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 13:08:44 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 14:42:52 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 16:51:10 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Contact.hpp"
 #include "utils.hpp"
+#include "colors.hpp"
 
 Contact::Contact(void)
 		:	firstName_(""), lastName_(""), nickname_(""),
@@ -48,3 +49,7 @@ std::string	Contact::getPhoneNumber() const
 	return phoneNumber_;
 }
 
+std::string	Contact::getDarkestSecret() const
+{
+	return darkestSecret_;
+}

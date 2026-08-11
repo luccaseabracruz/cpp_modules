@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 12:31:06 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/10 15:22:17 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 16:52:19 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "PhoneBook.hpp"
 #include "utils.hpp"
 #include "colors.hpp"
+#include "validate.hpp"
 
 
 PhoneBook::PhoneBook(): counter_(0)
@@ -38,7 +39,7 @@ bool	PhoneBook::addContact()
 	return true;
 }
 
-void	PhoneBook::putItem_(const std::string& str, bool endPipe)
+void	PhoneBook::putItem_(const std::string& str, bool endPipe) const
 {
 	std::string item;
 
@@ -52,7 +53,7 @@ void	PhoneBook::putItem_(const std::string& str, bool endPipe)
 	if (endPipe)
 		std::cout << "|";
 }
-void	PhoneBook::displayContacts_()
+void	PhoneBook::displayContacts_() const
 {
 	int	limit;
 
@@ -75,13 +76,27 @@ void	PhoneBook::displayContacts_()
 	}
 }
 
-bool	PhoneBook::searchContact()
+static void	displayContactInfo(const Contact contact)
 {
+	std::cout << GREEN << "First Name: " << RESET << contact.getFirstName() << "\n";
+	std::cout << GREEN << "Last Name: " << RESET << contact.getLastName() << "\n";
+	std::cout << GREEN << "Nickname: " << RESET << contact.getNickname() << "\n";
+	std::cout << GREEN << "Phone Number: " << RESET << contact.getPhoneNumber() << "\n";
+	std::cout << GREEN << "Darkest Secret: " << RESET << contact.getDarkestSecret() << "\n";
+}
+
+bool	PhoneBook::searchContact() const
+{
+	std::string	input;
+
 	if (counter_ < 1)
 	{
 		std::cout << YELLOW << "There are no registered contacts.\n" << RESET;
 		return true;
 	}
 	displayContacts_();
+	if (!getInput("Select the index of target contact: ", input) || !validateIndex(input, counter_))
+		return false;
+	displayContactInfo(contacts_[(input[0] - '0')]);
 	return true;
 }

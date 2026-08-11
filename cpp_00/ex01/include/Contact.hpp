@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 13:07:31 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/10 14:41:16 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/10 16:51:04 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class	Contact
 		std::string	getLastName() const;
 		std::string	getNickname() const;
 		std::string	getPhoneNumber() const;
+		std::string	getDarkestSecret() const;
 };
 
 #endif
