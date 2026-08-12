@@ -6,7 +6,7 @@
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/11 14:12:10 by lucca             #+#    #+#              #
-#    Updated: 2026/08/11 14:22:35 by lucca            ###   ########.fr        #
+#    Updated: 2026/08/12 15:41:39 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #==============================================================================#
 
 # NAMES
-NAME = 
+NAME = tests
 
 # PATHS
 SRC_PATH	= src
@@ -24,7 +24,8 @@ INC_PATH	= include
 
 # SOURCES
 SRC =  $(addprefix $(SRC_PATH)/, \
-	main.cpp \
+	tests.cpp \
+	Account.cpp \
 )
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
