@@ -47,5 +47,5 @@ phone_book
 tests
 
 # My Miscellaneos CPP - 01
-.build
+build/
 zombies
