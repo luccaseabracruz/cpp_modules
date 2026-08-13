@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 12:51:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/11 14:09:52 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/13 14:50:53 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ int	main(void)
 		}
 		else if (input == "SEARCH")
 		{
-			book.searchContact();
+			if (!book.searchContact())
+				break ;
 		}
 		else if (input == "EXIT")
 		{
-			std::cout << "Goodbye!\n";
+			std::cout << "Goodbye!";
 			break ;
 		}
 		else
@@ -44,5 +45,6 @@ int	main(void)
 			putErr("invalid operation: " + input + '\n');
 		}
 	}
+	std::cout << '\n';
 	return (0);
 };
