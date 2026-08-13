@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/11 14:12:10 by lucca             #+#    #+#              #
-#    Updated: 2026/08/13 15:30:27 by lseabra-         ###   ########.fr        #
+#    Updated: 2026/08/13 17:45:09 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 # FLAGS
 CPP			= c++
 CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
-CPP_VERSION	= -std=c++98
 INC			= -I$(INC_PATH)
 
 # COMMANDS
@@ -48,10 +47,10 @@ vpath %.cpp $(SRC_PATH)
 all: $(NAME)
 	
 $(NAME): $(OBJ)
-	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(INC) $(OBJ) -o $(NAME)
+	$(CPP) $(CPP_FLAGS) $(INC) $(OBJ) -o $(NAME)
 
 $(BUILD_PATH)/%.o: %.cpp | $(BUILD_PATH)
-	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(INC) -c $< -o $@
+	$(CPP) $(CPP_FLAGS) $(INC) -c $< -o $@
 
 $(BUILD_PATH):
 	$(MKDIRP) $(BUILD_PATH)
