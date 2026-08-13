@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/28 12:51:18 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 14:50:53 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/13 14:55:29 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 int	main(void)
 {
 	PhoneBook book;
+	std::string	input;
 	
 	while (true)
 	{
-		std::string	input;
-
 		if(!getInput(MSG_OPERATION, input))
 			break ;
 		else if (input == "ADD")
