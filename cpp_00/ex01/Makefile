@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
+#    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/28 13:24:49 by lseabra-          #+#    #+#              #
-#    Updated: 2026/08/10 11:56:40 by lucca            ###   ########.fr        #
+#    Updated: 2026/08/13 13:53:15 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
 CPP			= c++
-CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
+CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
 CPP_VERSION	= -std=c++98
 INC			= -I$(INC_PATH)
 
