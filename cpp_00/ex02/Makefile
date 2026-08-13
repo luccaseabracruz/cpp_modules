@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/11 14:12:10 by lucca             #+#    #+#              #
-#    Updated: 2026/08/13 13:53:21 by lseabra-         ###   ########.fr        #
+#    Updated: 2026/08/13 17:49:45 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,22 +18,17 @@
 NAME = tests
 
 # PATHS
-SRC_PATH	= src
 BUILD_PATH	= build
-INC_PATH	= include
 
 # SOURCES
-SRC =  $(addprefix $(SRC_PATH)/, \
+SRC = \
 	tests.cpp \
-	Account.cpp \
-)
-OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
+	Account.cpp
+OBJ = $(addprefix $(BUILD_PATH)/, $(SRC:.cpp=.o))
 
 # FLAGS
 CPP			= c++
 CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
-CPP_VERSION	= -std=c++98
-INC			= -I$(INC_PATH)
 
 # COMMANDS
 MKDIRP = mkdir -p
@@ -44,17 +39,15 @@ RMDIR = rm -rf
 #                                    RULES                                     #
 #==============================================================================#
 
-vpath %.cpp $(SRC_PATH)
-
 .PHONY: all clean fclean re
 
 all: $(NAME)
-	
+
 $(NAME): $(OBJ)
-	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(INC) $(OBJ) -o $(NAME)
+	$(CPP) $(CPP_FLAGS) $(OBJ) -o $(NAME)
 
 $(BUILD_PATH)/%.o: %.cpp | $(BUILD_PATH)
-	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(INC) -c $< -o $@
+	$(CPP) $(CPP_FLAGS) -c $< -o $@
 
 $(BUILD_PATH):
 	$(MKDIRP) $(BUILD_PATH)

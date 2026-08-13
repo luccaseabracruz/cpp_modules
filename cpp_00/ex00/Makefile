@@ -1,6 +1,5 @@
 CPP			= c++
-CPP_FLAGS	= -Wall -Wextra -Werror
-CPP_VERSION	= -std=c++98
+CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
@@ -14,10 +13,10 @@ NAME = megaphone
 all: $(NAME)
 	
 $(NAME): $(OBJ)
-	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) $(OBJ) -o $(NAME)
+	$(CPP) $(CPP_FLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(CPP) $(CPP_FLAGS) $(CPP_VERSION) -c $< -o $@
+	$(CPP) $(CPP_FLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
