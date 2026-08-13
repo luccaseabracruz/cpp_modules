@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 15:33:28 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 15:44:52 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/13 16:52:52 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	main(void)
 {
-	Zombie z = Zombie("z");
-	z.
-}
+	Zombie *charles = newZombie("Charles");
+	(*charles).announce();
+	randomChump("MJ");
+	delete charles;
+};

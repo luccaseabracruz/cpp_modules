@@ -6,7 +6,14 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 15:39:21 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 15:39:22 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/13 16:53:24 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
+
+Zombie*	newZombie( std::string name )
+{
+	Zombie *z = new Zombie(name);
+	return (z);
+}

@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/11 14:12:10 by lucca             #+#    #+#              #
-#    Updated: 2026/08/13 15:28:03 by lseabra-         ###   ########.fr        #
+#    Updated: 2026/08/13 16:51:48 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #==============================================================================#
 
 # NAMES
-NAME = tests
+NAME = zombies
 
 # PATHS
 SRC_PATH	= src
@@ -23,7 +23,12 @@ BUILD_PATH	= build
 INC_PATH	= include
 
 # SOURCES
-SRC =  $(addprefix $(SRC_PATH)/, )
+SRC =  $(addprefix $(SRC_PATH)/, \
+	main.cpp \
+	newZombie.cpp \
+	randomChump.cpp \
+	Zombie.cpp \
+)
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS

@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 15:33:35 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 16:23:24 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/13 16:55:52 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 Zombie::Zombie(std::string name): name_(name){};
 
-Zombie::~Zombie(){};
+Zombie::~Zombie()
+{
+	std::cout << name_ << " destroyed\n";
+};
 
 void	Zombie::announce(void)
 {
