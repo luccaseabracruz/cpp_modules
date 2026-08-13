@@ -1,0 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/13 15:33:35 by lseabra-          #+#    #+#             */
+/*   Updated: 2026/08/13 16:23:24 by lseabra-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Zombie.hpp"
+
+Zombie::Zombie(std::string name): name_(name){};
+
+Zombie::~Zombie(){};
+
+void	Zombie::announce(void)
+{
+	std::cout << name_ << ": BraiiiiiiinnnzzzZ...\n";
+}
