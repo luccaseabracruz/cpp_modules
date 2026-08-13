@@ -40,8 +40,12 @@
 # debug information files
 *.dwo
 
-# My Miscellaneos
+# My Miscellaneos CPP - 00
+build/
 megaphone
 phone_book
 tests
-build/
+
+# My Miscellaneos CPP - 01
+.build
+zombies
