@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 18:13:00 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 20:24:19 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/17 09:57:18 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <sstream>
+#include "Zombie.hpp"
 #include "Zombie.hpp"
 
 static bool	isValidDigit(const std::string& str)
@@ -26,18 +27,24 @@ static bool	isValidDigit(const std::string& str)
 
 int	main(int argc, char *argv[])
 {
-	int	n = argc + 1;
+	Zombie	*horde;
+	int		n = 5;
+	std::string	name = "Jarbas";
+
 	if (argc > 1)
 	{
 		if (isValidDigit(argv[1]))
-		{
 			std::istringstream(argv[1]) >> n;
-			std::cout << "N = " << n << "\n";
-		}
 		else
 		{
 			std::cout << "[Error]: invalid argument: '" << argv[1] << "'\n";
-			std::cout << "Using default value for N (argc + 1): " << n << '\n';
+			return (1);
 		}
 	}
+	if (argc > 2)
+		name = argv[2];
+	horde = zombieHorde(n, name);
+	for (int i = 0; i < n; i++)
+		horde[i].announce();
+	delete[] horde;
 }

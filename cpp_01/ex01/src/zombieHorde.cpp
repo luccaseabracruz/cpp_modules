@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 18:15:38 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 20:20:52 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/17 10:02:26 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 Zombie* zombieHorde(int N, std::string name)
 {
-	std::cout << N << " zombies todo with the name " << name << '\n';
-	return (new Zombie(name));
+	Zombie	*horde;
+
+	if (N <= 0)
+		return NULL;
+
+	horde = new Zombie[N];
+	for (int i = 0; i < N; i++)
+		horde[i].set_name(name);
+	return (horde);
 }
