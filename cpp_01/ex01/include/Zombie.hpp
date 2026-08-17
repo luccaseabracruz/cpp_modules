@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 18:21:01 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/17 09:48:36 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/17 15:11:51 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Zombie
 		Zombie(std::string name);
 		Zombie(void);
 		~Zombie();
-		void	announce( void );
+		void	announce( void ) const;
 		void	set_name(const std::string& name);
 };
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 15:33:35 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 16:55:52 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/17 15:10:33 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie::~Zombie()
 	std::cout << name_ << " destroyed\n";
 };
 
-void	Zombie::announce(void)
+void	Zombie::announce(void) const
 {
 	std::cout << name_ << ": BraiiiiiiinnnzzzZ...\n";
 }

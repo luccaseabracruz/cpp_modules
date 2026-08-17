@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 15:33:35 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/17 10:07:28 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/17 15:12:01 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Zombie::~Zombie()
 	std::cout << name_ << " destroyed\n";
 };
 
-void	Zombie::announce(void)
+void	Zombie::announce(void) const
 {
 	std::cout << name_ << ": BraiiiiiiinnnzzzZ...\n";
 }
