@@ -1,9 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/08/17 11:14:09 by lucca             #+#    #+#              #
+#    Updated: 2026/08/17 15:06:54 by lucca            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #==============================================================================#
 #                                  VARIABLES                                   #
 #==============================================================================#
 
 # NAMES
-NAME = executable_name
+NAME = bang
 
 # PATHS
 SRC_PATH	= src
@@ -11,7 +23,12 @@ BUILD_PATH	= build
 INC_PATH	= include
 
 # SOURCES
-SRC =  $(addprefix $(SRC_PATH)/, )
+SRC =  $(addprefix $(SRC_PATH)/, \
+	HumanA.cpp \
+	HumanB.cpp \
+	main.cpp \
+	Weapon.cpp \
+)
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
