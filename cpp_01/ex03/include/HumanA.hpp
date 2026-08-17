@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 11:15:56 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/17 12:34:39 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/17 15:41:17 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class	HumanA
 {
 	private:
-		std::string	name;
-		Weapon		weapon;
+		std::string		name;
+		const Weapon&	weapon;
 
 	public:
 		HumanA(const std::string& name, const Weapon& weapon);
