@@ -20,8 +20,15 @@
 - Decide where where is better to use pointer or reference in each human class.
 
 ## ex04
+- create a a program that reads an existent file and create/write an output file, but replacing s1 for s2.
+- introduces stream management functions.
+- can't use string std::replace, using find find, remove and insert functions.
 # Open Questions
 - [X] Makefile: is it necessary to use CPP_VERSION to compile .o files?
 	R: Yes, it is necessary
 
 - [ ] I don't know how the principles are applied here
+### ex04
+- [ ] difference between size_type and size_t and unsigned it;
+	- are size_t and size_type ways to guard the size depending of the capacity of the processor or size definition of size of the current os?
+- What is string::npos?

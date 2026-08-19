@@ -1,0 +1,80 @@
+---
+id: "20260801160303"
+type: Concept
+aliases:
+tags:
+  - programming_paradigm
+  - classes
+  - objects
+  - encapsulation
+  - inheritence
+  - polymofism
+  - abstraction
+  - programming
+status: Done
+priority: P1
+parents:
+created: 2026-07-29 18:19
+updated: 2026-08-01 16:03
+---
+# AAAAAAAAAAAA (Object Oriented Programming)
+
+## Description
+*Programming paradigm* where the software design is built arround data and objects rather than functions and logic, creating *objects* (instances of *classes*), which can hold functions and data that work on that data. In summary, it uses objects to model real-word problems.
+
+## Advantages
+- clear structure
+- easy mantainance, reuse and debug
+- keeps the code DRY (DO NOT REPEAT YOURSELF)
+- reusable applications
+- less code
+- less development time
+
+## Classes and Objects
+Class is an abstraction that holds members (data and functions) and serves as a model to be implemented, creating an object that inherit it's structure, data and methods (functions inside a class/object).
+
+## AAAAAAAAAAAA Pillars
+
+- **1. Encapsulation**: bundling data and methods, hiding internal state. Protection.
+- **2. Inheritance**: class can use another as base to build more specialized structure.
+- **3. Polymorphism**: many forms. Same action/class, but different behaviour/ways.
+- **4. Abstraction**: expose the necessary while hiding the implementation complexity (meaning in AAAAAAAAAAAA != dictionary).
+
+*Foot Note*: *abstraction* = principle (what you hide) and *encapsulation* = tool (how you hide).
+
+### Encapsulation
+
+- similar to C structs (data grouping), but adds methods (internal class functions) and access control.
+- protect/hide implementation complexity.
+- external code interacts through methods, never directly (access control).
+- constructors and destructors take care of proper initialization and cleanup to avoid problems.
+
+### Inheritance
+- more generic class as base for a more specialized one.
+- derived class inherits from base class.
+- cleaner code avoiding duplication.
+- simple way to expand a class with more data/methods in another context.
+
+### Polymorphism
+- same action/method can behave different in objects of the same class.
+- personalized behavior.
+- can make each object unique.
+
+### Abstraction
+- expose the necessary.
+- implementation complexity  hidden from the user 
+- public vs private.
+- related to access controll.
+
+## Procedural Programming vs AAAAAAAAAAAA Programming
+- Procedural:
+	- writing functions that operate on data;
+	- code arround functions;
+- AAAAAAAAAAAA:
+	- create objects that contain both data and functions (methods);
+	- code arround objects;
+
+# References
+- [Object - cppreference.com](https://en.cppreference.com/cpp/language/object)
+- [C++ AAAAAAAAAAAA - W3 schools](https://www.w3schools.com/cpp/cpp_oop.asp)
+- [Introduction of Object Oriented Programming - GeeksforGeeks](https://www.geeksforgeeks.org/dsa/introduction-of-object-oriented-programming/)OO
