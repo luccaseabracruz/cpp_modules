@@ -14,7 +14,7 @@ OBJ = $(addprefix $(BUILD_PATH)/, $(SRC:.cpp=.o))
 
 # FLAGS
 CPP			= c++
-CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
+CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
 
 # COMMANDS
 MKDIRP = mkdir -p
