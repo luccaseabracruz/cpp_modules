@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/13 15:33:28 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/08/13 19:51:47 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/08/19 18:23:54 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ static void	test(const std::string& dynamicName, const std::string& staticName)
 	std::cout << ">>> Testing randomChump(\"" + staticName + "\")\n";
 	randomChump(staticName);
 	std::cout << ">>> Ending randomChump(\"" + staticName + "\")\n";
-	std::cout << ">>> Is dynamic allocated " + dynamicName + " there?\n";
-	if (mj)
-		std::cout << "TRUE\n";
-	else
-		std::cout << "FALSE   \\\\ Something went wrong with allocation\n";
 	delete mj;
 	std::cout << "==================== ending Test ex01 ====================\n";
 }
