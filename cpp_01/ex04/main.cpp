@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 16:06:35 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/19 18:40:51 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/19 18:43:47 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,13 @@ static bool	validateInput(int argc, char *argv[])
 		std::cerr << "[ERROR]: invalid number of arguments: got " << argc << ", expected 4.\n";
 		return (false);
 	}
-	const string& s1 = argv[2];
+	const string filename = argv[1];
+	const string s1 = argv[2];
+	if (filename.empty())
+	{
+		std::cerr << "[ERROR]: filename(argv[1]) cannot be empty.\n";
+		return (false);
+	}
 	if (s1.empty())
 	{
 		std::cerr << "[ERROR]: s1(argv[2]) cannot be empty.\n";
