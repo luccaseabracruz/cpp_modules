@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 16:06:35 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/19 15:01:15 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/19 18:40:51 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static bool writeIntoBuffer(const string& filename, string& buffer)
 	std::ifstream	in(filename.c_str());
 	if (in.is_open() == false)
 	{
-		std::cerr << "[ERROR]: no such file: " << filename << '\n';
+		std::cerr << "[ERROR]: no such file or no permition: " << filename << '\n';
 		return (false);
 	}
 	while (std::getline(in, line))
