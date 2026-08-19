@@ -32,3 +32,13 @@
 - [ ] difference between size_type and size_t and unsigned it;
 	- are size_t and size_type ways to guard the size depending of the capacity of the processor or size definition of size of the current os?
 - What is string::npos?
+- learned about the return and studied modular arythmetic to explain the npos and why is important to use size_t or string::size_type to work well with all systems and compilors.
+
+### ex05
+- I had to create a Class Harl, a guy that complains and call the right function depending on the level of complaint passed as std::string as a param and trigger the function without using a forest of ifs, using a list of pointers to the member functions.
+- introduces pointers to member functions;
+
+### ex06
+- same as the ex05, but using switch operator and triggering all levels since the level passed as parameter.
+- understand how switch work, as a cascade without implicit break and just work with its.
+- introduces switch case;
