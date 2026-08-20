@@ -1,19 +1,50 @@
 *This project has been created as part of the 42 curriculum by lseabra-.*
  
-# C++ - Module 00
+# C++ - Module 01
  
 ## Description
-First module of C++ in the Common Core curriculum. It introduces Object-Oriented Programming by 
-moving from C to C++98, introducing important concepts of the language like  classes, member functions, 
-`stdio` streams, initialization lists, `static`, `const`, and the general C++ project conventions used 
-in the following modules.
+This module is the bridge between “I know how to write a class” and “I know how to control how objects behave in memory and in code.”
+
+In Module 00, the focus was on learning the foundations of OOP: classes, encapsulation, constructors, and basic C++ style. In Module 01, the goal is to understand how objects live, how we refer to them without copying them, and how different behaviors can be selected at runtime.
+
+The module is about decisions:
+- Should this object live on the stack or on the heap?
+- Should I pass it by value, by pointer, or by reference?
+- Can this function mutate the object, or should it only read it?
+- How do I map a string input to the correct action without a messy chain of ifs?
+
+This module introduces dynamic allocation, references, pointer semantics, and member-function pointers — all essential tools for writing robust C++ code.
  
-The module has 3 exercises:
+The module has 7 exercises:
 | Exercise | Name | Topics | Description |
 |---|---|---|---|
-| ex00 | Megaphone | argv parsing in C++, `std::string`, `std::cout`, manual uppercase conversion | A program that receives an input through argv and displays it in uppercase |
-| ex01 | My Awesome PhoneBook | classes, encapsulation, fixed-size arrays (no dynamic allocation), `std::cin`, `<iomanip>` | A program that simulates a phone book that registers contacts and searches for them |
-| ex02 | The Job of Your Dreams (BONUS) | class implementation from a header + log file, constructors/destructors, `static` members, `const` members, encapsulation | Receive a header file and a .log file for a reverse-engineering mission: implement the constructor, destructor and member functions, and understand static members and vectors along the way |
+| ex00 | Zombie | `new`, `delete`, stack vs heap, object lifetime | Create zombies and decide where they should be allocated and how they should announce themselves |
+| ex01 | Zombie Horde | dynamic arrays, loops, memory management, object initialization | Build an array of zombies from a name and a size, then release every allocated instance correctly |
+| ex02 | Reference and pointer exercises | references, pointers, `const` references, aliasing | Understand how a reference differs from a pointer and how both interact with the original value |
+| ex03 | Weapon + Human A/B | composition, references, object ownership, constructors | Model a weapon that can be carried by different humans, comparing fixed ownership and optional weapon assignment |
+| ex04 | Sed is for losers | file streams, string manipulation, `find`, `replace`, `erase`, `insert` | Read a file, replace every occurrence of one substring with another, and write the result to a new file |
+| ex05 | Harl 2.0 | member-function pointers, dispatch tables, string matching | Build a complaining bot that triggers the correct behavior based on a severity string without a large `if`/`else` structure |
+| ex06 | Harl filter | `switch`, severity filtering, cascading conditions | Choose the output level based on a filter and print only the messages that match or exceed it |
+ 
+## The story arc of the module
+The exercises are designed as a gradual progression:
+ 
+1. ex00 and ex01: learn to create objects
+   - We start by deciding whether an object should be created immediately or later.
+   - We then move from one object to many objects and understand the rules of dynamic lifetime.
+
+2. ex02 and ex03: learn to reference and compose objects
+   - If an object already exists, we should not copy it unnecessarily.
+   - References let us work with the real object, while pointers let us manage optional or changing ownership.
+
+3. ex04 and ex05: learn to transform and dispatch behavior
+   - We read input streams and manipulate strings in a controlled way.
+   - We learn to map a command or text value to an action without hardcoding a long sequence of tests.
+
+4. ex06: learn to filter and reason about levels of severity
+   - This is where the module turns from “do the action” into “choose the correct action based on a policy.”
+
+This progression is the real story of Module 01: from creation, to identity, to behavior.
  
 ## Instructions
 ### Requirements
@@ -29,68 +60,93 @@ The module has 3 exercises:
   `<algorithm>`.
 - No external libraries (Boost, C++11 and later included).
 - Any memory allocated with `new` must be freed (no leaks).
+ 
 ### How to Run
 In every exercise, run the following in bash or similar shell:
 ```bash
 make
 ```
-To test, run the exercise executable generated on make. You can check the name of the executable in the NAME variable inside each Makefile.
+To test, run the exercise executable generated by `make`. You can check the executable name in the `NAME` variable inside each Makefile.
  
-In the Makefile, you have the commands:
-- ```make``` or ```make all```: compile the program.
-- ```make re```: does a full clean on object files and executable and compile the program again.
-- ```make clean```: clean object files.
-- ```make fclean```: similar to clean, but also deletes the executable.
+In the Makefile, the common commands are:
+- `make` or `make all`: compile the program.
+- `make re`: clean object files and the executable, then compile everything again.
+- `make clean`: remove object files.
+- `make fclean`: remove object files and the executable.
+ 
 ## Resources
 ### Concepts Used
-#### C++ definition and history
-- C++ as an increment of C, using the ++ operator to represent it.
-- Created by Bjarne Stroustrup, who started working on it in 1979 as "C with Classes" — it only got renamed to C++ in 1983.
-- A general purpose language that supports OOP and Procedural Programming paradigms.
-- High level execution, low-level memory control, rich Standard Library and widely used.
-#### Object Oriented Programming (OOP)
-- Principles of OOP: encapsulation, inheritance, polymorphism and abstraction.
-- The most important principles in this module were encapsulation and abstraction, grouping all variables and functions related inside the same class, implementing access control, hiding the implementation complexity and exposing just the necessary.
-- Classes as an abstraction of a real-world concept/entity, a data-type that centralizes this entity's data and methods.
-- Object as an instance of a class that it's possible to interact with.
-#### Constructors, destructors, initialization lists
-- Use of constructor/destructor special members, managing the object lifecycle in ex01 and ex02.
-- Member initialization lists vs assignment in the constructor body.
-#### `std` I/O streams
-- `<iostream>`: `std::cin` / `std::cout` instead of `scanf`/`printf` (C functions are forbidden here).
-- `<iomanip>`: `std::setw`, alignment to reproduce the fixed-width, right-aligned, dot-truncated table required in ex01.
-- `std::string` instead of `char *`/`char[]` — no manual buffer management, safer concatenation/comparison.
-#### `static` and `const`
-- `static` member variables (shared across all instances)
-- `static` member functions that can just access other static members and don't have `this` implicit pointer because it doesn't belong to an object, but to the class itself.
-- `const` correctness: `const` member functions, `const` parameters/references — the compiler now enforces "this doesn't mutate state" instead of it being a comment in C.
-#### char * vs std::string
-- `char *` is a low-level pointer to a sequence of chars, with no built-in size or safety. If it points to a string literal it's not safe to modify (undefined behavior); if it points to a writable buffer (a stack array, `new[]`, etc.) it's mutable like any other memory. Either way you're the one tracking the size and the null terminator, which is why it has less overhead than `std::string`.
-- `std::string` (Class of C++ Standard Library) is a class that abstracts the string management process. It automatically manages the storage of the container and provides methods to operate on it. It's safer to use, but less efficient in terms of memory.
-#### Reading an existing class implementation
-- ex02: given `Account.hpp` and a log file, reverse-engineer `Account.cpp` — practice reading a class's public interface and inferring intended behavior/side effects before writing any code.
-#### Understanding vectors in C++
-- To do the ex02, it's important to understand the concept of vectors used in the `tests.cpp` file to generate the log file.
-- vectors are a STL container class template that encapsulates a dynamic array where data is contiguously stored and automatically managed by the class.
+#### Dynamic memory allocation
+- `new` creates an object or array on the heap.
+- `delete` frees memory allocated with `new`.
+- `new[]` and `delete[]` are required for arrays.
+- Heap allocation is necessary when the object must outlive the current scope or when the required size is only known at runtime.
+
+#### Stack vs heap
+- Stack memory is automatic and short-lived; it is ideal for local variables and small fixed-size objects.
+- Heap memory is manual and must be freed; it is needed when we create objects dynamically.
+- A common mistake is to allocate on the heap without deleting it, or to use stack allocation for data that needs to live beyond the function scope.
+
+#### References and pointers
+- A reference is an alias to an existing variable. It cannot be reseated to another object.
+- A pointer stores an address and can be `NULL`/`nullptr` in modern C++.
+- Passing by reference avoids copying large objects while preserving direct access to the original value.
+- `const std::string&` is often preferred when the function only needs to read an object without changing it.
+
+#### `const` correctness
+- `const` controls whether an object or method is allowed to change state.
+- A `const` member function guarantees the object is not modified during the call.
+- This is essential for avoiding accidental mutation.
+
+#### Member-function pointers
+- A member-function pointer points to a method of a class instead of a standalone function.
+- This allows us to associate a string or an integer with a specific behavior, as seen in the Harl exercises.
+- This is a powerful way to create lookup tables or dispatch systems without a large chain of conditionals.
+
+#### String processing and file streams
+- `std::ifstream` and `std::ofstream` are used to read and write files.
+- `std::string::find`, `erase`, `insert`, and `replace` are used to manipulate text precisely.
+- The module shows that string handling is not only about printing text — it often means transforming input according to a rule.
+
+#### Control flow with `switch`
+- `switch` allows a clean mapping from a discrete value to a set of actions.
+- It is useful when you have a fixed number of severity levels or command categories.
+- This introduces the idea of behavior selection based on a small set of known values.
+
 #### Common C → C++ mistakes avoided here
-- Treating a `class` like a C `struct` and making everything `public`.
-- Assigning members in the constructor body instead of using the initialization list.
-- Forgetting `const` on member functions that don't modify state.
+- Forgetting to `delete` memory created with `new`.
+- Using value copies where a reference would be more efficient and clearer.
+- Passing a pointer when a reference would better express ownership and intent.
+- Misusing `const` and accidentally mutating state inside read-only functions.
+- Creating a cluster of `if` statements when a dispatch table or `switch` would be clearer.
+ 
 ### References
 - [cppreference.com](https://www.cppreference.com/)
-- [Introduction to C++ - GeeksforGeeks](https://www.geeksforgeeks.org/cpp/cpp-programming-intro/)
-- [History of C++ - GeeksforGeeks](https://www.geeksforgeeks.org/cpp/history-of-c/)
-- [Object - cppreference.com](https://en.cppreference.com/cpp/language/object)
-- [C++ OOP - W3 schools](https://www.w3schools.com/cpp/cpp_oop.asp)
-- [Introduction of Object Oriented Programming - GeeksforGeeks](https://www.geeksforgeeks.org/dsa/introduction-of-object-oriented-programming/)
-- [Static Member Function in C++ - GeeksforGeeks](https://www.geeksforgeeks.org/cpp/static-member-function-in-cpp/)
-- [char* vs std:string vs char[] in C++ - GeeksforGeeks](https://www.geeksforgeeks.org/cpp/char-vs-stdstring-vs-char-c/)
-- [STL Demystified: A Practical Guide to C++ Standard Template Library](https://medium.com/@athicharttangpong/stl-demystified-a-practical-guide-to-c-standard-template-library-1f097ea90778)
-- [std::vector - cppreference.com](https://en.cppreference.com/cpp/container/vector)
-- [Vector in C++ STL - GeeksforGeeks](https://www.geeksforgeeks.org/cpp/vector-in-cpp-stl/)
-- [C++ Vectors - W3 schools](https://www.w3schools.com/cpp/cpp_ref_vector.asp)
+- [Pointers - cppreference](https://en.cppreference.com/w/cpp/language/pointer)
+- [new / delete operators - cppreference](https://en.cppreference.com/w/cpp/memory/new)
+- [std::string - cppreference](https://en.cppreference.com/w/cpp/string/basic_string)
+- [std::ifstream / std::ofstream - cppreference](https://en.cppreference.com/w/cpp/io/basic_ifstream)
+- [cpp_019: Writing to Files with ofstream in C++](https://medium.com/@staytechrich/cpp-019-writing-to-files-with-ofstream-in-c-eb464af98d3d)
+- [Member function pointers - cppreference](https://en.cppreference.com/w/cpp/language/pointer#Pointers_to_members)
+- [Function Pointer to Member Function in C++](https://www.geeksforgeeks.org/cpp/function-pointer-to-member-function-in-cpp/)
+
+- [C++ OOP - W3 Schools](https://www.w3schools.com/cpp/cpp_oop.asp)
+- [C++ references vs pointers - GeeksforGeeks](https://www.geeksforgeeks.org/cpp/difference-between-pointer-and-reference-in-c/)
+- [Dynamic memory allocation in C++ - GeeksforGeeks](https://www.geeksforgeeks.org/cpp/new-and-delete-operators-in-cpp-for-dynamic-memory/)
+ 
 ### AI usage
 AI (ChatGPT / Claude / Gemini) was used during this project as a support tool, specifically for:
-- Clarifying important concepts such as static member functions, good practices in C++, and differences between C and C++.
-- Proofreading and improving the content written and structured of this README.
-- No AI was used to give solutions, just validating ideas in terms of design trade-offs and best practices.
+- Reviewing ex04 myReplaceAll, explaining why size_type should be used to store the return value of string::find, highlighting potential overflow-related issues, and pointing out the importance of validating whether s1 is empty, including specific behaviors I was not previously aware of.
+- Explaining how member-function pointers and dispatch patterns work in C++.
+- Proofreading and improving the structure of this README.
+- No AI was used to provide direct solutions; it was used to validate concepts, trade-offs, and code design decisions.
+
+## Final reflection
+Module 01 is where C++ starts to feel like a language for real software design instead of just a cleaner version of C. The important thing is not to memorize syntax in isolation, but to understand the logic behind object ownership, indirection, and behavior.
+
+By the end of the module, the goal is to be able to look at a problem and decide:
+- where the data should live;
+- how to access it without unnecessary copies;
+- and how to route behavior cleanly through the right abstraction.
+
+That is the real progression of this module.

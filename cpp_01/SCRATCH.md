@@ -25,12 +25,12 @@
 - can't use string std::replace, using find find, remove and insert functions.
 # Open Questions
 - [X] Makefile: is it necessary to use CPP_VERSION to compile .o files?
-	R: Yes, it is necessary
-
-- [ ] I don't know how the principles are applied here
+	R: Yes, it is necessary.
 ### ex04
-- [ ] difference between size_type and size_t and unsigned it;
+- [X] difference between size_type and size_t and unsigned it;
 	- are size_t and size_type ways to guard the size depending of the capacity of the processor or size definition of size of the current os?
+	R: it depends on the compilor  that knows the processor capacity, but they can behave differently even if the compilor capacity is constant.
+R: size_t are for unique elements and size_type for containers. Both always represent the maximum size of the item or container, assuring the max size depending on what size the compiler attributes for the target type. The use of unsigned int can cause different behaviour on different compilers originated from different sizes attributed for the same type.
 - What is string::npos?
 - learned about the return and studied modular arythmetic to explain the npos and why is important to use size_t or string::size_type to work well with all systems and compilors.
 
