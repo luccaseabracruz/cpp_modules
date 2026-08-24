@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:48 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 20:45:07 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/24 21:26:57 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ class Fixed
 		Fixed	operator-(const Fixed& other);
 		Fixed	operator*(const Fixed& other);
 		Fixed	operator/(const Fixed& other);
+		
+		// Increment/Decrement Operators
+		Fixed&	operator++(void);
+		Fixed	operator++(int);
+		Fixed&	operator--(void);
+		Fixed	operator--(int);
 
 		// Member Functions
 		int		getRawBits(void) const;

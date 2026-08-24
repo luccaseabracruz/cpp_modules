@@ -85,6 +85,8 @@ In the Makefile, the common commands are:
 - [Introduction to Fixed Point Number Representation](https://web.archive.org/web/20231224143018/https://inst.eecs.berkeley.edu/~cs61c/sp06/handout/fixedpt.html)
 - [Fixed Point Representation](https://www.geeksforgeeks.org/computer-organization-architecture/fixed-point-representation/)
 - [Converting floats to fixed point](https://ncot.uk/devnotes/computing_maths/fixed_point_arithmetic/float_to_fixed/index.html)
+- [operator overloading](https://en.cppreference.com/cpp/language/operators#cite_note-1)
+- [Comparison operators - cppreference.com](https://en.cppreference.com/cpp/language/operator_comparison)
 
  
 ### AI usage

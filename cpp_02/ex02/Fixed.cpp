@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:41 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 20:45:28 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/24 21:23:25 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,37 @@ Fixed Fixed::operator/(const Fixed& other)
 {
 	Fixed	res(this->toFloat() / other.toFloat());
 	return (res);
+}
+
+//---------------------- Increment/Decrement Operators -----------------------//
+Fixed& Fixed::operator++(void)
+{
+	rawBits_++;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed	temp;
+
+	temp = *this;
+	++(*this);
+	return (temp);
+}
+
+Fixed& Fixed::operator--(void)
+{
+	rawBits_--;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed	temp;
+
+	temp = *this;
+	--(*this);
+	return (temp);
 }
 
 //----------------------------- Member Functions -----------------------------//

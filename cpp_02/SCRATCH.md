@@ -11,5 +11,8 @@ Create a class  to represent a fixed point with ortodox cannonical form
 - creating a free operator<< function that receives the object and specifies how it should be written in the ofstream.
 
 ## ex02
+- arithmetic operators overload
+- comparison operators overload
+- increment/decrement operators overload
 
 ## ex03

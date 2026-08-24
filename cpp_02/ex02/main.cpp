@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:35:00 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 20:46:38 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/24 21:25:00 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,14 @@
 int	main( void )
 {
 	Fixed	a(7.01f);
-	Fixed	b(7.01f);
-
 	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "a == b? " << (a == b) << std::endl;
-	std::cout << "a > b? " << (a > b) << std::endl;
-	std::cout << "a >= b? " << (a >= b) << std::endl;
-	std::cout << "a < b? " << (a < b) << std::endl;
-	std::cout << "a <= b? " << (a <= b) << std::endl;
+	Fixed	b(a--);
+	std::cout << "b is a-- = " << b << std::endl;
+	std::cout << "is a == b? " << (a == b) << std::endl;
+	std::cout << "now, a is " << a << std::endl;
+	Fixed	c(--a);
+	std::cout << "c is --a = " << c << std::endl;
+	std::cout << "now, a is " << a << std::endl;
 
 	return 0;
 }
