@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:48 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 21:26:57 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/24 21:34:04 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Fixed
 
 	public:
 		// Special Members
-		Fixed();							// default	constructor
+		Fixed();								// default	constructor
 		Fixed(const int rawBits);				// int		constructor
 		Fixed(const float rawBits);				// float	constructor
 		Fixed(const Fixed& other);				// copy		constructor
@@ -31,17 +31,17 @@ class Fixed
 		~Fixed();								// destructor
 
 		// Comparison Operators
-		bool	operator==(const Fixed& other);
-		bool	operator>(const Fixed& other);
-		bool	operator>=(const Fixed& other);
-		bool	operator<(const Fixed& other);
-		bool	operator<=(const Fixed& other);
+		bool	operator==(const Fixed& other) const;
+		bool	operator>(const Fixed& other) const;
+		bool	operator>=(const Fixed& other) const;
+		bool	operator<(const Fixed& other) const;
+		bool	operator<=(const Fixed& other) const;
 
 		// Arithmetic Operators
-		Fixed	operator+(const Fixed& other);
-		Fixed	operator-(const Fixed& other);
-		Fixed	operator*(const Fixed& other);
-		Fixed	operator/(const Fixed& other);
+		Fixed	operator+(const Fixed& other) const;
+		Fixed	operator-(const Fixed& other) const;
+		Fixed	operator*(const Fixed& other) const;
+		Fixed	operator/(const Fixed& other) const;
 		
 		// Increment/Decrement Operators
 		Fixed&	operator++(void);

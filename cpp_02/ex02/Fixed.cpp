@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:41 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 21:23:25 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/24 21:34:31 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,33 +58,33 @@ Fixed::~Fixed(void)
 
 
 //--------------------------- Comparison Operators ---------------------------//
-bool	Fixed::operator==(const Fixed& other)
+bool	Fixed::operator==(const Fixed& other) const
 {
 	return (rawBits_ == other.getRawBits());
 }
 
-bool	Fixed::operator>(const Fixed& other)
+bool	Fixed::operator>(const Fixed& other) const
 {
 	return (rawBits_ > other.getRawBits());
 }
 
-bool	Fixed::operator>=(const Fixed& other)
+bool	Fixed::operator>=(const Fixed& other) const
 {
 	return (rawBits_ >= other.getRawBits());
 }
 
-bool	Fixed::operator<(const Fixed& other)
+bool	Fixed::operator<(const Fixed& other) const
 {
 	return (rawBits_ < other.getRawBits());
 }
 
-bool	Fixed::operator<=(const Fixed& other)
+bool	Fixed::operator<=(const Fixed& other) const
 {
 	return (rawBits_ <= other.getRawBits());
 }
 
 //--------------------------- Arithmetic Operators ---------------------------//
-Fixed Fixed::operator+(const Fixed& other)
+Fixed Fixed::operator+(const Fixed& other) const
 {
 	Fixed	res;
 	
@@ -92,7 +92,7 @@ Fixed Fixed::operator+(const Fixed& other)
 	return (res);
 }
 
-Fixed Fixed::operator-(const Fixed& other)
+Fixed Fixed::operator-(const Fixed& other) const
 {
 	Fixed	res;
 	
@@ -100,13 +100,13 @@ Fixed Fixed::operator-(const Fixed& other)
 	return (res);
 }
 
-Fixed Fixed::operator*(const Fixed& other)
+Fixed Fixed::operator*(const Fixed& other) const
 {
 	Fixed	res(this->toFloat() * other.toFloat());
 	return (res);
 }
 
-Fixed Fixed::operator/(const Fixed& other)
+Fixed Fixed::operator/(const Fixed& other) const
 {
 	Fixed	res(this->toFloat() / other.toFloat());
 	return (res);
