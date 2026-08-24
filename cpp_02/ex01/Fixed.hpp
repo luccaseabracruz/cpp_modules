@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/24 16:34:48 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 17:38:03 by lucca            ###   ########.fr       */
+/*   Created: 2026/08/24 17:39:23 by lucca             #+#    #+#             */
+/*   Updated: 2026/08/24 17:57:54 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ class Fixed
 		Fixed&	operator=(const Fixed& other);	// copy assignment operator overload
 		~Fixed();								// destructor
 
-		friend std::ostream& operator<<(std::ostream& out, Fixed const& fixed);
-
+		
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int		toInt(void) const;
-};
+	};
+
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
 #endif
