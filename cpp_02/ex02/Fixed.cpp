@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:41 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 20:13:57 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/24 20:45:28 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,7 @@
 
 const int	Fixed::fractBitsN_ = 8;
 
-float Fixed::toFloat(void) const
-{
-	return (static_cast<float>(rawBits_) / (1 << fractBitsN_));
-}
-
-int Fixed::toInt(void) const
-{
-	return (rawBits_ >> fractBitsN_);
-}
-
+//----------------------------- Special Members ------------------------------//
 Fixed::Fixed(void): rawBits_(0)
 {
 	std::cout << "Default constructor called\n";
@@ -65,10 +56,38 @@ Fixed::~Fixed(void)
 	std::cout << "Destructor called\n";
 }
 
+
+//--------------------------- Comparison Operators ---------------------------//
+bool	Fixed::operator==(const Fixed& other)
+{
+	return (rawBits_ == other.getRawBits());
+}
+
+bool	Fixed::operator>(const Fixed& other)
+{
+	return (rawBits_ > other.getRawBits());
+}
+
+bool	Fixed::operator>=(const Fixed& other)
+{
+	return (rawBits_ >= other.getRawBits());
+}
+
+bool	Fixed::operator<(const Fixed& other)
+{
+	return (rawBits_ < other.getRawBits());
+}
+
+bool	Fixed::operator<=(const Fixed& other)
+{
+	return (rawBits_ <= other.getRawBits());
+}
+
+//--------------------------- Arithmetic Operators ---------------------------//
 Fixed Fixed::operator+(const Fixed& other)
 {
 	Fixed	res;
-
+	
 	res.setRawBits(this->rawBits_ + other.getRawBits());
 	return (res);
 }
@@ -76,7 +95,7 @@ Fixed Fixed::operator+(const Fixed& other)
 Fixed Fixed::operator-(const Fixed& other)
 {
 	Fixed	res;
-
+	
 	res.setRawBits(this->rawBits_ - other.getRawBits());
 	return (res);
 }
@@ -93,6 +112,7 @@ Fixed Fixed::operator/(const Fixed& other)
 	return (res);
 }
 
+//----------------------------- Member Functions -----------------------------//
 int	Fixed::getRawBits() const
 {
 	return (rawBits_);
@@ -103,6 +123,17 @@ void	Fixed::setRawBits(int const raw)
 	rawBits_ = raw;
 }
 
+float Fixed::toFloat(void) const
+{
+	return (static_cast<float>(rawBits_) / (1 << fractBitsN_));
+}
+
+int Fixed::toInt(void) const
+{
+	return (rawBits_ >> fractBitsN_);
+}
+
+//----------------------------- Stream Operators -----------------------------//
 std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)
 {
 	out << fixed.toFloat();
