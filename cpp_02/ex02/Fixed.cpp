@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:41 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/25 10:49:26 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/25 11:19:17 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 #include <cmath>
 #include "Fixed.hpp"
 
+//--------------------------- Member Variables -------------------------------//
 const int	Fixed::fractBitsN_ = 8;
 
-//----------------------------- Special Members ------------------------------//
+//------------------------ Special Member Functions --------------------------//
 Fixed::Fixed(void): rawBits_(0)
 {
 }
@@ -46,7 +47,6 @@ Fixed& Fixed::operator=(const Fixed& other)
 Fixed::~Fixed(void)
 {
 }
-
 
 //--------------------------- Comparison Operators ---------------------------//
 bool	Fixed::operator==(const Fixed& other) const
@@ -155,7 +155,6 @@ int Fixed::toInt(void) const
 	return (rawBits_ >> fractBitsN_);
 }
 
-//----------------------------- Stream Operators -----------------------------//
 Fixed&	Fixed::min(Fixed& a, Fixed& b)
 {
 	if (a <= b)

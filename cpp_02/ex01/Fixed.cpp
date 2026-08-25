@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:41 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 17:37:43 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/25 11:16:11 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,10 @@
 #include <cmath>
 #include "Fixed.hpp"
 
+//---------------------------- Member Variables -------------------------------//
 const int	Fixed::fractBitsN_ = 8;
 
-float Fixed::toFloat(void) const
-{
-	return (static_cast<float>(rawBits_) / (1 << fractBitsN_));
-}
-
-int Fixed::toInt(void) const
-{
-	return (rawBits_ >> fractBitsN_);
-}
-
+//------------------------ Special Member Functions --------------------------//
 Fixed::Fixed(void): rawBits_(0)
 {
 	std::cout << "Default constructor called\n";
@@ -42,7 +34,6 @@ Fixed::Fixed(const float fValue)
 	std::cout << "Float constructor called\n";
 	rawBits_ = static_cast<int>(roundf(fValue * (1 << fractBitsN_)));
 }
-
 
 Fixed::Fixed(const Fixed& other)
 {
@@ -65,12 +56,7 @@ Fixed::~Fixed(void)
 	std::cout << "Destructor called\n";
 }
 
-std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)
-{
-	out << fixed.toFloat();
-	return (out);
-}
-
+//----------------------------- Member Functions -----------------------------//
 int	Fixed::getRawBits() const
 {
 	return (rawBits_);
@@ -79,4 +65,21 @@ int	Fixed::getRawBits() const
 void	Fixed::setRawBits(int const raw)
 {
 	rawBits_ = raw;
+}
+
+float Fixed::toFloat(void) const
+{
+	return (static_cast<float>(rawBits_) / (1 << fractBitsN_));
+}
+
+int Fixed::toInt(void) const
+{
+	return (rawBits_ >> fractBitsN_);
+}
+
+//----------------------------- Stream Operators -----------------------------//
+std::ostream&	operator<<(std::ostream& out, const Fixed& fixed)
+{
+	out << fixed.toFloat();
+	return (out);
 }
