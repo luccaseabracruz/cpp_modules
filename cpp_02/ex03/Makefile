@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/08/24 16:35:08 by lucca             #+#    #+#              #
-#    Updated: 2026/08/25 14:27:38 by lucca            ###   ########.fr        #
+#    Created: 2026/08/25 14:32:06 by lucca             #+#    #+#              #
+#    Updated: 2026/08/25 14:32:34 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,9 @@ CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
 INC			= -I$(INC_PATH)
 
 # COMMANDS
-MKDIRP = mkdir -p
-RM = rm -f
-RMDIR = rm -rf
+MKDIRP	= mkdir -p
+RM		= rm -f
+RMDIR	= rm -rf
 
 #==============================================================================#
 #                                    RULES                                     #
