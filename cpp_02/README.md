@@ -92,8 +92,7 @@ In the Makefile, the common commands are:
  
 ### AI usage
 AI (ChatGPT / Claude / Gemini) was used during this project as a support tool, specifically for:
-- Reviewing ex04 myReplaceAll, explaining why size_type should be used to store the return value of string::find, highlighting potential overflow-related issues, and pointing out the importance of validating whether s1 is empty, including specific behaviors I was not previously aware of.
-- Explaining how member-function pointers and dispatch patterns work in C++.
+- As a tutor, helping to understand important project subjects like fixed-point numbers, bitwise operations in C++, and overload operations.
 - Proofreading and improving the structure of this README.
 - No AI was used to provide direct solutions; it was used to validate concepts, trade-offs, and code design decisions.
 
