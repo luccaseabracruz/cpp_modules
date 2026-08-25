@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:34:41 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/24 21:34:31 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/25 10:49:26 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,32 @@ const int	Fixed::fractBitsN_ = 8;
 //----------------------------- Special Members ------------------------------//
 Fixed::Fixed(void): rawBits_(0)
 {
-	std::cout << "Default constructor called\n";
 }
 
 Fixed::Fixed(const int iValue)
 {
-	std::cout << "Int constructor called\n";
 	rawBits_ = iValue << fractBitsN_;
 }
 
 Fixed::Fixed(const float fValue)
 {
-	std::cout << "Float constructor called\n";
 	rawBits_ = static_cast<int>(roundf(fValue * (1 << fractBitsN_)));
 }
 
 
 Fixed::Fixed(const Fixed& other)
 {
-	std::cout << "Copy constructor called\n";
-	//option one
 	*this = other;
-	//option two
-	// this->rawBits_ = other.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignment operator called\n";
 	this->rawBits_ = other.getRawBits();
 	return (*this);
 }
 
 Fixed::~Fixed(void)
 {
-	std::cout << "Destructor called\n";
 }
 
 
@@ -162,6 +153,35 @@ float Fixed::toFloat(void) const
 int Fixed::toInt(void) const
 {
 	return (rawBits_ >> fractBitsN_);
+}
+
+//----------------------------- Stream Operators -----------------------------//
+Fixed&	Fixed::min(Fixed& a, Fixed& b)
+{
+	if (a <= b)
+		return (a);
+	return (b);
+}
+
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b)
+{
+	if (a <= b)
+		return (a);
+	return (b);
+}
+
+Fixed&	Fixed::max(Fixed& a, Fixed& b)
+{
+	if (a >= b)
+		return (a);
+	return (b);
+}
+
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b)
+{
+	if (a >= b)
+		return (a);
+	return (b);
 }
 
 //----------------------------- Stream Operators -----------------------------//

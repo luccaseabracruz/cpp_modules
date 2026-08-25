@@ -87,6 +87,7 @@ In the Makefile, the common commands are:
 - [Converting floats to fixed point](https://ncot.uk/devnotes/computing_maths/fixed_point_arithmetic/float_to_fixed/index.html)
 - [operator overloading](https://en.cppreference.com/cpp/language/operators#cite_note-1)
 - [Comparison operators - cppreference.com](https://en.cppreference.com/cpp/language/operator_comparison)
+- [std::min - cppreference.com](https://en.cppreference.com/cpp/algorithm/min)
 
  
 ### AI usage
