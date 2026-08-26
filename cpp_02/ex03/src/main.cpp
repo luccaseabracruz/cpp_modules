@@ -6,39 +6,47 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 14:31:24 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/25 14:31:25 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/26 14:58:51 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Fixed.hpp"
+#include "Point.hpp"
 
-int	main( void )
+int main()
 {
-	Fixed		a;
-	Fixed const	b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Point a(0, 0);
+	Point b(10, 0);
+	Point c(0, 10);
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << std::boolalpha;
+
+	std::cout << "A(" << a.getX().toInt() << ", " << a.getY().toInt() << ")" << '\n';
+	std::cout << "B(" << b.getX().toInt() << ", " << b.getY().toInt() << ")" << '\n';
+	std::cout << "C(" << c.getX().toInt() << ", " << c.getY().toInt() << ")" << '\n';
+
+	// Inside
+	Point p1(2, 2);
+	std::cout << "Inside (2, 2): " << bsp(a, b, c, p1) << std::endl;
+
+	// Outside
+	Point p2(8, 8);
+	std::cout << "Outside (8, 8): " << bsp(a, b, c, p2) << std::endl;
+
+	// On AB
+	Point p3(5, 0);
+	std::cout << "On AB (5, 0): " << bsp(a, b, c, p3) << std::endl;
+
+	// On AC
+	Point p4(0, 5);
+	std::cout << "On AC (0, 5): " << bsp(a, b, c, p4) << std::endl;
+
+	// On BC
+	Point p5(5, 5);
+	std::cout << "On BC (5, 5): " << bsp(a, b, c, p5) << std::endl;
+
+	// Vertex
+	std::cout << "On vertex A (0, 0): " << bsp(a, b, c, a) << std::endl;
+
 	return 0;
 }
-
-// int	main( void )
-// {
-// 	Fixed	a(7.01f);
-// 	std::cout << "a is " << a << std::endl;
-// 	Fixed	b(a--);
-// 	std::cout << "b is a-- = " << b << std::endl;
-// 	std::cout << "is a == b? " << (a == b) << std::endl;
-// 	std::cout << "now, a is " << a << std::endl;
-// 	Fixed	c(--a);
-// 	std::cout << "c is --a = " << c << std::endl;
-// 	std::cout << "now, a is " << a << std::endl;
-
-// 	return 0;
-// }

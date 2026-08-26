@@ -88,6 +88,8 @@ In the Makefile, the common commands are:
 - [operator overloading](https://en.cppreference.com/cpp/language/operators#cite_note-1)
 - [Comparison operators - cppreference.com](https://en.cppreference.com/cpp/language/operator_comparison)
 - [std::min - cppreference.com](https://en.cppreference.com/cpp/algorithm/min)
+- [Binary Space Partitioning (BSP) for Point-in-triangle test](https://hackmd.io/@ChloeIsCoding/r19Mge-fll#How-BSP-works-for-point-in-triangle-test)
+- [Geometries: Interior, boundary, and exterior - IBM](https://www.ibm.com/docs/en/i/7.4.0?topic=geometries-interior-boundary-exterior)
 
  
 ### AI usage
