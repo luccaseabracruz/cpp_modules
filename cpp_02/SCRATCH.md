@@ -30,3 +30,9 @@ Create a class  to represent a fixed point with ortodox cannonical form
 - min and max functions. If `a` == `b`, always return `a`.
 
 ## ex03
+- Implement `bsp` for a point-in-triangle test using the `Fixed` and `Point` classes.
+- A point is inside the triangle only if it remains strictly within the triangle boundaries.
+- Points on edges or vertices must return `false`.
+- The function uses the signs of the oriented edge tests to determine whether the point is consistently on the same side of all three edges.
+- Fixed-point arithmetic keeps the comparisons stable and avoids floating-point precision issues.
+- The function should be abstract and geometric: it must answer the triangle membership question independently of the rest of the program.
