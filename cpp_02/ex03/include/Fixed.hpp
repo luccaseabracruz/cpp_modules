@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 14:31:53 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/25 14:31:55 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/26 15:12:18 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include <fstream>
 
+/**
+ * @brief Fixed-point numeric type used for precise geometric calculations.
+ *
+ * This class stores values in a scaled integer format so comparisons remain
+ * accurate in the triangle membership algorithm.
+ */
 class Fixed
 {
 	private:

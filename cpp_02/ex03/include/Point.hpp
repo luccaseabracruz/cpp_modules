@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 13:57:11 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/25 14:50:39 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/26 15:12:18 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 
 #include "Fixed.hpp"
 
+/**
+ * @brief Two-dimensional point defined by fixed-point coordinates.
+ *
+ * The point stores an x and y value for geometric calculations and position
+ * checks in a Cartesian plane.
+ */
 class Point
 {
 private:
@@ -33,6 +39,15 @@ public:
 	const Fixed& getY() const;
 };
 
+/**
+ * @brief Evaluates whether a point belongs to the triangle formed by three vertices.
+ *
+ * @param a First triangle vertex.
+ * @param b Second triangle vertex.
+ * @param c Third triangle vertex.
+ * @param point Point to evaluate.
+ * @return true if the point is inside the triangle, false otherwise.
+ */
 bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
