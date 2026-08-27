@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 10:52:04 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/27 14:21:24 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/27 16:50:24 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,97 +17,81 @@
 //============================================================================//
 //                                  DEBUG                                     //
 //============================================================================//
-static void	displayInfo(const ClapTrap& c)
+static void	displayInfo(const ClapTrap& clapTrap)
 {
-	std::cout 	<< CT_PREFIX << "INFO\n"
-				<< "Name: " << c.getName() << '\n'
-				<< "Hit Points: " << c.getHitPoints() << '\n'
-				<< "Energy Points: " << c.getEnergyPoints() << '\n'
-				<< "Attack Damage: " << c.getAttackDamage() << '\n';
+	std::cout	<< CT_PREFIX << "INFO\n"
+				<< "Name: " << clapTrap.getName() << '\n'
+				<< "Hit Points: " << clapTrap.getHitPoints() << '\n'
+				<< "Energy Points: " << clapTrap.getEnergyPoints() << '\n'
+				<< "Attack Damage: " << clapTrap.getAttackDamage() << '\n';
+}
+
+static void	printSection(const std::string& title)
+{
+	std::cout	<< "===================================================================\n"
+				<< "= " << title << "\n"
+				<< "===================================================================\n";
 }
 
 //============================================================================//
 //                                  TEST                                      //
 //============================================================================//
-static bool	testDefaultConstructor(void)
+static void	testDefaultConstructor(void)
 {
-	bool	status = 1;
-	std::cout	<< "===================================================================\n"
-				<< "=                     Test Default Constructor                     \n"
-				<< "===================================================================\n";
-	ClapTrap trap1("Trap");
-	ClapTrap trap2(trap1);
-
-	displayInfo(trap1);
-	displayInfo(trap2);
-	return (status);
+	printSection("Test Default Constructor");
+	ClapTrap trap;
+	displayInfo(trap);
 }
 
-static bool	testCopyConstructor(void)
+static void	testCopyConstructor(void)
 {
-	bool	status = 1;
-	std::cout	<< "===================================================================\n"
-				<< "=                      Test Copy Constructor                      =\n"
-				<< "===================================================================\n";
-	ClapTrap trap1("Trap");
-	ClapTrap trap2(trap1);
+	printSection("Test Copy Constructor");
+	ClapTrap original("Trap");
+	ClapTrap copy(original);
 
-	displayInfo(trap1);
-	displayInfo(trap2);
-	return (status);
+	displayInfo(original);
+	displayInfo(copy);
 }
 
-static bool	testCopyAsignment(void)
+static void	testCopyAssignment(void)
 {
-	std::cout	<< "===================================================================\n"
-				<< "=                      Test Copy Assingment                       =\n"
-				<< "===================================================================\n";
-	bool	status = 1;
-	ClapTrap trap1("Trap");
-	ClapTrap trap2;
+	printSection("Test Copy Assignment");
+	ClapTrap original("Trap");
+	ClapTrap copy;
 
-	trap2 = trap1;
-	displayInfo(trap1);
-	displayInfo(trap2);
-	return (status);
+	copy = original;
+	displayInfo(original);
+	displayInfo(copy);
 }
 
-static bool	testActions(void)
+static void	testActions(void)
 {
-	std::cout	<< "===================================================================\n"
-				<< "=                          Test Actions                           =\n"
-				<< "===================================================================\n";
-	bool	status = 1;
-	ClapTrap trap1("Trap 1");
-	ClapTrap trap2("Trap 2");
+	printSection("Test Actions");
+	ClapTrap attacker("Trap 1");
+	ClapTrap target("Trap 2");
 
-	for(int i = 0; i < 11; i++)
+	for (int i = 0; i < 11; ++i)
 	{
-		trap1.attack(trap2.getName());
-		trap2.takeDamage(1);
+		attacker.attack(target.getName());
+		target.takeDamage(1);
 	}
-	std::cout << "Out of the for loop\n";
-	displayInfo(trap1);
-	displayInfo(trap2);
-	trap2.attack(trap1.getName());
-	trap1.takeDamage(UINT_MAX);
-	trap2.beRepaired(1);
-	trap2.beRepaired(UINT_MAX);
-	displayInfo(trap1);
-	displayInfo(trap2);
-	return (status);
+	displayInfo(attacker);
+	displayInfo(target);
+
+	target.attack(attacker.getName());
+	attacker.takeDamage(UINT_MAX);
+	target.beRepaired(1);
+	target.beRepaired(UINT_MAX);
+	displayInfo(attacker);
+	displayInfo(target);
 }
 
 int	main(void)
 {
-	if (!testDefaultConstructor()
-		|| !testCopyConstructor()
-		|| !testCopyAsignment()
-		|| !testActions())
-	{
-		std::cout << "!!!!!!!!!!!!!!!!!!!!!!!FAILURE!!!!!!!!!!!!!!!!!!!!!!!!\n";
-		return (1);
-	}
-	else
-		std::cout << "SUCCESS :)\n";	
+	testDefaultConstructor();
+	testCopyConstructor();
+	testCopyAssignment();
+	testActions();
+	std::cout << "SUCCESS :)\n";
+	return (0);
 }
