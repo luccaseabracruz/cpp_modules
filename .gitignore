@@ -56,5 +56,10 @@ my_sed
 *.replace
 harl
 harlFilter
+
+# My Miscellaneos CPP - 02
 fixed
 bsp
+
+# My Miscellaneos CPP - 03
+clap_trap
