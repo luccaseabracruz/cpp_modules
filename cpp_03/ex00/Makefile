@@ -6,7 +6,7 @@
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/27 11:08:36 by lucca             #+#    #+#              #
-#    Updated: 2026/08/27 12:25:09 by lucca            ###   ########.fr        #
+#    Updated: 2026/08/27 14:36:02 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,21 +20,17 @@ NAME = clap_trap
 
 # PATHS
 BUILD_PATH	= build
-INC_PATH	= include
-SRC_PATH	= src
 
 # SOURCES
-SRC = $(addprefix $(SRC_PATH)/, \
+SRC = \
 	main.cpp \
-	ClapTrap.cpp \
-)
+	ClapTrap.cpp
 
-OBJ = $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.cpp=.o)))
+OBJ = $(addprefix $(BUILD_PATH)/,$(SRC:.cpp=.o))
 
 # FLAGS
 CPP			= c++
 CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
-INC			= -I$(INC_PATH)
 
 # COMMANDS
 MKDIRP	= mkdir -p
@@ -47,15 +43,13 @@ RMDIR	= rm -rf
 
 .PHONY: all clean fclean re
 
-vpath %.cpp $(SRC_PATH)
-
 all: $(NAME)
 	
 $(NAME): $(OBJ)
-	$(CPP) $(CPP_FLAGS) $(INC) $(OBJ) -o $(NAME)
+	$(CPP) $(CPP_FLAGS) $(OBJ) -o $(NAME)
 
 $(BUILD_PATH)/%.o: %.cpp | $(BUILD_PATH)
-	$(CPP) $(CPP_FLAGS) $(INC) -c $< -o $@
+	$(CPP) $(CPP_FLAGS) -c $< -o $@
 
 $(BUILD_PATH):
 	$(MKDIRP) $(BUILD_PATH)
