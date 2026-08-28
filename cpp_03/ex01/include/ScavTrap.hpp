@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 14:31:11 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/27 17:04:18 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/28 20:17:49 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ class	ScavTrap: public ClapTrap
 		ScavTrap&	operator=(const ScavTrap& other);
 		~ScavTrap(void);
 
+		// Member Functions
+		void	attack(const std::string& target);
 		// Ability
 		void	guardGate(void);
 };

@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 15:40:42 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/27 17:09:52 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/28 20:37:07 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,26 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << ST_PREFIX << name_ << " Destructor called.\n";
+}
+
+//============================================================================//
+//                            Member Functions                                //
+//============================================================================//
+void	ScavTrap::attack(const std::string& target)
+{
+	if (hitPoints_ == 0)
+	{
+		std::cout << ST_PREFIX << name_ << " is dead. Impossible to attack.\n";
+		return ;
+	}
+	else if (energyPoints_ == 0)
+	{
+		std::cout << ST_PREFIX << name_ << " has no energy for the attack.\n";
+		return ;
+	}
+	--energyPoints_;
+	std::cout	<< ST_PREFIX << name_ << " attacks " << target
+				<< ", causing " << attackDamage_ << " points of damage!\n";
 }
 
 //============================================================================//
