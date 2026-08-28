@@ -122,6 +122,7 @@ In the Makefile, the common commands are:
 - [std::min - cppreference.com](https://en.cppreference.com/cpp/algorithm/min)
 - [Binary Space Partitioning (BSP) for Point-in-triangle test](https://hackmd.io/@ChloeIsCoding/r19Mge-fll#How-BSP-works-for-point-in-triangle-test)
 - [Geometries: Interior, boundary, and exterior - IBM](https://www.ibm.com/docs/en/i/7.4.0?topic=geometries-interior-boundary-exterior)
+- [Numeric limits - cppreference.com](https://en.cppreference.com/c/types/limits)
 
 ### AI usage
 AI (ChatGPT / Claude / Gemini) was used during this project as a support tool, specifically for:
