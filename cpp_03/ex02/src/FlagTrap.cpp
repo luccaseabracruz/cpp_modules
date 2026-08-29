@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 18:21:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/28 20:11:25 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/29 10:24:40 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ FlagTrap::~FlagTrap(void)
 //============================================================================//
 void	FlagTrap::highFivesGuys(void)
 {
-	
+	std::cout << "Be kind guys. Give " << FT_PREFIX << name_ << " a HIGH FIVE :)\n";
 }
