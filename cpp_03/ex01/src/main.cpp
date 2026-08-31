@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 10:52:04 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/28 17:16:53 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/31 16:18:55 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main() {
 	std::cout << "--- construction order ---" << '\n';
 	ScavTrap rex("Rex");			// expect ClapTrap ctor msg THEN ScavTrap ctor msg
-	ScavTrap raptor("Raptor");			// expect ClapTrap ctor msg THEN ScavTrap ctor msg
+	ScavTrap raptor("Raptor");		// expect ClapTrap ctor msg THEN ScavTrap ctor msg
 
 	std::cout << "--- copy semantics ---" << '\n';
 	ScavTrap copy(rex);			// copy constructor
