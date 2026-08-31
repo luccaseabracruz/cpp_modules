@@ -6,28 +6,28 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 10:52:04 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/28 17:16:53 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/31 10:49:13 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "ScavTrap.hpp"
+#include "FlagTrap.hpp"
 
 int main() {
 	std::cout << "--- construction order ---" << '\n';
-	ScavTrap rex("Rex");			// expect ClapTrap ctor msg THEN ScavTrap ctor msg
-	ScavTrap raptor("Raptor");			// expect ClapTrap ctor msg THEN ScavTrap ctor msg
+	FlagTrap rex("Rex");			// expect ClapTrap ctor msg THEN FlagTrap ctor msg
+	FlagTrap raptor("Raptor");			// expect ClapTrap ctor msg THEN FlagTrap ctor msg
 
 	std::cout << "--- copy semantics ---" << '\n';
-	ScavTrap copy(rex);			// copy constructor
-	ScavTrap assigned("tmp");
+	FlagTrap copy(rex);			// copy constructor
+	FlagTrap assigned("tmp");
 	assigned = raptor;				// copy assignment operator
 
 	std::cout << "--- basic actions ---" << '\n';
 	rex.attack(raptor.getName());
 	raptor.takeDamage(10);
 	raptor.beRepaired(5);
-	raptor.guardGate();
+	raptor.highFivesGuys();
 
 	std::cout << "--- edge cases ---" << '\n';
 	for (int i = 0; i < 15; i++)
@@ -36,5 +36,5 @@ int main() {
 	rex.beRepaired(50);			// repairing while dead — decide/check expected behavior
 
 	std::cout << "--- destruction order ---" << '\n';
-	return (0);					// expect ScavTrap dtor msg THEN ClapTrap dtor msg
+	return (0);					// expect FlagTrap dtor msg THEN ClapTrap dtor msg
 }

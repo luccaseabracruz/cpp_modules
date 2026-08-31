@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 18:21:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/29 10:24:40 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/29 10:36:52 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,36 @@
 FlagTrap::FlagTrap(void): ClapTrap("Noname")
 {
 	std::cout << FT_PREFIX << name_ << " Default Constructor being called.\n";
+	hitPoints_ = 100;
+	energyPoints_ = 100;
+	attackDamage_ = 30;
 }
 
-FlagTrap::FlagTrap(const std::string name)
+FlagTrap::FlagTrap(const std::string& name): ClapTrap(name)
 {
 	std::cout << FT_PREFIX << name_ << " Constructor being called.\n";
+	hitPoints_ = 100;
+	energyPoints_ = 100;
+	attackDamage_ = 30;
 }
 
-FlagTrap::FlagTrap(const FlagTrap& other)
+FlagTrap::FlagTrap(const FlagTrap& other): ClapTrap()
 {
 	std::cout << FT_PREFIX << name_ << " Copy Constructor being called.\n";
+	*this = other;
 }
 
 FlagTrap&	FlagTrap::operator=(const FlagTrap& other)
 {
 	std::cout << FT_PREFIX << name_ << " Assignment Operator being called.\n";
+	if (this != &other)
+	{
+		this->name_ = other.getName();
+		this->hitPoints_ = other.getHitPoints();
+		this->energyPoints_ = other.getEnergyPoints();
+		this->attackDamage_ = other.getAttackDamage();
+	}
+	return (*this);
 }
 
 FlagTrap::~FlagTrap(void)

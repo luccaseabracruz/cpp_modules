@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 18:20:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/28 20:10:32 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/31 10:48:07 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@
 //============================================================================//
 class	FlagTrap: public ClapTrap
 {
-	private:
-	
 	public:
 		// Special Member functions
 		FlagTrap(void);
-		FlagTrap(const std::string name);
+		FlagTrap(const std::string& name);
 		FlagTrap(const FlagTrap& other);
 		FlagTrap&	operator=(const FlagTrap& other);
 		~FlagTrap(void);
