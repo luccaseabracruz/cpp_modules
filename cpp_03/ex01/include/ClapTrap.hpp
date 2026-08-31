@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 10:52:16 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/27 16:56:36 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/31 13:08:53 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 class	ClapTrap
 {
 	protected:
-		// Private Member Variables
 		std::string		name_;
 		unsigned int	hitPoints_;
 		unsigned int	energyPoints_;
