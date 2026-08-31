@@ -65,3 +65,4 @@ bsp
 clap_trap
 scav_trap
 flag_trap
+diamond_trap
