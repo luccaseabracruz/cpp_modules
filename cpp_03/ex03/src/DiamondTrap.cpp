@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 14:44:53 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/31 15:44:40 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/31 16:45:23 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,18 @@ DiamondTrap::DiamondTrap(void): ClapTrap("Noname"), name_("Noname")
 {
 	std::cout << DT_PREFIX << " Default Constructor being called.\n";
 	ClapTrap::name_.append("_clap_name");
-	hitPoints_ = FlagTrap::hitPoints_;
-	energyPoints_ = ScavTrap::energyPoints_;
-	attackDamage_ = FlagTrap::attackDamage_;
+	hitPoints_ = 100;
+	energyPoints_ = 50;
+	attackDamage_ = 30;
 }
 
 DiamondTrap::DiamondTrap(const std::string& name): ClapTrap(name), name_(name)
 {
 	std::cout << DT_PREFIX << " Constructor called.\n";
 	ClapTrap::name_.append("_clap_name");
+	hitPoints_ = 100;
+	energyPoints_ = 50;
+	attackDamage_ = 30;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
