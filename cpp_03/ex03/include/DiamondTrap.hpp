@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 13:03:59 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/31 15:28:07 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/31 18:40:47 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,14 @@ class	DiamondTrap: public ScavTrap, public FlagTrap
 		~DiamondTrap(void);
 
 		// Actions
-		// void DiamondTrap::attack(const std::string& target); // Not mandatory because of the override-dominance rule
+		// void attack(const std::string& target); // Not mandatory because of the override-dominance rule
+
+		// Getters
+		std::string	getName(void)		const;
+		std::string	getClapName(void)	const;
+
 		// Ability
-		void whoAmI(void);
+		void whoAmI(void)	const;
 };
 
 #endif
