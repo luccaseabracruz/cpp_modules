@@ -27,6 +27,7 @@ int main() {
 	rex.attack(raptor.getName());
 	raptor.takeDamage(10);
 	raptor.beRepaired(5);
+	rex.highFivesGuys();
 	raptor.highFivesGuys();
 
 	std::cout << "--- edge cases ---" << '\n';

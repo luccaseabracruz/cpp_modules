@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 10:52:04 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/31 16:39:25 by lucca            ###   ########.fr       */
+/*   Updated: 2026/08/31 19:04:09 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ int main() {
 	flag.attack(diamond.getName());	// expect ClapTrap output
 	scav.attack(diamond.getName());	// expect ClapTrap output
 	scav.takeDamage(10);
-
+	diamond.guardGate();		// ScavTrap ability
+	diamond.highFivesGuys();	// FlagTrap ability
+	diamond.whoAmI();			// DiamondTrap ability
 	std::cout << "--- edge cases ---" << '\n';
 	for (int i = 0; i < 15; i++)
 		diamond.takeDamage(10);		// drive HP to 0 and below, must not go negative, must print "dead"
