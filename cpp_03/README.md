@@ -1,49 +1,56 @@
 *This project has been created as part of the 42 curriculum by lseabra-.*
 
-# C++ - Module 02
+# C++ - Module 03
 
 ## Description
-This module is the bridge between “I know how to write a class” and “I know how to control how objects behave in memory and in code.”
+This module introduces **Inheritance**, one of the fundamental pillars of Object-Oriented Programming. While Modules 00-01 covered classes and dynamic references, and Module 02 focused on proper object design and operator overloading, Module 03 shows how to build hierarchies of related classes that share code and behavior.
 
-In Module 00, the focus was on learning the foundations of OOP: classes, encapsulation, constructors, and basic C++ style. In Module 01, the goal was to understand how objects live, how we refer to them without copying them, and how different behaviors can be selected at runtime.
+In this module, you will learn:
+- how to extend a base class with a derived class (single inheritance),
+- how to properly chain constructors and destructors across inheritance levels,
+- how to override and specialize member functions in derived classes,
+- how derived classes inherit member attributes and can initialize them differently,
+- the diamond problem that arises from multiple inheritance,
+- virtual inheritance as a solution to the diamond problem.
 
-This module pushes those ideas further by introducing:
-- fixed-point arithmetic,
-- operator overloading,
-- orthodox canonical class design, adding the [rule of three](./docs/rule_of_three.md),
-- geometric reasoning using arithmetic instead of floating-point approximations.
+The module is about understanding relationships:
+- When should a class inherit from another, and when should it compose?
+- How do I ensure the base class is always properly initialized before the derived class runs?
+- How do I override a method while still respecting the contract of the base class?
+- What happens when inheritance forms a diamond, and how do I resolve it?
 
-The module is about decisions:
-- Should this object live on the stack or on the heap?
-- Should I pass it by value, by pointer, or by reference?
-- Can this function mutate the object, or should it only read it?
-- How do I map a geometric condition to a deterministic result without precision loss?
-
-The module has 7 exercises:
+The module has 4 exercises:
 
 | Exercise | Name | Topics | Description |
 |---|---|---|---|
-| ex00 | My First Class in Orthodox Canonical Form | rule of three, copy constructor, copy assignment operator | Build a fixed-point class with the orthodox canonical form and correct memory behavior. |
-| ex01 | Towards a more useful fixed-point number class | conversion operators, stream insertion | Add conversion functions and a clean output operator to make the fixed-point type usable in practice. |
-| ex02 | Now we’re talking | arithmetic, comparison, increment, decrement | Overload operators so the fixed-point type behaves like a real numeric type. |
-| ex03 | BSP | geometric logic, fixed-point comparisons, point-in-triangle test | Implement a function that determines whether a point is strictly inside a triangle formed by three vertices. |
+| ex00 | Aaaaand... OPEN! | classes, constructors, destructors, member functions | Build the ClapTrap base class with proper initialization and member functions. |
+| ex01 | Serena, my love! | single inheritance, constructor chaining, method specialization | Create ScavTrap, which inherits from ClapTrap with different default values and abilities. |
+| ex02 | Repetitive work | inheritance patterns, multiple derived classes | Create FlagTrap (FragTrap), another ClapTrap derivative with its own special ability. |
+| ex03 | Now it's weird! | multiple inheritance, the diamond problem, virtual inheritance | Implement DiamondTrap, which inherits from both ScavTrap and FlagTrap, handling the diamond problem.
 
 ## The story arc of the module
-The exercises are designed as a gradual progression:
 
-1. ex00 and ex01: learn to represent values precisely
-   - We start by creating a fixed-point number type that stores values in a scaled integer form.
-   - We then add conversion functions and stream output so the type can be used in a practical and predictable way.
+The exercises are designed as a gradual progression in understanding inheritance:
 
-2. ex02: learn to define numeric behavior
-   - We overload arithmetic, comparison, and increment/decrement operators so the fixed-point class behaves like a real number.
-   - This is where the focus shifts from storing data to making the object behave correctly in code.
+1. **ex00**: Build the foundation
+   - Create ClapTrap with proper construction, member functions, and state management.
+   - This is the base that all subsequent classes will inherit from.
+   - Understand the orthodox canonical form in the context of base classes.
 
-3. ex03: learn to use that precision in geometry
-   - Once the fixed-point number works reliably, we can apply it to a geometric problem: checking whether a point lies inside a triangle.
-   - This introduces the idea that precise arithmetic is not just about numbers, but about reasoning correctly under boundary conditions.
+2. **ex01-02**: Master single inheritance
+   - Learn how to properly derive a class and initialize the parent.
+   - Understand that derived classes inherit attributes and must specialize their values.
+   - See how constructor chaining (base → derived) and destructor order (derived → base) work.
+   - Realize that overriding methods allows derived classes to behave differently.
+   - Repeat the pattern with FlagTrap to reinforce the concepts.
 
-This progression is the real story of Module 02: from representation, to numeric behavior, to geometric correctness.
+3. **ex03**: Confront the diamond problem
+   - Inherit from two classes that both inherit from the same base (ClapTrap).
+   - Discover that this creates ambiguity: is there one ClapTrap or two?
+   - Use virtual inheritance to ensure only one instance of the shared base exists.
+   - Understand how to use the scope resolution operator (`::`) to disambiguate member access.
+
+This progression teaches that inheritance is about creating *is-a* relationships and reusing code, but it also introduces subtle design challenges that C++ forces you to handle explicitly.
 
 ## Instructions
 ### Requirements
@@ -56,9 +63,10 @@ This progression is the real story of Module 02: from representation, to numeric
 - Forbidden until Module 08/09: STL containers (`vector`, `list`, `map`, ...) and `<algorithm>`.
 - No external libraries (Boost, C++11 and later included).
 - Any memory allocated with `new` must be freed (no leaks).
+- From Module 02 onwards: classes must follow the Orthodox Canonical Form (default constructor, copy constructor, copy assignment operator, destructor), except where explicitly stated otherwise.
 
 ### How to Run
-In every exercise, run the following in bash or similar shell:
+In every exercise directory, run the following in bash or similar shell:
 
 ```bash
 make
@@ -72,66 +80,209 @@ In the Makefile, the common commands are:
 - `make clean`: remove object files.
 - `make fclean`: remove object files and the executable.
 
+## Core Concepts
+
+### Single Inheritance
+- A derived class (`Child`) inherits from a base class (`Parent`).
+- The derived class automatically has access to all public and protected members of the base class.
+- The derived class can override methods to specialize behavior.
+- Example: `ScavTrap` inherits from `ClapTrap` and overrides the `attack()` method.
+
+### Constructor and Destructor Chaining
+- When a derived class is constructed, the base class constructor must be called first.
+- In C++, this is done via the member initialization list: `Child::Child() : Parent(args) { ... }`
+- Destruction happens in reverse order: the derived destructor runs first, then the base destructor.
+- This ensures resources are acquired in the right order and released in the opposite order (RAII principle).
+
+### Method Overriding
+- A derived class can define a method with the same signature as a base class method.
+- The derived version shadows (hides) the base version.
+- To call the base version explicitly, use the scope resolution operator: `Parent::method()`.
+
+### Protected Members
+- In a base class, `protected` members are accessible to derived classes but not to outside code.
+- This allows derived classes to access and modify inherited attributes without exposing them publicly.
+- ClapTrap uses `protected` for its attributes so that ScavTrap and FlagTrap can access them.
+
+### Multiple Inheritance and the Diamond Problem
+- A class can inherit from multiple parent classes: `class Child : public Parent1, public Parent2`.
+- If both Parent1 and Parent2 inherit from a common base `class Base`, then `Child` has two copies of `Base`.
+- This is the "diamond problem": the inheritance diagram forms a diamond shape.
+- Example: `DiamondTrap` inherits from `ScavTrap` and `FlagTrap`, which both inherit from `ClapTrap`.
+- Without virtual inheritance, there would be two separate `ClapTrap` instances inside one `DiamondTrap`.
+- The path to access a `ClapTrap` resource is ambiguous, generating a compiler error.
+
+### Virtual Inheritance
+- Mark an inheritance as `virtual` to ensure the shared base class exists only once.
+- Syntax: `class Derived : virtual public Base { ... }`
+- In ex03, both ScavTrap and FlagTrap inherit from ClapTrap using `virtual public`.
+- DiamondTrap then has only one ClapTrap instance, eliminating ambiguity.
+- Virtual inheritance requires careful attention to constructor initialization order.
+
+### Access Specifiers in Inheritance
+- `public` inheritance: public members of the base stay public in the derived class.
+- `protected` inheritance: public members of the base become protected in the derived class.
+- `private` inheritance: all base members become private in the derived class (rarely used).
+- All exercises use `public` inheritance.
+
+### The Scope Resolution Operator (`::`).
+- Used to explicitly access a member from a specific class.
+- Example: `ClapTrap::name_` accesses the `name_` from ClapTrap, not from DiamondTrap.
+- Essential in DiamondTrap to distinguish between `ClapTrap::name_` and `DiamondTrap::name_`.
+
+## Exercise Breakdown
+
+### ex00: Aaaaand... OPEN!
+**Goal**: Build the foundation class that all others will inherit from.
+
+**What was learned**:
+- How to design a base class with proper attributes and member functions.
+- The role of constructors, destructors, and copy semantics in a class that will be inherited.
+- How to protect internal state with access modifiers.
+
+**Key implementation notes**:
+- ClapTrap stores name, hitPoints, energyPoints, and attackDamage.
+- Use `protected` instead of `private` so derived classes can access these attributes.
+- Implement guard logic to prevent invalid state (e.g., hitPoints < 0, operations without energy).
+- Each action (attack, takeDamage, beRepaired) must print a message describing what happened.
+
+### ex01: Serena, my love!
+**Goal**: Understand how inheritance works and how to properly chain constructors.
+
+**What you learn**:
+- How to define a derived class and initialize its parent.
+- How to override methods to specialize behavior.
+- The order of construction and destruction across inheritance levels.
+- How derived classes can have different default values for inherited attributes.
+
+**Key implementation notes**:
+- ScavTrap inherits from ClapTrap with different initial values: HP(100), EP(50), AD(20).
+- The copy constructor must call the base copy constructor.
+- ScavTrap overrides the `attack()` method to print a different message.
+- ScavTrap has its own special ability: `guardGate()`.
+- Tests must clearly show the construction/destruction order: base then derived during construction, reverse during destruction.
+
+### ex02: Repetitive work
+**Goal**: Reinforce the inheritance pattern by creating another derived class.
+
+**What you learn**:
+- Repetition solidifies understanding of the inheritance pattern.
+- Multiple derived classes from the same base can have different behaviors.
+- How to design tests that verify construction order, copy semantics, and method behavior.
+
+**Key implementation notes**:
+- FlagTrap (FragTrap in the subject) is another ClapTrap derivative with different initial values: HP(100), EP(100), AD(30).
+- FlagTrap has its own special ability: `highFivesGuys()`.
+- The implementation pattern is nearly identical to ScavTrap, reinforcing that inheritance is reusable.
+- Tests should include both copy constructor and copy assignment operator to verify the orthodox canonical form is maintained.
+
+### ex03: Now it's weird!
+**Goal**: Navigate the complexity of multiple inheritance and the diamond problem.
+
+**What you learn**:
+- How multiple inheritance can lead to ambiguity.
+- Virtual inheritance as a language feature to resolve the diamond problem.
+- How to carefully initialize the shared base in the presence of multiple inheritance paths.
+- How to use the scope resolution operator to access shadowed members.
+
+**Key implementation notes**:
+- DiamondTrap inherits from both ScavTrap and FlagTrap (which both inherit from ClapTrap).
+- Both ScavTrap and FlagTrap must use `virtual public` inheritance from ClapTrap.
+- DiamondTrap has:
+  - A private `name_` attribute (different from ClapTrap's `name_`).
+  - HP and AD from FlagTrap (100, 30).
+  - EP from ScavTrap (50).
+  - `attack()` from ScavTrap (via override-dominance rules).
+- The copy constructor must handle both parent initializations and the virtual base.
+- `whoAmI()` prints both the DiamondTrap name and the ClapTrap name (accessed via `ClapTrap::name_`).
+- Tests must verify that ClapTrap is constructed only once and that all abilities work correctly.
+
+## Common Pitfalls
+
+### Forgetting Virtual Inheritance
+- If ScavTrap and FlagTrap inherit from ClapTrap without `virtual`, DiamondTrap will have two copies of ClapTrap.
+- This leads to ambiguity: which `hitPoints_` are you referring to?
+- Always use `virtual public` when designing classes that may be used in multiple inheritance.
+
+### Not Initializing the Virtual Base
+- In a virtual inheritance hierarchy, the most-derived class (DiamondTrap) must explicitly initialize the virtual base (ClapTrap) in its constructor's initializer list.
+- If DiamondTrap doesn't call `ClapTrap(...)` in its initializer list, the virtual base constructor may not run correctly.
+
+### Shadowing Attributes
+- DiamondTrap has its own `name_` attribute, separate from `ClapTrap::name_`.
+- Accessing `name_` without a scope qualifier will use DiamondTrap's version.
+- To access ClapTrap's `name_`, use `ClapTrap::name_`.
+
+### Not Overriding the Copy Assignment Operator
+- If you have a class with derived classes, the base class copy assignment operator is not automatically correct for derived classes.
+- Each class (including derived ones) should implement its own copy assignment operator that handles all members correctly.
+
+### Assuming Destructor Order
+- Destructors are called in reverse order of construction.
+- In DiamondTrap, the order is: DiamondTrap dtor → ScavTrap dtor → FlagTrap dtor → ClapTrap dtor.
+- Tests should verify this order by checking console output.
+
+## Testing Strategy
+
+Each exercise includes a `main.cpp` with comprehensive tests covering:
+
+1. **Construction order**: Create objects and verify the console output shows constructors called in the correct order.
+2. **Copy semantics**: Test copy constructor and copy assignment operator.
+3. **Basic actions**: Call member functions to ensure they work and print correct messages.
+4. **Edge cases**: Test behavior when hit points reach 0, when energy is exhausted, and when operations fail.
+5. **Destruction order**: Exit the program (or go out of scope) and verify destructors are called in the correct order.
+6. **Special abilities**: Verify each class's unique ability works (guardGate, highFivesGuys, whoAmI).
+
 ## Resources
+
 ### Concepts Used
-#### Fixed-point arithmetic
-- A fixed-point number stores an integer whose raw bits represent a value scaled by a power of two.
-- The fractional precision is defined by a constant number of bits, such as $2^8 = 256$.
-- Converting to an integer or float requires careful scaling in the opposite direction.
-- This is essential when you want precise arithmetic without the instability of floating-point comparisons.
 
-#### Orthodox canonical class form
-- The 42 orthodox canonical form: default constructor, copy constructor, copy assignment operator, and destructor.
-- It is related to the [rule of three](../docs/rule_of_three.md) and ensures objects are safely copied, assigned, and cleaned up without leaking resources or duplicating state incorrectly.
-- This idea is central to the `Fixed` class design in this module ([ref](../cpp_02/ex03/include/Fixed.hpp)).
+#### Inheritance Fundamentals
+- **Single Inheritance**: One class inherits from exactly one base class. This is used in ex01 and ex02.
+- **Multiple Inheritance**: One class inherits from multiple base classes. This is used in ex03.
+- **Virtual Inheritance**: A mechanism to ensure a shared base class is instantiated only once in a multiple inheritance hierarchy.
 
-#### Operator overloading
-- Overloading arithmetic operators lets a custom type behave like a native numeric type.
-- Overloading comparison operators makes it possible to reason about ordering and equality naturally.
-- Increment and decrement overloads help preserve the expected semantics of a number-like object.
-- The correct overload placement matters: a member function is appropriate when it logically belongs to the class, while a free function is better when it is conceptually external.
+#### Constructor Initialization Lists
+- The member initialization list is the right place to call parent constructors.
+- Syntax: `Derived::Derived(args) : Base(base_args), member_(value) { ... }`
+- In C++98, the initialization list is the *only* way to initialize a base class.
 
-#### Precision and representation
-- Fixed-point arithmetic avoids the rounding and comparison problems that can appear when using floats in geometric tests.
-- `roundf` is used during conversion to reduce quantization error when mapping a real value onto the fixed-point grid.
-- The arithmetic must preserve the same scaling logic consistently across all operations.
+#### Operator Overriding
+- A derived class can override (redefine) a method from the base class.
+- This allows specialization of behavior without changing the base class.
+- Virtual functions (not used in this module but important in C++) enable runtime polymorphism.
 
-#### Geometry and boundary handling
-- A point-in-triangle test is a geometric problem solved with arithmetic.
-- The sign of each oriented edge test tells us whether the point is on the same side of each edge as the triangle interior.
-- Points on edges or vertices must be treated as boundary cases, not as interior points.
-- This makes the logic both mathematically correct and robust against precision issues.
+#### Memory Ownership in Inheritance
+- Derived class objects are larger than base class objects (they include base members plus their own).
+- A pointer or reference to a base class can point to a derived class object (this is the foundation of polymorphism).
+- Deletion must be done carefully: if deleting a base class pointer that points to a derived object, use virtual destructors (not required in C++98 for these exercises, but important to understand).
 
-#### Common C → C++ mistakes avoided here
-- using `printf` instead of C++ streams
-- forgetting to respect the rule of three
-- writing comparison logic with floating-point values directly
-- treating boundary cases as valid interior points
-- ignoring the mathematical meaning of the operator overloads
-
+#### Design Patterns
+- **Inheritance for specialization**: Different robot types inherit from a common robot base.
+- **Inheritance for code reuse**: ScavTrap and FlagTrap reuse all of ClapTrap's logic.
+- **Template Method Pattern** (implicit): Derived classes override specific methods while inheriting the rest.
 ### References
-- [cppreference.com](https://www.cppreference.com/)
-- [Understanding and Using Floating Point Numbers - Jeff Bezanson](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html)
-- [Floating point number representation](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_representation.html)
-- [Printing floating point numbers](https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point_printing.html)
-- [Introduction to Fixed Point Number Representation](https://web.archive.org/web/20231224143018/https://inst.eecs.berkeley.edu/~cs61c/sp06/handout/fixedpt.html)
-- [Fixed Point Representation](https://www.geeksforgeeks.org/computer-organization-architecture/fixed-point-representation/)
-- [Converting floats to fixed point](https://ncot.uk/devnotes/computing_maths/fixed_point_arithmetic/float_to_fixed/index.html)
-- [operator overloading](https://en.cppreference.com/cpp/language/operators#cite_note-1)
-- [Comparison operators - cppreference.com](https://en.cppreference.com/cpp/language/operator_comparison)
-- [std::min - cppreference.com](https://en.cppreference.com/cpp/algorithm/min)
-- [Binary Space Partitioning (BSP) for Point-in-triangle test](https://hackmd.io/@ChloeIsCoding/r19Mge-fll#How-BSP-works-for-point-in-triangle-test)
-- [Geometries: Interior, boundary, and exterior - IBM](https://www.ibm.com/docs/en/i/7.4.0?topic=geometries-interior-boundary-exterior)
-- [Numeric limits - cppreference.com](https://en.cppreference.com/c/types/limits)
 
-### AI usage
-AI (ChatGPT / Claude / Gemini) was used during this project as a support tool, specifically for:
-- helping to understand important project subjects like fixed-point numbers, bitwise operations in C++, and overload operations;
-- proofreading and improving the structure of this README;
-- validating concepts, trade-offs, and code design decisions.
+- [cppreference.com - Inheritance](https://en.cppreference.com/w/cpp/language/derived_class)
+- [cppreference.com - Virtual base classes](https://en.cppreference.com/w/cpp/language/derived_class#Virtual_base_classes)
+- [cppreference.com - Member initialization list](https://en.cppreference.com/w/cpp/language/initializer_list)
+- [cppreference.com - Access specifiers](https://en.cppreference.com/w/cpp/language/access)
+- [Understanding the Diamond Problem](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)
+- [Microsoft: C++ Multiple Inheritance](https://docs.microsoft.com/en-us/cpp/cpp/multiple-base-classes)
+- [The C++ Programming Language, 4th Edition - Bjarne Stroustrup](https://www.stroustrup.com/4th_edition.html) (reference, not required)
 
-No AI was used to provide direct solutions.
+### AI Usage
+AI was used during this project as a support tool, specifically for:
+- Explaining the diamond problem and virtual inheritance in C++98 context;
+- Validating inheritance design decisions and constructor chaining logic;
+- Proofreading and improving this README.
 
-## Final reflection
-This module is a practical transition from writing simple classes to reasoning about precision, ownership, and mathematical correctness. The fixed-point exercises teach the value of controlled representation, while the BSP exercise shows how arithmetic can be used to solve real geometric problems safely and predictably.
+No AI was used to provide direct solutions to the exercises.
 
+## Final Reflection
+
+Module 03 is where the power of OOP becomes visible. Inheritance allows you to build hierarchies of related types, reuse code across multiple classes, and express relationships between types. However, it also introduces complexity: the diamond problem is a real challenge in C++, and virtual inheritance is a non-trivial solution that requires careful thinking.
+
+The progression from ex00 (simple base class) through ex01-02 (single inheritance patterns) to ex03 (virtual inheritance and disambiguation) mirrors the journey many C++ developers take when learning these concepts. By the end, you'll have a deep understanding of how inheritance works, what can go wrong, and how C++ tools (virtual inheritance, scope resolution) help you write correct code.
+
+The key takeaway: inheritance is powerful for expressing relationships and reusing code, but it demands careful design and explicit handling of edge cases like the diamond problem.
