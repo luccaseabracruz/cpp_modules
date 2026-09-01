@@ -19,7 +19,7 @@ The module is about understanding relationships:
 - How do I override a method while still respecting the contract of the base class?
 - What happens when inheritance forms a diamond, and how do I resolve it?
 
-The module has 4 exercises:
+### The module has 4 exercises:
 
 | Exercise | Name | Topics | Description |
 |---|---|---|---|
@@ -28,7 +28,7 @@ The module has 4 exercises:
 | ex02 | Repetitive work | inheritance patterns, multiple derived classes | Create FlagTrap (FragTrap), another ClapTrap derivative with its own special ability. |
 | ex03 | Now it's weird! | multiple inheritance, the diamond problem, virtual inheritance | Implement DiamondTrap, which inherits from both ScavTrap and FlagTrap, handling the diamond problem.
 
-## The story arc of the module
+### The story arc of the module
 
 The exercises are designed as a gradual progression in understanding inheritance:
 
@@ -51,6 +51,74 @@ The exercises are designed as a gradual progression in understanding inheritance
    - Understand how to use the scope resolution operator (`::`) to disambiguate member access.
 
 This progression teaches that inheritance is about creating *is-a* relationships and reusing code, but it also introduces subtle design challenges that C++ forces you to handle explicitly.
+
+### Exercise Breakdown
+
+#### ex00: Aaaaand... OPEN!
+**Goal**: Build the foundation class that all others will inherit from.
+
+**What was learned**:
+- How to design a base class with proper attributes and member functions.
+- The role of constructors, destructors, and copy semantics in a class that will be inherited.
+- How to protect internal state with access modifiers.
+
+**Key implementation notes**:
+- ClapTrap stores name, hitPoints, energyPoints, and attackDamage.
+- Use `protected` instead of `private` so derived classes can access these attributes.
+- Implement guard logic to prevent invalid state (e.g., hitPoints < 0, operations without energy).
+- Each action (attack, takeDamage, beRepaired) must print a message describing what happened.
+
+#### ex01: Serena, my love!
+**Goal**: Understand how inheritance works and how to properly chain constructors.
+
+**What you learn**:
+- How to define a derived class and initialize its parent.
+- How to override methods to specialize behavior.
+- The order of construction and destruction across inheritance levels.
+- How derived classes can have different default values for inherited attributes.
+
+**Key implementation notes**:
+- ScavTrap inherits from ClapTrap with different initial values: HP(100), EP(50), AD(20).
+- The copy constructor must call the base copy constructor.
+- ScavTrap overrides the `attack()` method to print a different message.
+- ScavTrap has its own special ability: `guardGate()`.
+- Tests must clearly show the construction/destruction order: base then derived during construction, reverse during destruction.
+
+#### ex02: Repetitive work
+**Goal**: Reinforce the inheritance pattern by creating another derived class.
+
+**What you learn**:
+- Repetition solidifies understanding of the inheritance pattern.
+- Multiple derived classes from the same base can have different behaviors.
+- How to design tests that verify construction order, copy semantics, and method behavior.
+
+**Key implementation notes**:
+- FlagTrap (FragTrap in the subject) is another ClapTrap derivative with different initial values: HP(100), EP(100), AD(30).
+- FlagTrap has its own special ability: `highFivesGuys()`.
+- The implementation pattern is nearly identical to ScavTrap, reinforcing that inheritance is reusable.
+- Tests should include both copy constructor and copy assignment operator to verify the orthodox canonical form is maintained.
+
+#### ex03: Now it's weird!
+**Goal**: Navigate the complexity of multiple inheritance and the diamond problem.
+
+**What you learn**:
+- How multiple inheritance can lead to ambiguity.
+- Virtual inheritance as a language feature to resolve the diamond problem.
+- How to carefully initialize the shared base in the presence of multiple inheritance paths.
+- How to use the scope resolution operator to access shadowed members.
+
+**Key implementation notes**:
+- DiamondTrap inherits from both ScavTrap and FlagTrap (which both inherit from ClapTrap).
+- Both ScavTrap and FlagTrap must use `virtual public` inheritance from ClapTrap.
+- DiamondTrap has:
+  - A private `name_` attribute (different from ClapTrap's `name_`).
+  - HP and AD from FlagTrap (100, 30).
+  - EP from ScavTrap (50).
+  - `attack()` from ScavTrap (via override-dominance rules).
+- The copy constructor must handle both parent initializations and the virtual base.
+- `whoAmI()` prints both the DiamondTrap name and the ClapTrap name (accessed via `ClapTrap::name_`).
+- Tests must verify that ClapTrap is constructed only once and that all abilities work correctly.
+
 
 ## Instructions
 ### Requirements
@@ -80,199 +148,82 @@ In the Makefile, the common commands are:
 - `make clean`: remove object files.
 - `make fclean`: remove object files and the executable.
 
-## Core Concepts
-
-### Single Inheritance
-- A derived class (`Child`) inherits from a base class (`Parent`).
-- The derived class automatically has access to all public and protected members of the base class.
-- The derived class can override methods to specialize behavior.
-- Example: `ScavTrap` inherits from `ClapTrap` and overrides the `attack()` method.
-
-### Constructor and Destructor Chaining
-- When a derived class is constructed, the base class constructor must be called first.
-- In C++, this is done via the member initialization list: `Child::Child() : Parent(args) { ... }`
-- Destruction happens in reverse order: the derived destructor runs first, then the base destructor.
-- This ensures resources are acquired in the right order and released in the opposite order (RAII principle).
-
-### Method Overriding
-- A derived class can define a method with the same signature as a base class method.
-- The derived version shadows (hides) the base version.
-- To call the base version explicitly, use the scope resolution operator: `Parent::method()`.
-
-### Protected Members
-- In a base class, `protected` members are accessible to derived classes but not to outside code.
-- This allows derived classes to access and modify inherited attributes without exposing them publicly.
-- ClapTrap uses `protected` for its attributes so that ScavTrap and FlagTrap can access them.
-
-### Multiple Inheritance and the Diamond Problem
-- A class can inherit from multiple parent classes: `class Child : public Parent1, public Parent2`.
-- If both Parent1 and Parent2 inherit from a common base `class Base`, then `Child` has two copies of `Base`.
-- This is the "diamond problem": the inheritance diagram forms a diamond shape.
-- Example: `DiamondTrap` inherits from `ScavTrap` and `FlagTrap`, which both inherit from `ClapTrap`.
-- Without virtual inheritance, there would be two separate `ClapTrap` instances inside one `DiamondTrap`.
-- The path to access a `ClapTrap` resource is ambiguous, generating a compiler error.
-
-### Virtual Inheritance
-- Mark an inheritance as `virtual` to ensure the shared base class exists only once.
-- Syntax: `class Derived : virtual public Base { ... }`
-- In ex03, both ScavTrap and FlagTrap inherit from ClapTrap using `virtual public`.
-- DiamondTrap then has only one ClapTrap instance, eliminating ambiguity.
-- Virtual inheritance requires careful attention to constructor initialization order.
-
-### Access Specifiers in Inheritance
-- `public` inheritance: public members of the base stay public in the derived class.
-- `protected` inheritance: public members of the base become protected in the derived class.
-- `private` inheritance: all base members become private in the derived class (rarely used).
-- All exercises use `public` inheritance.
-
-### The Scope Resolution Operator (`::`).
-- Used to explicitly access a member from a specific class.
-- Example: `ClapTrap::name_` accesses the `name_` from ClapTrap, not from DiamondTrap.
-- Essential in DiamondTrap to distinguish between `ClapTrap::name_` and `DiamondTrap::name_`.
-
-## Exercise Breakdown
-
-### ex00: Aaaaand... OPEN!
-**Goal**: Build the foundation class that all others will inherit from.
-
-**What was learned**:
-- How to design a base class with proper attributes and member functions.
-- The role of constructors, destructors, and copy semantics in a class that will be inherited.
-- How to protect internal state with access modifiers.
-
-**Key implementation notes**:
-- ClapTrap stores name, hitPoints, energyPoints, and attackDamage.
-- Use `protected` instead of `private` so derived classes can access these attributes.
-- Implement guard logic to prevent invalid state (e.g., hitPoints < 0, operations without energy).
-- Each action (attack, takeDamage, beRepaired) must print a message describing what happened.
-
-### ex01: Serena, my love!
-**Goal**: Understand how inheritance works and how to properly chain constructors.
-
-**What you learn**:
-- How to define a derived class and initialize its parent.
-- How to override methods to specialize behavior.
-- The order of construction and destruction across inheritance levels.
-- How derived classes can have different default values for inherited attributes.
-
-**Key implementation notes**:
-- ScavTrap inherits from ClapTrap with different initial values: HP(100), EP(50), AD(20).
-- The copy constructor must call the base copy constructor.
-- ScavTrap overrides the `attack()` method to print a different message.
-- ScavTrap has its own special ability: `guardGate()`.
-- Tests must clearly show the construction/destruction order: base then derived during construction, reverse during destruction.
-
-### ex02: Repetitive work
-**Goal**: Reinforce the inheritance pattern by creating another derived class.
-
-**What you learn**:
-- Repetition solidifies understanding of the inheritance pattern.
-- Multiple derived classes from the same base can have different behaviors.
-- How to design tests that verify construction order, copy semantics, and method behavior.
-
-**Key implementation notes**:
-- FlagTrap (FragTrap in the subject) is another ClapTrap derivative with different initial values: HP(100), EP(100), AD(30).
-- FlagTrap has its own special ability: `highFivesGuys()`.
-- The implementation pattern is nearly identical to ScavTrap, reinforcing that inheritance is reusable.
-- Tests should include both copy constructor and copy assignment operator to verify the orthodox canonical form is maintained.
-
-### ex03: Now it's weird!
-**Goal**: Navigate the complexity of multiple inheritance and the diamond problem.
-
-**What you learn**:
-- How multiple inheritance can lead to ambiguity.
-- Virtual inheritance as a language feature to resolve the diamond problem.
-- How to carefully initialize the shared base in the presence of multiple inheritance paths.
-- How to use the scope resolution operator to access shadowed members.
-
-**Key implementation notes**:
-- DiamondTrap inherits from both ScavTrap and FlagTrap (which both inherit from ClapTrap).
-- Both ScavTrap and FlagTrap must use `virtual public` inheritance from ClapTrap.
-- DiamondTrap has:
-  - A private `name_` attribute (different from ClapTrap's `name_`).
-  - HP and AD from FlagTrap (100, 30).
-  - EP from ScavTrap (50).
-  - `attack()` from ScavTrap (via override-dominance rules).
-- The copy constructor must handle both parent initializations and the virtual base.
-- `whoAmI()` prints both the DiamondTrap name and the ClapTrap name (accessed via `ClapTrap::name_`).
-- Tests must verify that ClapTrap is constructed only once and that all abilities work correctly.
-
-## Common Pitfalls
-
-### Forgetting Virtual Inheritance
-- If ScavTrap and FlagTrap inherit from ClapTrap without `virtual`, DiamondTrap will have two copies of ClapTrap.
-- This leads to ambiguity: which `hitPoints_` are you referring to?
-- Always use `virtual public` when designing classes that may be used in multiple inheritance.
-
-### Not Initializing the Virtual Base
-- In a virtual inheritance hierarchy, the most-derived class (DiamondTrap) must explicitly initialize the virtual base (ClapTrap) in its constructor's initializer list.
-- If DiamondTrap doesn't call `ClapTrap(...)` in its initializer list, the virtual base constructor may not run correctly.
-
-### Shadowing Attributes
-- DiamondTrap has its own `name_` attribute, separate from `ClapTrap::name_`.
-- Accessing `name_` without a scope qualifier will use DiamondTrap's version.
-- To access ClapTrap's `name_`, use `ClapTrap::name_`.
-
-### Not Overriding the Copy Assignment Operator
-- If you have a class with derived classes, the base class copy assignment operator is not automatically correct for derived classes.
-- Each class (including derived ones) should implement its own copy assignment operator that handles all members correctly.
-
-### Assuming Destructor Order
-- Destructors are called in reverse order of construction.
-- In DiamondTrap, the order is: DiamondTrap dtor → ScavTrap dtor → FlagTrap dtor → ClapTrap dtor.
-- Tests should verify this order by checking console output.
-
-## Testing Strategy
-
-Each exercise includes a `main.cpp` with comprehensive tests covering:
-
-1. **Construction order**: Create objects and verify the console output shows constructors called in the correct order.
-2. **Copy semantics**: Test copy constructor and copy assignment operator.
-3. **Basic actions**: Call member functions to ensure they work and print correct messages.
-4. **Edge cases**: Test behavior when hit points reach 0, when energy is exhausted, and when operations fail.
-5. **Destruction order**: Exit the program (or go out of scope) and verify destructors are called in the correct order.
-6. **Special abilities**: Verify each class's unique ability works (guardGate, highFivesGuys, whoAmI).
-
 ## Resources
 
 ### Concepts Used
 
 #### Inheritance Fundamentals
-- **Single Inheritance**: One class inherits from exactly one base class. This is used in ex01 and ex02.
-- **Multiple Inheritance**: One class inherits from multiple base classes. This is used in ex03.
-- **Virtual Inheritance**: A mechanism to ensure a shared base class is instantiated only once in a multiple inheritance hierarchy.
+- **Single Inheritance** (ex02)
+	- A derived class (`Child`) inherits from a base class (`Parent`).
+	- The derived class automatically has access to all public and protected members of the base class and can override methods to specialize behavior.
+	- Example: `ScavTrap` inherits from `ClapTrap` and overrides the `attack()` method.
+- **Multiple Inheritance** (ex03)
+	- A class can inherit from multiple parent classes: `class Child : public Parent1, public Parent2`.
+	- If both Parent1 and Parent2 inherit from a common base `class Base`, then `Child` has two copies of `Base` (diamond problem).
+	- Example: `DiamondTrap` inherits from `ScavTrap` and `FlagTrap`, which both inherit from `ClapTrap`. Without virtual inheritance, there would be two separate `ClapTrap` instances inside one `DiamondTrap`.
+- **Virtual Inheritance** (ex03)
+	- Mark an inheritance as `virtual` to ensure the shared base class exists only once. A mechanism to resolve the diamond problem in a multiple inheritance hierarchy.
+	- Syntax: `class Derived : virtual public Base { ... }`
+	- Example: In ex03, both ScavTrap and FlagTrap inherit from ClapTrap using `virtual public`. DiamondTrap then has only one ClapTrap instance, eliminating ambiguity.
 
-#### Constructor Initialization Lists
-- The member initialization list is the right place to call parent constructors.
+#### Constructor and Destructor Chaining
+- When a derived class is constructed, the base class constructor is called first.
+- In C++, this is done via the member initialization list: `Child::Child() : Parent(args) { ... }`
 - Syntax: `Derived::Derived(args) : Base(base_args), member_(value) { ... }`
 - In C++98, the initialization list is the *only* way to initialize a base class.
+- Destruction happens in reverse order: the derived destructor runs first, then the base destructor.
 
-#### Operator Overriding
-- A derived class can override (redefine) a method from the base class.
-- This allows specialization of behavior without changing the base class.
-- Virtual functions (not used in this module but important in C++) enable runtime polymorphism.
+#### Method Overriding
+- A derived class can define a method with the same signature as a base class method.
+- The derived version shadows (hides) the base version, allowing specialization of behavior without changing the base class.
+- To call the base version explicitly, use the scope resolution operator: `Parent::method()`.
 
-#### Memory Ownership in Inheritance
-- Derived class objects are larger than base class objects (they include base members plus their own).
-- A pointer or reference to a base class can point to a derived class object (this is the foundation of polymorphism).
-- Deletion must be done carefully: if deleting a base class pointer that points to a derived object, use virtual destructors (not required in C++98 for these exercises, but important to understand).
+#### Protected Members
+- In a base class, `protected` members are accessible to derived classes but not to outside code, allowing derived classes to access and modify inherited attributes without exposing them publicly.
+- Example: ClapTrap uses `protected` for its attributes so that ScavTrap and FlagTrap can access them.
+
+#### The Scope Resolution Operator (`::`)
+- Used to explicitly access a member from a specific class when they have members with the same name, resolving ambiguity.
+- Example: `ClapTrap::name_` accesses the `name_` from ClapTrap, not from DiamondTrap.
 
 #### Design Patterns
-- **Inheritance for specialization**: Different robot types inherit from a common robot base.
+- **Inheritance for specialization**: Different classes inherit from a common base class.
 - **Inheritance for code reuse**: ScavTrap and FlagTrap reuse all of ClapTrap's logic.
 - **Template Method Pattern** (implicit): Derived classes override specific methods while inheriting the rest.
+
+### Common Pitfalls
+
+#### Forgetting Virtual Inheritance
+- If ScavTrap and FlagTrap inherit from ClapTrap without `virtual`, DiamondTrap will have two copies of ClapTrap.
+- This leads to ambiguity: which `hitPoints_` are you referring to?
+- Always use `virtual public` when designing classes that may be used in multiple inheritance.
+
+#### Not Initializing the Virtual Base
+- In a virtual inheritance hierarchy, the most-derived class (DiamondTrap) must explicitly initialize the virtual base (ClapTrap) in its constructor's initializer list.
+- If DiamondTrap doesn't call `ClapTrap(...)` in its initializer list, the virtual base constructor may not run correctly.
+
+#### Shadowing Attributes
+- DiamondTrap has its own `name_` attribute, separate from `ClapTrap::name_`.
+- Accessing `name_` without a scope qualifier will use DiamondTrap's version (higher precedence of the most derived overide).
+- To access ClapTrap's `name_`, use `ClapTrap::name_`.
+
+#### Not Overriding the Copy Assignment Operator
+- If you have a class with derived classes, the base class copy assignment operator is not automatically correct for derived classes.
+- Each class (including derived ones) should implement its own copy assignment operator that handles all members correctly.
+
 ### References
 
 - [cppreference.com - Inheritance](https://en.cppreference.com/w/cpp/language/derived_class)
 - [cppreference.com - Virtual base classes](https://en.cppreference.com/w/cpp/language/derived_class#Virtual_base_classes)
 - [cppreference.com - Member initialization list](https://en.cppreference.com/w/cpp/language/initializer_list)
 - [cppreference.com - Access specifiers](https://en.cppreference.com/w/cpp/language/access)
-- [Understanding the Diamond Problem](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)
-- [Microsoft: C++ Multiple Inheritance](https://docs.microsoft.com/en-us/cpp/cpp/multiple-base-classes)
-- [The C++ Programming Language, 4th Edition - Bjarne Stroustrup](https://www.stroustrup.com/4th_edition.html) (reference, not required)
+- [Medium - Object-Oriented Programming : Inheritance](https://medium.com/@hasan_denli/object-oriented-programming-inheritance-44daf3801d45)
+- [GeeksforGeeks - Inheritance in C++](https://www.geeksforgeeks.org/cpp/inheritance-in-c/)
+- [GeeksforGeeks - Diamond Problem in C++](https://www.geeksforgeeks.org/cpp/diamond-problem-in-cpp/)
+- [Medium - Untangling the Diamond Problem in C++](https://levelup.gitconnected.com/untangling-the-diamond-problem-in-c-6fa5caeb5ea4)
 
 ### AI Usage
-AI was used during this project as a support tool, specifically for:
+AI was used during this project as a tutor and support tool, specifically for:
 - Explaining the diamond problem and virtual inheritance in C++98 context;
 - Validating inheritance design decisions and constructor chaining logic;
 - Proofreading and improving this README.
@@ -283,6 +234,6 @@ No AI was used to provide direct solutions to the exercises.
 
 Module 03 is where the power of OOP becomes visible. Inheritance allows you to build hierarchies of related types, reuse code across multiple classes, and express relationships between types. However, it also introduces complexity: the diamond problem is a real challenge in C++, and virtual inheritance is a non-trivial solution that requires careful thinking.
 
-The progression from ex00 (simple base class) through ex01-02 (single inheritance patterns) to ex03 (virtual inheritance and disambiguation) mirrors the journey many C++ developers take when learning these concepts. By the end, you'll have a deep understanding of how inheritance works, what can go wrong, and how C++ tools (virtual inheritance, scope resolution) help you write correct code.
+The progression from ex00 (simple base class) through ex01-02 (single inheritance patterns) to ex03 (virtual inheritance and disambiguation) mirrors the journey many C++ developers take when learning these concepts. By the end, the module fosters a deep understanding of how inheritance works, what can go wrong, and how C++ tools (virtual inheritance, scope resolution) help you write correct code.
 
 The key takeaway: inheritance is powerful for expressing relationships and reusing code, but it demands careful design and explicit handling of edge cases like the diamond problem.
