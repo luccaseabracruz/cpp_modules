@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:32:35 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/04 17:27:30 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/04 18:17:01 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Dog: public Animal
 		Dog& operator=(const Dog& other);
 		~Dog(void);
 
-		void	makeSound(void);
+		void	makeSound(void)	const;
 };
 
 #endif

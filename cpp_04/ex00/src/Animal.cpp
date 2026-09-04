@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:59:38 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/04 10:56:41 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/04 18:16:24 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Animal::~Animal(void)
 	std::cout << "[Animal] Destructor being called.\n";
 }
 
-void	Animal::makeSound(void)
+void	Animal::makeSound(void)	const
 {
 	std::cout << "..." << '\n';
 }

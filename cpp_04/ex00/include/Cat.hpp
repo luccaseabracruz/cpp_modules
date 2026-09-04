@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:32:35 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/04 17:27:20 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/04 18:16:41 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Cat: public Animal
 		Cat& operator=(const Cat& other);
 		~Cat(void);
 
-		void	makeSound(void);
+		void	makeSound(void)	const;
 };
 
 #endif

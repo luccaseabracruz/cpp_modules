@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:34:30 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/04 10:56:02 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/04 18:16:49 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Cat::~Cat(void)
 	std::cout << "[Cat] Destructor being called.\n";
 }
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void)	const
 {
 	std::cout << "Miaaaaau!\n";
 }
