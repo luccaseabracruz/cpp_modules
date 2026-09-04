@@ -6,7 +6,7 @@
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 19:06:02 by lucca             #+#    #+#              #
-#    Updated: 2026/09/03 15:05:17 by lucca            ###   ########.fr        #
+#    Updated: 2026/09/04 18:52:02 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	Cat.cpp \
 	Dog.cpp \
 	main.cpp \
+	WrongAnimal.cpp \
+	WrongCat.cpp \
 )
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
