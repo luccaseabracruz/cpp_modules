@@ -66,3 +66,6 @@ clap_trap
 scav_trap
 flag_trap
 diamond_trap
+
+# My Miscellaneos CPP - 04
+make_sound
