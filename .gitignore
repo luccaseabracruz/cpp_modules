@@ -41,6 +41,7 @@
 *.dwo
 
 # My Miscellaneos CPP - 00
+.vscode/
 build/
 megaphone
 phone_book

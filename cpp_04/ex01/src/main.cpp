@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:57:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 14:36:10 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 15:08:26 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,19 @@ int	testBrainShallowCopy(Animal	*animal)
 	original->getBrainPtr()->setIdea(0, "bones");
 	copy = new Dog(*original);
 	if (original->getBrainPtr() == copy->getBrainPtr())
+	{
+		delete copy;
 		return (-1);
+	}
 	copy->getBrainPtr()->setIdea(0, "play");
 	ogIdea = original->getBrainPtr()->getIdea(0);
 	cpIdea = copy->getBrainPtr()->getIdea(0);
 	if (ogIdea == cpIdea)
+	{
+		delete copy;
 		return (-1);
+	}
+	delete copy;
 	return (0);
 }
 
@@ -70,6 +77,8 @@ int main()
 	if (testBrainShallowCopy(array[0]) != 0)
 	{
 		std::cout << "Test Brain Shallow Copy: FAILED\n";
+		for (size_t i = 0; i < len; i++)
+			delete (array[i]);
 		return (1);
 	}
 	else

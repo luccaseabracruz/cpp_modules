@@ -21,8 +21,10 @@
 - [GeeksforGeeks - When to Use Virtual Destructors in C++?](https://www.geeksforgeeks.org/cpp/when-to-use-virtual-destructors-in-cpp/)
 
 ## ex01
-### To do
 ### Learnings
+- First time creating resources and cleaning them in constructor and destructor respectively;
+- Undestand the importance of deep copy. I was copying the pointer in the copy assignment operator of dog and cat classes, generating a shallow copy.
+
 ### References
 ## ex02
 ### To do
