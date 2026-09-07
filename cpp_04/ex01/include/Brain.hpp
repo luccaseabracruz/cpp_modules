@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/01 15:32:35 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 12:03:22 by lucca            ###   ########.fr       */
+/*   Created: 2026/09/04 19:37:07 by lucca             #+#    #+#             */
+/*   Updated: 2026/09/07 11:41:37 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+#include <iostream>
 
-class	Cat: public Animal
+# define MAX_IDEAS	100
+
+class	Brain
 {
 	private:
-		Brain	*brain;
+		std::string ideas[MAX_IDEAS];
+
 	public:
-		Cat(void);
-		Cat(const Cat& other);
-		Cat& operator=(const Cat& other);
-		~Cat(void);
+		Brain(void);
+		Brain(const Brain& other);
+		Brain&	operator=(const Brain& other);
+		~Brain(void);
 
-		void	makeSound(void)	const;
-
-		Brain	*getBrainPtr()	const;
+		std::string	getIdea(int idx)	const;
+		void	setIdea(int idx, std::string idea);
 };
 
 #endif

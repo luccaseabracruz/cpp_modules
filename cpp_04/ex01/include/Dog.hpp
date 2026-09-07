@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:32:35 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/04 18:17:01 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 11:17:12 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 # define DOG_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class	Dog: public Animal
 {
+	private:
+		Brain	*brain;
 	public:
 		Dog(void);
 		Dog(const Dog& other);
@@ -24,6 +27,8 @@ class	Dog: public Animal
 		~Dog(void);
 
 		void	makeSound(void)	const;
+
+		Brain	*getBrainPtr(void)	const;
 };
 
 #endif

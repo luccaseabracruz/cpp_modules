@@ -6,167 +6,75 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:57:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/04 18:57:47 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 14:36:10 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <unistd.h>
 #include "Animal.hpp"
-#include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Dog.hpp"
+#include "Brain.hpp"
 
-static int	testSpecialMembers(void)
+int	testBrainShallowCopy(Animal	*animal)
 {
-	Animal animal;
-	Animal animalCopy(animal);
-	Animal assignedAnimal;
-	Animal *animalResult = &(assignedAnimal = animal);
+	Dog	*original;
+	Dog	*copy;
+	std::string	ogIdea;
+	std::string	cpIdea;
 
-	if (animalCopy.getType() != "Animal"
-		|| assignedAnimal.getType() != "Animal"
-		|| animalResult != &assignedAnimal)
-		return (1);
-	assignedAnimal = assignedAnimal;
-	if (assignedAnimal.getType() != "Animal")
-		return (1);
-
-	Dog dog;
-	Dog dogCopy(dog);
-	Dog assignedDog;
-	Dog *dogResult = &(assignedDog = dog);
-
-	if (dogCopy.getType() != "Dog"
-		|| assignedDog.getType() != "Dog"
-		|| dogResult != &assignedDog)
-		return (1);
-	assignedDog = assignedDog;
-	if (assignedDog.getType() != "Dog")
-		return (1);
-
-	Cat cat;
-	Cat catCopy(cat);
-	Cat assignedCat;
-	Cat *catResult = &(assignedCat = cat);
-
-	if (catCopy.getType() != "Cat"
-		|| assignedCat.getType() != "Cat"
-		|| catResult != &assignedCat)
-		return (1);
-	assignedCat = assignedCat;
-	if (assignedCat.getType() != "Cat")
-		return (1);
+	original = static_cast<Dog *>(animal);
+	original->getBrainPtr()->setIdea(0, "bones");
+	copy = new Dog(*original);
+	if (original->getBrainPtr() == copy->getBrainPtr())
+		return (-1);
+	copy->getBrainPtr()->setIdea(0, "play");
+	ogIdea = original->getBrainPtr()->getIdea(0);
+	cpIdea = copy->getBrainPtr()->getIdea(0);
+	if (ogIdea == cpIdea)
+		return (-1);
 	return (0);
 }
 
-static int	testWrongAnimal(void)
+int main()
 {
-	WrongAnimal	*wrong;
-	WrongAnimal	*wrongCat;
+	size_t	len = 10;
+	Animal*	array[10];
 
-	wrong = new WrongAnimal();
-	if (wrong == NULL)
+	for (size_t i = 0; i < len; i++)
 	{
-		std::cerr << "Error: allocation failed.\n";
-		return (-1);
+		if (i < (len / 2))
+		{
+			array[i] = new Dog();
+			Dog *d = static_cast<Dog*>(array[i]);
+			d->getBrainPtr()->setIdea(i, "Bones");
+		}
+		else
+			array[i] = new Cat();
+		if (array[i] == NULL)
+		{
+			std::cerr << "Error: allocation failed.\n";
+			while ( --i <= 0)
+				delete (array[i]);
+			return (1);
+		}
 	}
-	wrongCat = new WrongCat();
-	if (wrongCat == NULL)
+	for (size_t i = 0; i < len; i++)
 	{
-		std::cerr << "Error: allocation failed.\n";
-		delete wrong;
-		return (-1);
+		std::cout << "type: " << array[i]->getType() << '\n';
+		std::cout << "sound: ";
+		array[i]->makeSound();
+		std::cout << '\n';
 	}
-	std::cout 	<< "[Wrong Animal]:\n    type: " << wrong->getType()
-				<< "\n    sound: ";
-	wrong->makeSound();
-	std::cout 	<< "[Wrong Cat]:\n    type: " << wrongCat->getType()
-				<< "\n    sound: ";
-	wrongCat->makeSound();
-	std::cout << "OBS: sounds must be equal. Testing failing dynamic polymorphism\n";
-	delete wrong;
-	delete wrongCat;
+	
+	if (testBrainShallowCopy(array[0]) != 0)
+	{
+		std::cout << "Test Brain Shallow Copy: FAILED\n";
+		return (1);
+	}
+	else
+		std::cout << "Test Brain Shallow Copy: SUCCESS\n";
+	for (size_t i = 0; i < len; i++)
+		delete (array[i]);
 	return (0);
-}
-
-int	main(void)
-{
-	std::cout	<< "---------------------------------------\n"
-				<< "------------ construction  ------------\n"
-				<< "---------------------------------------\n";
-	Animal staticAnimal = Animal();
-	Animal staticSliced = Dog();		// to show how slicing works
-	Animal *dynamicDog = new Dog();
-	if (dynamicDog == NULL)
-	{
-		std::cerr << "Error: allocation failed.\n";
-		return (1);
-	}
-	Animal *dynamicCat = new Cat();
-	if (dynamicCat == NULL)
-	{
-		std::cerr << "Error: allocation failed.\n";
-		delete dynamicDog;
-		return (1);
-	}
-	std::cout << '\n';
-
-	std::cout	<< "---------------------------------------\n"
-				<< "---------------- type  ----------------\n"
-				<< "---------------------------------------\n";
-	std::cout << "### staticAnimal type: " << staticAnimal.getType() << '\n';
-	std::cout << "### staticSliced type: " << staticSliced.getType() << '\n';
-	std::cout << "### dynamicDog type:   " << dynamicDog->getType() << '\n';
-	std::cout << "### dynamicCat type:   " << dynamicCat->getType() << '\n';
-	std::cout << '\n';
-
-	std::cout	<< "---------------------------------------\n"
-				<< "--------------- Sounds  ---------------\n"
-				<< "---------------------------------------\n";
-	std::cout << "### staticAnimal sound: ";
-	staticAnimal.makeSound();
-	std::cout << "### staticSliced sound: ";
-	staticSliced.makeSound();
-	std::cout << "### dynamicDog sound:   ";
-	dynamicDog->makeSound();
-	std::cout << "### dynamicCat sound:   ";
-	dynamicCat->makeSound();
-	std::cout << '\n';
-
-	std::cout	<< "---------------------------------------\n"
-				<< "----------- Special Members -----------\n"
-				<< "---------------------------------------\n";
-	if (testSpecialMembers() != 0)
-	{
-		std::cerr << "Special member tests failed.\n";
-		delete dynamicDog;
-		delete dynamicCat;
-		return (1);
-	}
-	std::cout << "Special member tests passed.\n";
-	std::cout << '\n';
-
-	std::cout	<< "---------------------------------------\n"
-				<< "------------ Wrong Animal  ------------\n"
-				<< "---------------------------------------\n";
-	if (testWrongAnimal() != 0)
-	{
-		std::cerr << "Wrong Animal tests failed.\n";
-		delete dynamicDog;
-		delete dynamicCat;
-		return (1);
-	}
-	std::cout << "Wrong Animal tests passed.\n";
-	std::cout << '\n';
-
-	std::cout	<< "---------------------------------------\n"
-				<< "------------- destruction -------------\n"
-				<< "---------------------------------------\n";
-	std::cout << "### dynamicDog destruction:\n";
-	delete dynamicDog;
-	std::cout << "### dynamicCat destruction:\n";
-	delete dynamicCat;
-	std::cout << "### staticAnimal destruction:\n";
 }

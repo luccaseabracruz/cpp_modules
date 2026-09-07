@@ -6,7 +6,7 @@
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 19:06:02 by lucca             #+#    #+#              #
-#    Updated: 2026/09/04 18:52:02 by lucca            ###   ########.fr        #
+#    Updated: 2026/09/07 12:06:15 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #==============================================================================#
 
 # NAMES
-NAME = make_sound
+NAME = brains
 
 # PATHS
 SRC_PATH	= src
@@ -25,6 +25,7 @@ INC_PATH	= include
 # SOURCES
 SRC =  $(addprefix $(SRC_PATH)/, \
 	Animal.cpp \
+	Brain.cpp \
 	Cat.cpp \
 	Dog.cpp \
 	main.cpp \
@@ -35,7 +36,7 @@ OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
 CPP			= c++
-CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
+CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
 INC			= -I$(INC_PATH)
 
 # COMMANDS
