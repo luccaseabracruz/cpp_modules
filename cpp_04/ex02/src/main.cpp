@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:57:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 15:08:26 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 20:40:14 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 
-int	testBrainShallowCopy(Animal	*animal)
+static int	testBrainShallowCopy(Dog	*animal)
 {
-	Dog	*original;
-	Dog	*copy;
+	Dog			*original;
+	Dog			*copy;
 	std::string	ogIdea;
 	std::string	cpIdea;
 
-	original = static_cast<Dog *>(animal);
+	original = animal;
 	original->getBrainPtr()->setIdea(0, "bones");
 	copy = new Dog(*original);
 	if (original->getBrainPtr() == copy->getBrainPtr())
@@ -74,15 +74,15 @@ int main()
 		std::cout << '\n';
 	}
 	
-	if (testBrainShallowCopy(array[0]) != 0)
+	if (testBrainShallowCopy(static_cast<Dog *>(array[0])) != 0)
 	{
-		std::cout << "Test Brain Shallow Copy: FAILED\n";
+		std::cout << ">>> Test Brain Shallow Copy: FAILED\n";
 		for (size_t i = 0; i < len; i++)
 			delete (array[i]);
 		return (1);
 	}
 	else
-		std::cout << "Test Brain Shallow Copy: SUCCESS\n";
+		std::cout << ">>> Test Brain Shallow Copy: SUCCESS\n";
 	for (size_t i = 0; i < len; i++)
 		delete (array[i]);
 	return (0);

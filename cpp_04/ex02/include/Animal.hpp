@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:59:49 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/04 18:16:34 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 20:27:16 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class	Animal
 		Animal& operator=(const Animal& other);
 		virtual	~Animal(void);
 
-		virtual void	makeSound(void)	const;
+		virtual void	makeSound(void)	const = 0;
 
 		std::string	getType(void)	const;
 };

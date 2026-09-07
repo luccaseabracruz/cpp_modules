@@ -27,9 +27,15 @@
 
 ### References
 ## ex02
-### To do
 ### Learnings
+- Understand what are Abstract Classes.
+- Abstract classes are classes that have one or more pure virtual functions
+- pure virtual functions are declared, but not implemented and are resolved in runtime. This makes the class imponsible to be instanciated, being a template for a derived function that, if don't override it, will be also an abstract class.
+- Derived classes that inherit an abstract class must override all pure virtual function in order to become a concrete class and be instantiated.
 ### References
+- [Microsoft Learn - Abstract classes (C++)](https://learn.microsoft.com/en-us/cpp/cpp/abstract-classes-cpp?view=msvc-170)
+- [Medium - Mastering C++ Abstract Class, Interface, and (Pure)Virtual Functions in Few Steps](https://medium.com/javarevisited/mastering-c-abstract-class-interface-and-pure-virtual-functions-in-few-steps-ddbeff770d1f)
+- [GeeksforGeeks - Difference between Virtual function and Pure virtual function in C++](https://www.geeksforgeeks.org/cpp/difference-between-virtual-function-and-pure-virtual-function-in-c/)
 ## ex03
 ### To do
 ### Learnings
