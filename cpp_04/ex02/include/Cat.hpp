@@ -6,17 +6,17 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:32:35 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 12:03:22 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 20:46:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 # define CAT_HPP
 
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class	Cat: public Animal
+class	Cat: public AAnimal
 {
 	private:
 		Brain	*brain;

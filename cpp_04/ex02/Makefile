@@ -6,7 +6,7 @@
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 19:06:02 by lucca             #+#    #+#              #
-#    Updated: 2026/09/07 20:26:07 by lucca            ###   ########.fr        #
+#    Updated: 2026/09/07 20:49:40 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ INC_PATH	= include
 
 # SOURCES
 SRC =  $(addprefix $(SRC_PATH)/, \
-	Animal.cpp \
+	AAnimal.cpp \
 	Brain.cpp \
 	Cat.cpp \
 	Dog.cpp \

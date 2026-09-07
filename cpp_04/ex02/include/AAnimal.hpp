@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:59:49 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 20:27:16 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 20:47:03 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef	AAnimal_HPP
+# define AAnimal_HPP
 
 # include <iostream>
 
-# define ANIMAL_PFX	"[ANIMAL] "
+# define AAnimal_PFX	"[AAnimal] "
 # define DOG_PFX	"[DOG] "
 # define CAT_PFX	"[CAT] "
 
-class	Animal
+class	AAnimal
 {
 	protected:
 		std::string type;
 
 	public:
-		Animal(void);
-		Animal(const Animal& other);
-		Animal& operator=(const Animal& other);
-		virtual	~Animal(void);
+		AAnimal(void);
+		AAnimal(const AAnimal& other);
+		AAnimal& operator=(const AAnimal& other);
+		virtual	~AAnimal(void);
 
 		virtual void	makeSound(void)	const = 0;
 

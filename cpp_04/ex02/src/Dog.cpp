@@ -6,11 +6,11 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:34:16 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 14:43:19 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 20:46:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Brain.hpp"
 
@@ -21,7 +21,7 @@ Dog::Dog(void): brain(new Brain())
 }
 
 Dog::Dog(const Dog& other)
-	: Animal(), brain(new Brain())
+	: AAnimal(), brain(new Brain())
 {
 	std::cout << "[Dog] Constructor being called.\n";
 	*this = other;

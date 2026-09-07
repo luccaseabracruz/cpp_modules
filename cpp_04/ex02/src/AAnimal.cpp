@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-Animal::Animal(void): type("Animal")
+AAnimal::AAnimal(void): type("AAnimal")
 {
-	std::cout << "[Animal] Default Constructor being called.\n";
+	std::cout << "[AAnimal] Default Constructor being called.\n";
 }
 
-Animal::Animal(const Animal& other): type("Animal")
+AAnimal::AAnimal(const AAnimal& other): type("AAnimal")
 {
-	std::cout << "[Animal] Constructor being called.\n";
+	std::cout << "[AAnimal] Constructor being called.\n";
 	*this = other;
 }
 
-Animal& Animal::operator=(const Animal& other)
+AAnimal& AAnimal::operator=(const AAnimal& other)
 {
-	std::cout << "[Animal] Assignment Operator being called.\n";
+	std::cout << "[AAnimal] Assignment Operator being called.\n";
 	if (this != &other)
 	{
 		type = other.getType();
@@ -33,17 +33,17 @@ Animal& Animal::operator=(const Animal& other)
 	return (*this);
 }
 
-Animal::~Animal(void)
+AAnimal::~AAnimal(void)
 {
-	std::cout << "[Animal] Destructor being called.\n";
+	std::cout << "[AAnimal] Destructor being called.\n";
 }
 
-void	Animal::makeSound(void)	const
+void	AAnimal::makeSound(void)	const
 {
 	std::cout << "..." << '\n';
 }
 
-std::string	Animal::getType(void)	const
+std::string	AAnimal::getType(void)	const
 {
 	return (type);
 }

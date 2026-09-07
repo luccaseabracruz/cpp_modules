@@ -6,33 +6,31 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:57:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 20:40:14 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 20:51:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Brain.hpp"
 
 static int	testBrainShallowCopy(Dog	*animal)
 {
-	Dog			*original;
 	Dog			*copy;
 	std::string	ogIdea;
 	std::string	cpIdea;
 
-	original = animal;
-	original->getBrainPtr()->setIdea(0, "bones");
-	copy = new Dog(*original);
-	if (original->getBrainPtr() == copy->getBrainPtr())
+	animal->getBrainPtr()->setIdea(0, "bones");
+	copy = new Dog(*animal);
+	if (animal->getBrainPtr() == copy->getBrainPtr())
 	{
 		delete copy;
 		return (-1);
 	}
 	copy->getBrainPtr()->setIdea(0, "play");
-	ogIdea = original->getBrainPtr()->getIdea(0);
+	ogIdea = animal->getBrainPtr()->getIdea(0);
 	cpIdea = copy->getBrainPtr()->getIdea(0);
 	if (ogIdea == cpIdea)
 	{
@@ -46,7 +44,7 @@ static int	testBrainShallowCopy(Dog	*animal)
 int main()
 {
 	size_t	len = 10;
-	Animal*	array[10];
+	AAnimal*	array[10];
 
 	for (size_t i = 0; i < len; i++)
 	{

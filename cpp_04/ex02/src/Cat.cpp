@@ -6,12 +6,12 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 15:34:30 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/07 14:25:18 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/07 20:46:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 Cat::Cat(void): brain(new Brain())
@@ -20,7 +20,7 @@ Cat::Cat(void): brain(new Brain())
 	type = "Cat";
 }
 
-Cat::Cat(const Cat& other): Animal(), brain(new Brain(*other.brain))
+Cat::Cat(const Cat& other): AAnimal(), brain(new Brain(*other.brain))
 {
 	std::cout << "[Cat] Constructor being called.\n";
 	*this = other;
