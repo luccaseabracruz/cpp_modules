@@ -38,5 +38,11 @@
 - [GeeksforGeeks - Difference between Virtual function and Pure virtual function in C++](https://www.geeksforgeeks.org/cpp/difference-between-virtual-function-and-pure-virtual-function-in-c/)
 ## ex03
 ### To do
+- [ ] How to implement a concreate ICharacter class if the subject passes it with pure virtual functions?
+- [X] The subject passes brachets in the class declaration, but I think implementation must be separate from the declaration. What should I do?
+	- R: classes with that have pure 
+- [ ] What the subject means about setting the type of ice and cure in lower-case?
 ### Learnings
 ### References
+- [Abstract Classes vs. Interfaces: Decoding the OOP Dilemma in Software Engineering](https://www.quickstart.com/blog/software-engineering/when-and-how-to-use-abstract-class-and-interface/)
+- 
