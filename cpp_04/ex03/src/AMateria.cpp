@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 00:03:55 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/08 11:33:41 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/09 11:34:03 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ AMateria::AMateria(AMateria const & other): type_(other.type_)
 AMateria& AMateria::operator=(AMateria const & other)
 {
 	// std::cout << "[AMateria] copy constructor called.\n";
+	(void)other;
 	return (*this);
 }
 
@@ -44,7 +45,7 @@ std::string const & AMateria::getType(void)	const
 	return type_;
 }
 
-// void	AMateria::use(ICharacter& target)
-// {
-	
-// }
+void	AMateria::use(ICharacter& target)
+{
+	(void)target;
+}
