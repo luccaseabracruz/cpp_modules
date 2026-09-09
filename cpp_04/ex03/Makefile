@@ -3,7 +3,7 @@
 #==============================================================================#
 
 # NAMES
-NAME = executable_name
+NAME = recap
 
 # PATHS
 SRC_PATH	= src
