@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 11:17:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/09 11:22:48 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/09 11:43:19 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ AMateria*	Ice::clone(void)	const
 
 void	Ice::use(ICharacter& target)
 {
-	std:: cout << "* shoots an ice bolt at " << target.getName() << " *";
+	std:: cout << "* shoots an ice bolt at " << target.getName() << " *\n";
 }

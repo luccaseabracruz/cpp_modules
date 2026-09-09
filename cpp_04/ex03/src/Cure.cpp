@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 11:48:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/09 11:23:08 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/09 11:43:28 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ AMateria*	Cure::clone(void)	const
 
 void	Cure::use(ICharacter& target)
 {
-	std:: cout << "* heals " << target.getName() << "'s wounds *";
+	std:: cout << "* heals " << target.getName() << "'s wounds *\n";
 }
