@@ -6,7 +6,7 @@
 #    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 19:06:02 by lucca             #+#    #+#              #
-#    Updated: 2026/09/07 20:49:40 by lucca            ###   ########.fr        #
+#    Updated: 2026/09/09 13:18:51 by lucca            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
 CPP			= c++
-CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
+CPP_FLAGS	= -Wall -Wextra -Werror -std=c++98
 INC			= -I$(INC_PATH)
 
 # COMMANDS
