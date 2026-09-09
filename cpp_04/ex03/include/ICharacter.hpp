@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 10:21:18 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/08 11:53:37 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/09 11:18:52 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define ICHARACTER_HPP
 
 # include <iostream>
-# include "AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {
