@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 11:17:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/08 11:46:52 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/09 11:22:48 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Ice::Ice(Ice const & other): AMateria(other.type_)
 
 Ice&	Ice::operator=(Ice const & other)
 {
+	(void)other;
 	return (*this);
 }
 

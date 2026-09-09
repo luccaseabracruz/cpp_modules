@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 11:48:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/08 11:51:15 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/09 11:23:08 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Cure::Cure(Cure const & other): AMateria(other.type_)
 
 Cure&	Cure::operator=(Cure const & other)
 {
+	(void)other;
 	return (*this);
 }
 

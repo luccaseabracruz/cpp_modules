@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include "AMateria.hpp"
 
 Character::Character(void): name_("")
 {
