@@ -27,6 +27,8 @@ Character::Character(std::string const & name): name_(name)
 
 Character::Character(Character const & other)
 {
+	for (int i = 0; i < INVENTORY_LEN; i++)
+		inventory_[i] = NULL;
 	*this = other;
 }
 
