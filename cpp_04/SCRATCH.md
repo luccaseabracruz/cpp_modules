@@ -37,12 +37,10 @@
 - [Medium - Mastering C++ Abstract Class, Interface, and (Pure)Virtual Functions in Few Steps](https://medium.com/javarevisited/mastering-c-abstract-class-interface-and-pure-virtual-functions-in-few-steps-ddbeff770d1f)
 - [GeeksforGeeks - Difference between Virtual function and Pure virtual function in C++](https://www.geeksforgeeks.org/cpp/difference-between-virtual-function-and-pure-virtual-function-in-c/)
 ## ex03
-### To do
-- [ ] How to implement a concreate ICharacter class if the subject passes it with pure virtual functions?
-- [X] The subject passes brachets in the class declaration, but I think implementation must be separate from the declaration. What should I do?
-	- R: classes with that have pure 
-- [ ] What the subject means about setting the type of ice and cure in lower-case?
 ### Learnings
+- undertand the definition of interface as a convetion name for pure abstract classes.
+- the most challenging thing is to know what classes take ownership of the AMateria pointers and what do not.
+
 ### References
 - [Abstract Classes vs. Interfaces: Decoding the OOP Dilemma in Software Engineering](https://www.quickstart.com/blog/software-engineering/when-and-how-to-use-abstract-class-and-interface/)
 - 
