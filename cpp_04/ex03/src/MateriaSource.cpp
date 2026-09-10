@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 14:38:21 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 11:06:16 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 13:25:07 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ MateriaSource& MateriaSource::operator=(MateriaSource const & other)
 	{
 		for (int i = 0; i < KNOWN_MATERIAS_LEN; i++)
 		{
-			delete knownMaterias_[i];
-			knownMaterias_[i] = NULL;
+			if (knownMaterias_[i] != NULL)
+			{
+				delete knownMaterias_[i];
+				knownMaterias_[i] = NULL;
+			}
 			if (other.knownMaterias_[i] != NULL)
 				knownMaterias_[i] = other.knownMaterias_[i]->clone();
 		}
