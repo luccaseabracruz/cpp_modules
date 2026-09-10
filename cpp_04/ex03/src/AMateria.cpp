@@ -6,39 +6,28 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 00:03:55 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/09 11:34:03 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 13:05:02 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(void): type_("")
-{
-	// std::cout << "[AMateria] default constructor called.\n";
-}
+AMateria::AMateria(void): type_(""){}
 
-AMateria::AMateria(std::string const & type): type_(type)
-{
-	// std::cout << "[AMateria] constructor called.\n";
-}
+AMateria::AMateria(std::string const & type): type_(type){}
 
 AMateria::AMateria(AMateria const & other): type_(other.type_)
 {
-	// std::cout << "[AMateria] copy constructor called.\n";
 	*this = other;
 }
 
 AMateria& AMateria::operator=(AMateria const & other)
 {
-	// std::cout << "[AMateria] copy constructor called.\n";
 	(void)other;
 	return (*this);
 }
 
-AMateria::~AMateria(void)
-{
-	// std::cout << "[AMateria] destructor called.\n";
-}
+AMateria::~AMateria(void){}
 
 std::string const & AMateria::getType(void)	const
 {
