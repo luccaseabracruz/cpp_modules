@@ -25,7 +25,7 @@ static void	printHeader(const std::string& title)
 	std::cout << "========================================\n";
 }
 
-static void sugestedTests(void)
+static void runSubjectTest(void)
 {
 	printHeader("Subject Test");
 	IMateriaSource* src = new MateriaSource();
@@ -50,9 +50,9 @@ static void sugestedTests(void)
 	std::cout << '\n';
 }
 
-static int	testMateriaSource(void)
+static int	testMateriaSourceCapacity(void)
 {
-	printHeader("Materia Source Limits");
+	printHeader("Materia Source Capacity");
 	IMateriaSource	*src = new MateriaSource;
 
 	src->learnMateria(new Ice());
@@ -71,9 +71,9 @@ static int	testMateriaSource(void)
 	return (0);
 }
 
-static int	testCharacterBounds(void)
+static int	testCharacterInvalidIndexes(void)
 {
-	printHeader("Character Bounds");
+	printHeader("Character Invalid Indexes");
 	Character	*tony = new Character("Tony");
 	Character	*rodney = new Character("Rodney");
 
@@ -88,9 +88,9 @@ static int	testCharacterBounds(void)
 	return (0);
 }
 
-static int	testCharacterInventory(void)
+static int	testCharacterInventoryCapacity(void)
 {
-	printHeader("Character Inventory Limits");
+	printHeader("Character Inventory Capacity");
 	IMateriaSource	*src = new MateriaSource;
 	Character	*tony = new Character("Tony");
 	Character	*rodney = new Character("Rodney");
@@ -118,21 +118,21 @@ static int	testCharacterInventory(void)
 	return (0);
 }
 
-static int	testLimits(void)
+static int	runLimitTests(void)
 {
-	if (testMateriaSource() != 0)
+	if (testMateriaSourceCapacity() != 0)
 		return (-1);
-	if (testCharacterBounds() != 0)
+	if (testCharacterInvalidIndexes() != 0)
 		return (-1);
-	if (testCharacterInventory() != 0)
+	if (testCharacterInventoryCapacity() != 0)
 		return (-1);
 	return (0);
 }
 
 int main()
 {
-	sugestedTests();
-	if (testLimits() != 0)
+	runSubjectTest();
+	if (runLimitTests() != 0)
 	{
 		std::cout << ">>> Test Limits: FAILURE... :(\n";
 		return (1);
