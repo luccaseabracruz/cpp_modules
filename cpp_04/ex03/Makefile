@@ -18,6 +18,9 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	Ice.cpp \
 	main.cpp \
 	MateriaSource.cpp \
+	runSubjectTest.cpp \
+	testDeepCopy.cpp \
+	tests.cpp \
 )
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 

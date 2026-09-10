@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/07 21:02:11 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 14:55:07 by lucca            ###   ########.fr       */
+/*   Created: 2026/09/10 14:35:07 by lucca             #+#    #+#             */
+/*   Updated: 2026/09/10 14:44:29 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "tests.hpp"
+#ifndef TESTS_HPP
+# define TESTS_HPP
 
-int main()
-{
-	printHeader("Subject Test", 0);
-	runSubjectTest();
-	printHeader("My Tests", 0);
-	if (runMyTests() != 0)
-	{
-		std::cout << ">>>>> My Tests: FAILURE... :(\n";
-		return (1);
-	}
-	std::cout << ">>>>> My Tests: SUCCESS!!! :)\n";
-	return (0);
-}
+void	printHeader(const std::string& title, int headerType);
+void	runSubjectTest(void);
+int		testDeepCopy(void);
+int		runMyTests(void);
+
+#endif
