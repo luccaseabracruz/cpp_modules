@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 14:38:21 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/09 11:31:41 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 11:06:16 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ MateriaSource::MateriaSource(void)
 
 MateriaSource::MateriaSource(MateriaSource const & other)
 {
+	for (int i = 0; i < KNOWN_MATERIAS_LEN; i++)
+		knownMaterias_[i] = NULL;
 	*this = other;
 }
 
@@ -29,13 +31,10 @@ MateriaSource& MateriaSource::operator=(MateriaSource const & other)
 	{
 		for (int i = 0; i < KNOWN_MATERIAS_LEN; i++)
 		{
+			delete knownMaterias_[i];
+			knownMaterias_[i] = NULL;
 			if (other.knownMaterias_[i] != NULL)
-			{
-				std::string const & type = other.knownMaterias_[i]->getType();
-				AMateria	*newMateria = other.createMateria(type);
-				this->learnMateria(newMateria);
-				delete newMateria;
-			}
+				knownMaterias_[i] = other.knownMaterias_[i]->clone();
 		}
 	}
 	return (*this);
@@ -47,6 +46,11 @@ MateriaSource::~MateriaSource(void)
 	{
 		if (knownMaterias_[i] != NULL)
 		{
+			for (int j = i + 1; j < KNOWN_MATERIAS_LEN; j++)
+			{
+				if (knownMaterias_[j] && knownMaterias_[j] == knownMaterias_[i])
+					knownMaterias_[j] = NULL;
+			}
 			delete knownMaterias_[i];
 			knownMaterias_[i] = NULL;
 		}
@@ -60,9 +64,10 @@ void	MateriaSource::learnMateria(AMateria *materia)
 		if (knownMaterias_[i] == NULL)
 		{
 			knownMaterias_[i] = materia;
-			break ;
+			return ;
 		}
 	}
+	delete materia;
 }
 
 AMateria	*MateriaSource::createMateria(std::string const & type) const

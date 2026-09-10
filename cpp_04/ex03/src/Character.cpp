@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 11:51:41 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/08 12:47:59 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/09 15:45:00 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,14 @@ Character::~Character(void)
 	for (int i = 0; i < INVENTORY_LEN; i++)
 	{
 		if (inventory_[i] != NULL)
+		{
+			for (int j = i + 1; j < INVENTORY_LEN; j++)
+			{
+				if (inventory_[j] && inventory_[j] == inventory_[i])
+					unequip(j);
+			}
 			delete inventory_[i];
+		}
 	}
 };
 
