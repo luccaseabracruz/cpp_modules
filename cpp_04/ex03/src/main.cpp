@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 21:02:11 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 10:59:02 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 13:36:29 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,22 @@
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 
-static void	printHeader(const std::string& title)
+static void	printHeader(const std::string& title, int headerType)
 {
-	std::cout << "========================================\n";
-	std::cout << title << '\n';
-	std::cout << "========================================\n";
+	if (headerType == 0)
+	{
+		std::cout << "========================================\n";
+		std::cout << title << '\n';
+		std::cout << "========================================\n";
+	}
+	else
+	{
+		std::cout << "=== [" << title << "] ===\n";
+	}
 }
 
 static void runSubjectTest(void)
 {
-	printHeader("Subject Test");
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -52,7 +58,6 @@ static void runSubjectTest(void)
 
 static int	testMateriaSourceCapacity(void)
 {
-	printHeader("Materia Source Capacity");
 	IMateriaSource	*src = new MateriaSource;
 
 	src->learnMateria(new Ice());
@@ -73,7 +78,6 @@ static int	testMateriaSourceCapacity(void)
 
 static int	testCharacterInvalidIndexes(void)
 {
-	printHeader("Character Invalid Indexes");
 	Character	*tony = new Character("Tony");
 	Character	*rodney = new Character("Rodney");
 
@@ -90,7 +94,6 @@ static int	testCharacterInvalidIndexes(void)
 
 static int	testCharacterInventoryCapacity(void)
 {
-	printHeader("Character Inventory Capacity");
 	IMateriaSource	*src = new MateriaSource;
 	Character	*tony = new Character("Tony");
 	Character	*rodney = new Character("Rodney");
@@ -118,25 +121,77 @@ static int	testCharacterInventoryCapacity(void)
 	return (0);
 }
 
-static int	runLimitTests(void)
+static int	testDeepCopy(void)
 {
+	IMateriaSource	*src;
+	IMateriaSource	*copy;
+	AMateria		*tmp;
+	Character		*tony;
+	Character		*roodney;
+	int				status = 0;
+
+	src = new MateriaSource();
+	copy = new MateriaSource();
+	*copy = *src;
+	src->learnMateria(new Ice());
+	copy->learnMateria(new Cure());
+	tmp = src->createMateria("cure");
+	if (tmp)
+	{
+		std::cout << "Error: testDeepCopy(): shallow copy detected: MateriaSource class.\n";
+		status = -1;
+	}
+	tony = new	Character("Tony");
+	roodney = new	Character("Roodney");
+	tmp = src->createMateria("ice");
+	// tmp->use(*roodney);
+	delete	tmp;
+	delete	src;
+	delete	copy;
+	delete	tony;
+	delete	roodney;
+	return (status);
+}
+
+static int	runMyTests(void)
+{
+	printHeader("Materia Source Capacity", 1)
 	if (testMateriaSourceCapacity() != 0)
+	{
+		std::cout << ">>> Test Materia Source Capacity ----> FAILED";
 		return (-1);
+	}
+	printHeader("Character Invalid Indexes", 1)
 	if (testCharacterInvalidIndexes() != 0)
+	{
+		std::cout << ">>> Test Character Invalid Indexes ----> FAILED";
 		return (-1);
+	}
+	printHeader("Character Inventory Capacity", 1)
 	if (testCharacterInventoryCapacity() != 0)
+	{
+		std::cout << ">>> Test Character Inventory Capacity ----> FAILED";
 		return (-1);
+	}
+	printHeader("Deep Copy", 1)
+	if (testDeepCopy() != 0)
+	{
+		std::cout << ">>> Test Deep Copy ----> FAILED";
+		return (-1);
+	}
 	return (0);
 }
 
 int main()
 {
+	printHeader("Subject Test", 0);
 	runSubjectTest();
-	if (runLimitTests() != 0)
+	printHeader("My Tests", 0);
+	if (runMyTests() != 0)
 	{
-		std::cout << ">>> Test Limits: FAILURE... :(\n";
+		std::cout << ">>>>> My Tests: FAILURE... :(\n";
 		return (1);
 	}
-	std::cout << ">>> Test Limits: SUCESS!!! :)\n";
+	std::cout << ">>>>> My Tests: SUCESS!!! :)\n";
 	return (0);
 }
