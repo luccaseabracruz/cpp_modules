@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 21:02:11 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 13:36:29 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 13:40:50 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	printHeader(const std::string& title, int headerType)
 	}
 	else
 	{
-		std::cout << "=== [" << title << "] ===\n";
+		std::cout << "===== [" << title << "]\n";
 	}
 }
 
@@ -144,7 +144,7 @@ static int	testDeepCopy(void)
 	tony = new	Character("Tony");
 	roodney = new	Character("Roodney");
 	tmp = src->createMateria("ice");
-	// tmp->use(*roodney);
+	tmp->use(*roodney);
 	delete	tmp;
 	delete	src;
 	delete	copy;
@@ -155,25 +155,25 @@ static int	testDeepCopy(void)
 
 static int	runMyTests(void)
 {
-	printHeader("Materia Source Capacity", 1)
+	printHeader("Materia Source Capacity", 1);;
 	if (testMateriaSourceCapacity() != 0)
 	{
 		std::cout << ">>> Test Materia Source Capacity ----> FAILED";
 		return (-1);
 	}
-	printHeader("Character Invalid Indexes", 1)
+	printHeader("Character Invalid Indexes", 1);
 	if (testCharacterInvalidIndexes() != 0)
 	{
 		std::cout << ">>> Test Character Invalid Indexes ----> FAILED";
 		return (-1);
 	}
-	printHeader("Character Inventory Capacity", 1)
+	printHeader("Character Inventory Capacity", 1);
 	if (testCharacterInventoryCapacity() != 0)
 	{
 		std::cout << ">>> Test Character Inventory Capacity ----> FAILED";
 		return (-1);
 	}
-	printHeader("Deep Copy", 1)
+	printHeader("Deep Copy", 1);
 	if (testDeepCopy() != 0)
 	{
 		std::cout << ">>> Test Deep Copy ----> FAILED";
