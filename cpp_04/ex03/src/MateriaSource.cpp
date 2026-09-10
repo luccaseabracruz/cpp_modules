@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 14:38:21 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 13:25:07 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 15:13:09 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	MateriaSource::learnMateria(AMateria *materia)
 			return ;
 		}
 	}
-	delete materia;
 }
 
 AMateria	*MateriaSource::createMateria(std::string const & type) const
