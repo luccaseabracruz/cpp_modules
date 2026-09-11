@@ -1,288 +1,272 @@
 *This project has been created as part of the 42 curriculum by lseabra-.*
 
-# C++ - Module 03
+# C++ - Module 04
 
 ## Description
-This module introduces **Inheritance**, one of the fundamental pillars of Object-Oriented Programming. While Modules 00-01 covered classes and dynamic references, and Module 02 focused on proper object design and operator overloading, Module 03 shows how to build hierarchies of related classes that share code and behavior.
+
+This module introduces subtype polymorphism, abstract classes, and interfaces.
+It builds on inheritance from Module 03 and focuses on the difference between a
+class's static type and the dynamic type of the object it refers to.
 
 In this module, you will learn:
-- how to extend a base class with a derived class (single inheritance),
-- how to properly chain constructors and destructors across inheritance levels,
-- how to override and specialize member functions in derived classes,
-- how derived classes inherit member attributes and can initialize them differently,
-- the diamond problem that arises from multiple inheritance,
-- virtual inheritance as a solution to the diamond problem.
+- how virtual functions select the most-derived implementation at runtime;
+- why polymorphic base classes need virtual destructors;
+- how to implement deep copy when a class owns dynamically allocated state;
+- how pure virtual functions make a class abstract;
+- how pure abstract classes are commonly used as interfaces in C++98;
+- how to model ownership explicitly when classes exchange polymorphic pointers.
 
-The module is about understanding relationships:
-- When should a class inherit from another, and when should it compose?
-- How do I ensure the base class is always properly initialized before the derived class runs?
-- How do I override a method while still respecting the contract of the base class?
-- What happens when inheritance forms a diamond, and how do I resolve it?
+The module is about contracts and lifetime:
+- When should a base member function be virtual?
+- Who owns an object passed through a base-class pointer?
+- How can a copy preserve behavior without sharing owned resources?
+- How do interfaces express behavior without providing a concrete object?
 
-The module has 4 exercises:
+### The module has 4 exercises:
 
 | Exercise | Name | Topics | Description |
 |---|---|---|---|
-| ex00 | Aaaaand... OPEN! | classes, constructors, destructors, member functions | Build the ClapTrap base class with proper initialization and member functions. |
-| ex01 | Serena, my love! | single inheritance, constructor chaining, method specialization | Create ScavTrap, which inherits from ClapTrap with different default values and abilities. |
-| ex02 | Repetitive work | inheritance patterns, multiple derived classes | Create FlagTrap (FragTrap), another ClapTrap derivative with its own special ability. |
-| ex03 | Now it's weird! | multiple inheritance, the diamond problem, virtual inheritance | Implement DiamondTrap, which inherits from both ScavTrap and FlagTrap, handling the diamond problem.
+| ex00 | Polymorphism | virtual functions, virtual destructors | Build Animal, Dog, Cat, WrongAnimal, and WrongCat to observe dynamic dispatch. |
+| ex01 | I don't want to set the world on fire | composition, dynamic ownership, deep copy | Add a Brain to Dog and Cat and manage polymorphic animals without leaks. |
+| ex02 | Abstract class | pure virtual functions | Make Animal abstract so it cannot be instantiated directly. |
+| ex03 | Interface & recap | interfaces, cloning, ownership, deep copy | Implement AMateria, Character, Ice, Cure, and MateriaSource. |
 
 ## The story arc of the module
 
-The exercises are designed as a gradual progression in understanding inheritance:
+The central challenge of this module is learning that runtime polymorphism is
+only useful when object lifetime and ownership are correct. The exercises
+explore how a common interface can support different concrete behaviors, how
+resources survive copying, and how abstract classes prevent invalid designs.
 
-1. **ex00**: Build the foundation
-   - Create ClapTrap with proper construction, member functions, and state management.
-   - This is the base that all subsequent classes will inherit from.
-   - Understand the orthodox canonical form in the context of base classes.
+### ex00: Polymorphism
 
-2. **ex01-02**: Master single inheritance
-   - Learn how to properly derive a class and initialize the parent.
-   - Understand that derived classes inherit attributes and must specialize their values.
-   - See how constructor chaining (base → derived) and destructor order (derived → base) work.
-   - Realize that overriding methods allows derived classes to behave differently.
-   - Repeat the pattern with FlagTrap to reinforce the concepts.
+**Goal**: Demonstrate dynamic dispatch and the need for virtual destructors.
 
-3. **ex03**: Confront the diamond problem
-   - Inherit from two classes that both inherit from the same base (ClapTrap).
-   - Discover that this creates ambiguity: is there one ClapTrap or two?
-   - Use virtual inheritance to ensure only one instance of the shared base exists.
-   - Understand how to use the scope resolution operator (`::`) to disambiguate member access.
+**What the exercise is about**:
+- Store Dog and Cat objects behind `Animal*` pointers.
+- Override `makeSound()` so the dynamic type controls the result.
+- Compare the correct hierarchy with WrongAnimal and WrongCat, where the
+  non-virtual function prevents dynamic dispatch.
+- Delete derived objects through base pointers and verify destructor behavior.
 
-This progression teaches that inheritance is about creating *is-a* relationships and reusing code, but it also introduces subtle design challenges that C++ forces you to handle explicitly.
+### ex01: I don't want to set the world on fire
+
+**Goal**: Manage owned dynamic state in a polymorphic hierarchy.
+
+**What the exercise is about**:
+- Give every Dog and Cat a dynamically allocated Brain containing 100 ideas.
+- Release the Brain in the derived destructor.
+- Implement the Orthodox Canonical Form without shallow-copying the Brain.
+- Delete a mixed array of animals through `Animal*` and verify the complete
+  destructor chain.
+
+### ex02: Abstract class
+
+**Goal**: Prevent meaningless Animal instances.
+
+**What the exercise is about**:
+- Make Animal abstract with a pure virtual `makeSound()`.
+- Keep Dog and Cat concrete by overriding the pure virtual function.
+- Preserve polymorphic deletion through the virtual Animal destructor.
+
+### ex03: Interface & recap
+
+**Goal**: Combine interfaces, polymorphic cloning, fixed-size inventories, and
+deep-copy ownership.
+
+**What the exercise is about**:
+- Use pure abstract classes as C++98 interfaces.
+- Store heterogeneous `AMateria` objects behind base pointers.
+- Implement Ice and Cure with polymorphic `clone()` and `use()` behavior.
+- Make Character own at most four Materias and deep-copy them.
+- Make MateriaSource store at most four cloned templates and create new clones
+  by type.
+- Handle unknown types, invalid indexes, capacity limits, copy assignment, and
+  ownership transfers without leaks.
+
+Together, the exercises develop a practical understanding of subtype
+polymorphism, abstract interfaces, deep copying, and explicit ownership. The
+important question is not only which function runs, but also which object owns
+each resource and exactly when that resource is destroyed.
 
 ## Instructions
+
 ### Requirements
+
 - Compile with `c++` and the flags `-Wall -Wextra -Werror`.
 - Code must still compile with `-std=c++98`.
-- Class names in `UpperCamelCase`; a class file is named after the class (`ClassName.hpp`, `ClassName.cpp`).
-- Header files must be self-contained (include their own dependencies) and protected with include guards.
-- No implementation in header files, except for function templates (not used in this module).
-- Forbidden: `*printf()`, `*alloc()`, `free()`, `using namespace ...`, `friend`.
-- Forbidden until Module 08/09: STL containers (`vector`, `list`, `map`, ...) and `<algorithm>`.
-- No external libraries (Boost, C++11 and later included).
-- Any memory allocated with `new` must be freed (no leaks).
-- From Module 02 onwards: classes must follow the Orthodox Canonical Form (default constructor, copy constructor, copy assignment operator, destructor), except where explicitly stated otherwise.
+- Class names use `UpperCamelCase`; class files are named after their classes.
+- Header files must be self-contained and protected by include guards.
+- No implementations belong in headers, except function templates.
+- Forbidden: `*printf()`, `*alloc()`, `free()`, `using namespace ...`, and
+  `friend`.
+- STL containers and `<algorithm>` are forbidden until Modules 08 and 09.
+- Every allocation performed with `new` must have a clear owner and must be
+  released exactly once.
+- From Module 02 onward, classes follow the Orthodox Canonical Form unless the
+  subject explicitly says otherwise.
+- Every exercise should include more complete tests than the examples in the
+  subject.
 
 ### How to Run
-In every exercise directory, run the following in bash or similar shell:
+
+In each exercise directory, run:
 
 ```bash
 make
 ```
 
-To test, run the exercise executable generated by `make`. You can check the executable name in the `NAME` variable inside each Makefile.
+The executable name is defined by the `NAME` variable in that exercise's
+Makefile. The Makefiles generally support:
 
-In the Makefile, the common commands are:
-- `make` or `make all`: compile the program.
-- `make re`: clean object files and the executable, then compile everything again.
-- `make clean`: remove object files.
+- `make` or `make all`: build the executable;
+- `make re`: remove generated files and rebuild;
+- `make clean`: remove object files;
 - `make fclean`: remove object files and the executable.
 
 ## Core Concepts
 
-### Single Inheritance
-- A derived class (`Child`) inherits from a base class (`Parent`).
-- The derived class automatically has access to all public and protected members of the base class.
-- The derived class can override methods to specialize behavior.
-- Example: `ScavTrap` inherits from `ClapTrap` and overrides the `attack()` method.
+### Subtype Polymorphism
 
-### Constructor and Destructor Chaining
-- When a derived class is constructed, the base class constructor must be called first.
-- In C++, this is done via the member initialization list: `Child::Child() : Parent(args) { ... }`
-- Destruction happens in reverse order: the derived destructor runs first, then the base destructor.
-- This ensures resources are acquired in the right order and released in the opposite order (RAII principle).
+A base pointer or reference can refer to an object of a derived class. When a
+member function is virtual, the implementation selected at runtime is the one
+belonging to the object's dynamic type, not merely the pointer's static type.
 
-### Method Overriding
-- A derived class can define a method with the same signature as a base class method.
-- The derived version shadows (hides) the base version.
-- To call the base version explicitly, use the scope resolution operator: `Parent::method()`.
+For example, an `Animal*` pointing to a `Dog` calls `Dog::makeSound()` when
+`makeSound()` is virtual. Without `virtual`, the call is resolved from the
+static type and calls the base implementation instead.
 
-### Protected Members
-- In a base class, `protected` members are accessible to derived classes but not to outside code.
-- This allows derived classes to access and modify inherited attributes without exposing them publicly.
-- ClapTrap uses `protected` for its attributes so that ScavTrap and FlagTrap can access them.
+### Virtual Destructors
 
-### Multiple Inheritance and the Diamond Problem
-- A class can inherit from multiple parent classes: `class Child : public Parent1, public Parent2`.
-- If both Parent1 and Parent2 inherit from a common base `class Base`, then `Child` has two copies of `Base`.
-- This is the "diamond problem": the inheritance diagram forms a diamond shape.
-- Example: `DiamondTrap` inherits from `ScavTrap` and `FlagTrap`, which both inherit from `ClapTrap`.
-- Without virtual inheritance, there would be two separate `ClapTrap` instances inside one `DiamondTrap`.
-- The path to access a `ClapTrap` resource is ambiguous, generating a compiler error.
+If a derived object can be deleted through a base pointer, the base destructor
+must be virtual. Otherwise, deleting an `Animal*` that points to a Dog may skip
+the Dog destructor and leak resources owned by Dog.
 
-### Virtual Inheritance
-- Mark an inheritance as `virtual` to ensure the shared base class exists only once.
-- Syntax: `class Derived : virtual public Base { ... }`
-- In ex03, both ScavTrap and FlagTrap inherit from ClapTrap using `virtual public`.
-- DiamondTrap then has only one ClapTrap instance, eliminating ambiguity.
-- Virtual inheritance requires careful attention to constructor initialization order.
+The expected destruction order is the reverse of construction: derived
+destructor first, then base destructor. This is especially important in ex01,
+where Dog and Cat own a dynamically allocated Brain.
 
-### Access Specifiers in Inheritance
-- `public` inheritance: public members of the base stay public in the derived class.
-- `protected` inheritance: public members of the base become protected in the derived class.
-- `private` inheritance: all base members become private in the derived class (rarely used).
-- All exercises use `public` inheritance.
+### Object Slicing
 
-### The Scope Resolution Operator (`::`).
-- Used to explicitly access a member from a specific class.
-- Example: `ClapTrap::name_` accesses the `name_` from ClapTrap, not from DiamondTrap.
-- Essential in DiamondTrap to distinguish between `ClapTrap::name_` and `DiamondTrap::name_`.
+Polymorphism requires pointers or references. Copying a derived object into a
+base object by value copies only the base subobject and slices away the derived
+state and behavior. The ex00 and ex01 tests use base pointers so the complete
+dynamic object remains intact.
 
-## Exercise Breakdown
+### Abstract Classes
 
-### ex00: Aaaaand... OPEN!
-**Goal**: Build the foundation class that all others will inherit from.
+An abstract class has at least one pure virtual function, declared with `= 0`.
+It cannot be instantiated directly. Derived classes become concrete only after
+implementing every inherited pure virtual function.
 
-**What was learned**:
-- How to design a base class with proper attributes and member functions.
-- The role of constructors, destructors, and copy semantics in a class that will be inherited.
-- How to protect internal state with access modifiers.
+In ex02, `Animal` becomes abstract because `makeSound()` is pure virtual. Dog
+and Cat provide concrete implementations while remaining usable through
+`Animal*`.
 
-**Key implementation notes**:
-- ClapTrap stores name, hitPoints, energyPoints, and attackDamage.
-- Use `protected` instead of `private` so derived classes can access these attributes.
-- Implement guard logic to prevent invalid state (e.g., hitPoints < 0, operations without energy).
-- Each action (attack, takeDamage, beRepaired) must print a message describing what happened.
+### Interfaces in C++98
 
-### ex01: Serena, my love!
-**Goal**: Understand how inheritance works and how to properly chain constructors.
+C++98 has no dedicated interface keyword. A pure abstract class is commonly
+used as an interface: it exposes a contract through pure virtual functions and
+has no directly constructible implementation.
 
-**What you learn**:
-- How to define a derived class and initialize its parent.
-- How to override methods to specialize behavior.
-- The order of construction and destruction across inheritance levels.
-- How derived classes can have different default values for inherited attributes.
+In ex03, `ICharacter` and `IMateriaSource` define behavior while `Character`
+and `MateriaSource` provide the implementation. Their destructors are virtual
+so implementations can safely be deleted through interface pointers.
 
-**Key implementation notes**:
-- ScavTrap inherits from ClapTrap with different initial values: HP(100), EP(50), AD(20).
-- The copy constructor must call the base copy constructor.
-- ScavTrap overrides the `attack()` method to print a different message.
-- ScavTrap has its own special ability: `guardGate()`.
-- Tests must clearly show the construction/destruction order: base then derived during construction, reverse during destruction.
+### Clone Pattern
 
-### ex02: Repetitive work
-**Goal**: Reinforce the inheritance pattern by creating another derived class.
+`AMateria::clone()` provides polymorphic copying. A base pointer can be cloned
+without knowing whether it points to an Ice, Cure, or another future Materia
+type. Character and MateriaSource use this operation to create independent
+objects instead of copying only the base subobject.
 
-**What you learn**:
-- Repetition solidifies understanding of the inheritance pattern.
-- Multiple derived classes from the same base can have different behaviors.
-- How to design tests that verify construction order, copy semantics, and method behavior.
+### Ownership in ex03
 
-**Key implementation notes**:
-- FlagTrap (FragTrap in the subject) is another ClapTrap derivative with different initial values: HP(100), EP(100), AD(30).
-- FlagTrap has its own special ability: `highFivesGuys()`.
-- The implementation pattern is nearly identical to ScavTrap, reinforcing that inheritance is reusable.
-- Tests should include both copy constructor and copy assignment operator to verify the orthodox canonical form is maintained.
+The important ownership boundary is the difference between `learnMateria()`
+and `equip()`.
 
-### ex03: Now it's weird!
-**Goal**: Navigate the complexity of multiple inheritance and the diamond problem.
+#### `learnMateria(AMateria*)`
 
-**What you learn**:
-- How multiple inheritance can lead to ambiguity.
-- Virtual inheritance as a language feature to resolve the diamond problem.
-- How to carefully initialize the shared base in the presence of multiple inheritance paths.
-- How to use the scope resolution operator to access shadowed members.
+The subject says that the Materia is copied and stored so it can be cloned
+later. This implementation follows that wording literally:
 
-**Key implementation notes**:
-- DiamondTrap inherits from both ScavTrap and FlagTrap (which both inherit from ClapTrap).
-- Both ScavTrap and FlagTrap must use `virtual public` inheritance from ClapTrap.
-- DiamondTrap has:
-  - A private `name_` attribute (different from ClapTrap's `name_`).
-  - HP and AD from FlagTrap (100, 30).
-  - EP from ScavTrap (50).
-  - `attack()` from ScavTrap (via override-dominance rules).
-- The copy constructor must handle both parent initializations and the virtual base.
-- `whoAmI()` prints both the DiamondTrap name and the ClapTrap name (accessed via `ClapTrap::name_`).
-- Tests must verify that ClapTrap is constructed only once and that all abilities work correctly.
+- `MateriaSource` calls `clone()` and stores the clone;
+- it does not store or delete the pointer passed by the caller;
+- the caller retains ownership of the original pointer whether the source has
+  capacity or is already full;
+- the caller must delete that original pointer.
+
+The suggested subject main uses `new Ice()` and `new Cure()` without deleting
+those arguments, which leaks under this literal copying interpretation. The
+suggested main tests were modified to retain the original pointers and delete
+them after calling `learnMateria()`.
+
+#### `equip(AMateria*)`
+
+`createMateria()` returns a newly cloned object with no other owner. On a
+successful `equip()`, Character stores the pointer and takes responsibility
+for deleting it. If the inventory is full or the pointer is null, `equip()` is
+a no-op; the caller remains responsible for any non-null pointer rejected by
+the Character.
+
+#### `unequip(int)`
+
+`unequip()` clears a slot but never deletes the Materia. The caller must save
+the pointer before unequipping and later delete it, or otherwise transfer it
+to a new owner. Character only deletes Materias that remain in its inventory
+when it is destroyed.
+
+This split keeps ownership explicit and avoids both leaks and double deletes.
 
 ## Common Pitfalls
 
-### Forgetting Virtual Inheritance
-- If ScavTrap and FlagTrap inherit from ClapTrap without `virtual`, DiamondTrap will have two copies of ClapTrap.
-- This leads to ambiguity: which `hitPoints_` are you referring to?
-- Always use `virtual public` when designing classes that may be used in multiple inheritance.
+### Missing Virtual Destructors
+Deleting through a non-virtual base destructor can skip derived cleanup. Any
+base class intended for polymorphic use should have a virtual destructor.
 
-### Not Initializing the Virtual Base
-- In a virtual inheritance hierarchy, the most-derived class (DiamondTrap) must explicitly initialize the virtual base (ClapTrap) in its constructor's initializer list.
-- If DiamondTrap doesn't call `ClapTrap(...)` in its initializer list, the virtual base constructor may not run correctly.
+### Shallow Copy of Owned Pointers
+Copying a Brain* or AMateria* address creates two owners of one allocation. The
+first destructor then leaves the second object with a dangling pointer. Copy
+the pointed-to object with its virtual clone operation instead.
 
-### Shadowing Attributes
-- DiamondTrap has its own `name_` attribute, separate from `ClapTrap::name_`.
-- Accessing `name_` without a scope qualifier will use DiamondTrap's version.
-- To access ClapTrap's `name_`, use `ClapTrap::name_`.
+### Confusing Static and Dynamic Type
+A base pointer does not by itself guarantee dynamic dispatch. The called member
+function must be virtual, and the derived class must override it with the same
+signature.
 
-### Not Overriding the Copy Assignment Operator
-- If you have a class with derived classes, the base class copy assignment operator is not automatically correct for derived classes.
-- Each class (including derived ones) should implement its own copy assignment operator that handles all members correctly.
+## References
 
-### Assuming Destructor Order
-- Destructors are called in reverse order of construction.
-- In DiamondTrap, the order is: DiamondTrap dtor → ScavTrap dtor → FlagTrap dtor → ClapTrap dtor.
-- Tests should verify this order by checking console output.
+- [cppreference.com - virtual function specifier](https://en.cppreference.com/w/cpp/language/virtual)
+- [cppreference.com - abstract classes](https://en.cppreference.com/w/cpp/language/abstract_class)
+- [cppreference.com - derived classes and virtual bases](https://en.cppreference.com/w/cpp/language/derived_class)
+- [cppreference.com - object slicing](https://en.cppreference.com/w/cpp/language/object#Object_slicing)
+- [Microsoft Learn - Abstract classes (C++)](https://learn.microsoft.com/en-us/cpp/cpp/cpp/abstract-classes-cpp)
+- [GeeksforGeeks - Virtual functions in C++](https://www.geeksforgeeks.org/cpp/virtual-function-cpp/)
+- [GeeksforGeeks - Object slicing in C++](https://www.geeksforgeeks.org/cpp/object-slicing-in-c/)
+- [GeeksforGeeks - Virtual destructors](https://www.geeksforgeeks.org/cpp/when-to-use-virtual-destructors-in-cpp/)
+- [Lei Mao's Log Book - C++ virtual table](https://leimao.github.io/blog/CPP-Virtual-Table/)
 
-## Testing Strategy
+## AI Usage
 
-Each exercise includes a `main.cpp` with comprehensive tests covering:
+AI was used during this project as a tutor and support tool, specifically for:
+- reviewing subtype polymorphism and virtual destructor behavior;
+- discussing deep-copy ownership in C++98;
+- examining the ambiguity between the `learnMateria()` wording and the suggested main;
+- proofreading and restructuring this README.
 
-1. **Construction order**: Create objects and verify the console output shows constructors called in the correct order.
-2. **Copy semantics**: Test copy constructor and copy assignment operator.
-3. **Basic actions**: Call member functions to ensure they work and print correct messages.
-4. **Edge cases**: Test behavior when hit points reach 0, when energy is exhausted, and when operations fail.
-5. **Destruction order**: Exit the program (or go out of scope) and verify destructors are called in the correct order.
-6. **Special abilities**: Verify each class's unique ability works (guardGate, highFivesGuys, whoAmI).
-
-## Resources
-
-### Concepts Used
-
-#### Inheritance Fundamentals
-- **Single Inheritance**: One class inherits from exactly one base class. This is used in ex01 and ex02.
-- **Multiple Inheritance**: One class inherits from multiple base classes. This is used in ex03.
-- **Virtual Inheritance**: A mechanism to ensure a shared base class is instantiated only once in a multiple inheritance hierarchy.
-
-#### Constructor Initialization Lists
-- The member initialization list is the right place to call parent constructors.
-- Syntax: `Derived::Derived(args) : Base(base_args), member_(value) { ... }`
-- In C++98, the initialization list is the *only* way to initialize a base class.
-
-#### Operator Overriding
-- A derived class can override (redefine) a method from the base class.
-- This allows specialization of behavior without changing the base class.
-- Virtual functions (not used in this module but important in C++) enable runtime polymorphism.
-
-#### Memory Ownership in Inheritance
-- Derived class objects are larger than base class objects (they include base members plus their own).
-- A pointer or reference to a base class can point to a derived class object (this is the foundation of polymorphism).
-- Deletion must be done carefully: if deleting a base class pointer that points to a derived object, use virtual destructors (not required in C++98 for these exercises, but important to understand).
-
-#### Design Patterns
-- **Inheritance for specialization**: Different robot types inherit from a common robot base.
-- **Inheritance for code reuse**: ScavTrap and FlagTrap reuse all of ClapTrap's logic.
-- **Template Method Pattern** (implicit): Derived classes override specific methods while inheriting the rest.
-### References
-
-- [cppreference.com - Inheritance](https://en.cppreference.com/w/cpp/language/derived_class)
-- [cppreference.com - Virtual base classes](https://en.cppreference.com/w/cpp/language/derived_class#Virtual_base_classes)
-- [cppreference.com - Member initialization list](https://en.cppreference.com/w/cpp/language/initializer_list)
-- [cppreference.com - Access specifiers](https://en.cppreference.com/w/cpp/language/access)
-- [Understanding the Diamond Problem](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)
-- [Microsoft: C++ Multiple Inheritance](https://docs.microsoft.com/en-us/cpp/cpp/multiple-base-classes)
-- [The C++ Programming Language, 4th Edition - Bjarne Stroustrup](https://www.stroustrup.com/4th_edition.html) (reference, not required)
-
-### AI Usage
-AI was used during this project as a support tool, specifically for:
-- Explaining the diamond problem and virtual inheritance in C++98 context;
-- Validating inheritance design decisions and constructor chaining logic;
-- Proofreading and improving this README.
-
-No AI was used to provide direct solutions to the exercises.
+The implementation decision for `learnMateria()` remains grounded in the
+subject's explicit wording: the source clones the argument, and the caller
+retains responsibility for the original allocation.
 
 ## Final Reflection
 
-Module 03 is where the power of OOP becomes visible. Inheritance allows you to build hierarchies of related types, reuse code across multiple classes, and express relationships between types. However, it also introduces complexity: the diamond problem is a real challenge in C++, and virtual inheritance is a non-trivial solution that requires careful thinking.
+Module 04 connects inheritance to real object lifetime. Virtual functions make
+one interface support many concrete behaviors, while abstract classes and
+interfaces make invalid or incomplete objects harder to create. The harder
+part is ownership: every polymorphic pointer needs a clear owner, and every
+copy of an owning object must create independent resources.
 
-The progression from ex00 (simple base class) through ex01-02 (single inheritance patterns) to ex03 (virtual inheritance and disambiguation) mirrors the journey many C++ developers take when learning these concepts. By the end, you'll have a deep understanding of how inheritance works, what can go wrong, and how C++ tools (virtual inheritance, scope resolution) help you write correct code.
-
-The key takeaway: inheritance is powerful for expressing relationships and reusing code, but it demands careful design and explicit handling of edge cases like the diamond problem.
+The progression from ex00 through ex03 turns those ideas into increasingly
+concrete designs. By the end of the module, the important question is no
+longer only "which function runs?" but also "which object owns this resource,
+and exactly when is it destroyed?"
