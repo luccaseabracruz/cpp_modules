@@ -74,6 +74,8 @@ std::string const & Character::getName(void)	const
 
 void	Character::equip(AMateria* m)
 {
+	if (m == NULL)
+		return ;
 	for (int i = 0; i < INVENTORY_LEN; i++)
 	{
 		if (inventory_[i] == NULL)

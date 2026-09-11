@@ -62,6 +62,8 @@ MateriaSource::~MateriaSource(void)
 
 void	MateriaSource::learnMateria(AMateria *materia)
 {
+	if (materia == NULL)
+		return ;
 	for (int i = 0; i < KNOWN_MATERIAS_LEN; i++)
 	{
 		if (knownMaterias_[i] == NULL)
@@ -72,7 +74,7 @@ void	MateriaSource::learnMateria(AMateria *materia)
 	}
 }
 
-AMateria	*MateriaSource::createMateria(std::string const & type) const
+AMateria	*MateriaSource::createMateria(std::string const & type)
 {
 	for (int i = 0; i < KNOWN_MATERIAS_LEN; i++)
 	{

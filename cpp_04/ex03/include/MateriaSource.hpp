@@ -29,7 +29,7 @@ class MateriaSource: public IMateriaSource
 		~MateriaSource(void);
 
 		void learnMateria(AMateria *materia);
-		AMateria* createMateria(std::string const & type)	const;
+		AMateria* createMateria(std::string const & type);
 };
 
 #endif
