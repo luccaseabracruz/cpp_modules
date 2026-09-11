@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:42:32 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/11 11:19:46 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/11 11:49:34 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "Character.hpp"
+#include "tests.hpp"
 
 static int	testMateriaSourceCopy(void)
 {
@@ -28,6 +29,8 @@ static int	testMateriaSourceCopy(void)
 
 	src->learnMateria(ice);
 	src->learnMateria(cure);
+	delete ice;
+	delete cure;
 	*copy = *src;
 	tmp = copy->createMateria("ice");
 	if (tmp == NULL)
@@ -108,10 +111,13 @@ int	testDeepCopy(void)
 {
 	int	status = 0;
 
+	printHeader("Materia Source Copy", 1);
 	if (testMateriaSourceCopy() != 0)
 		status = -1;
+	printHeader("Materia Source Copy Constructor", 1);
 	if (testMateriaSourceCopyConstructor() != 0)
 		status = -1;
+	printHeader("Character Copy", 1);
 	if (testCharacterCopy() != 0)
 		status = -1;
 	return (status);
