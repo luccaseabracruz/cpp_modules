@@ -40,6 +40,61 @@
 ### Learnings
 - undertand the definition of interface as a convetion name for pure abstract classes.
 - the most challenging thing is to know what classes take ownership of the AMateria pointers and what do not.
+- The subject is inconcistent about the ownership in learnMateria, saying that it copies the the Materia passed as parameter, but in the suggested main, the clone would generate a memory leak for passing new Ice() or new Cure() as param. Here is the complete description for possible readme:
+## Ownership design (Ex03)
+
+### `learnMateria(AMateria*)` — clones, does not take ownership
+
+The subject's own wording is explicit: "Copies the Materia passed as a
+parameter and stores it in memory so it can be cloned later." I implement
+this literally: `learnMateria()` calls `clone()` on its argument and stores
+the clone as the internal template. It never stores or deletes the pointer
+it was given.
+
+This means the caller retains full ownership of whatever they passed in —
+before and after the call, successful or not. That also sidesteps the
+full-array edge case entirely: whether or not `MateriaSource` has room for
+another template, the original object was never the source's responsibility,
+so there's nothing to leak or double-free either way.
+
+The subject's suggested `main()` doesn't reflect this — it calls
+`learnMateria(new Ice())` and never frees the argument, which leaks under a
+literal reading of the spec. I corrected this in my own `main()`:
+
+```c++
+AMateria* ice = new Ice();
+AMateria* cure = new Cure();
+src->learnMateria(ice);
+src->learnMateria(cure);
+// ... use src normally ...
+delete ice;
+delete cure;
+```
+
+### `equip(AMateria*)` — takes ownership on success
+
+Unlike `learnMateria()`, `equip()` is fed the result of `createMateria()`,
+which returns a freshly cloned object with no other owner. Here `Character`
+takes ownership of the pointer it's given (stores it as-is) and becomes
+responsible for `delete`-ing it later, once a free slot was found. If the
+inventory is full, per the subject ("nothing should happen"), `equip()` is a
+no-op: it neither stores nor deletes the pointer, and ownership stays with
+the caller.
+
+### `unequip(int idx)` — never deletes, hands ownership back
+
+Explicit in the subject: `unequip()` must never delete the Materia. It just
+clears the slot; the caller becomes responsible for the pointer again (and
+must have saved it themselves beforehand, since the interface returns void).
+
+### Why the two functions differ
+
+`equip()` and `learnMateria()` look similar but aren't interchangeable:
+`equip()` is handed a *disposable, freshly-owned* object meant to live
+inside the Character. `learnMateria()` is handed a *template* the caller
+may still want to use, reuse, or manage independently — cloning it matches
+that intent and matches the literal spec wording, rather than requiring an
+inferred ownership-transfer contract that the subject never actually states.
 
 ### References
 - [Abstract Classes vs. Interfaces: Decoding the OOP Dilemma in Software Engineering](https://www.quickstart.com/blog/software-engineering/when-and-how-to-use-abstract-class-and-interface/)

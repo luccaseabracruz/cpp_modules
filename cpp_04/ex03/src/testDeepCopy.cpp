@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:42:32 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 15:00:33 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/11 11:19:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@
 
 static int	testMateriaSourceCopy(void)
 {
-	MateriaSource	*source = new MateriaSource;
+	MateriaSource	*src = new MateriaSource;
 	MateriaSource	*copy = new MateriaSource;
 	AMateria		*tmp;
 	int				status = 0;
+	AMateria		*ice = new Ice();
+	AMateria		*cure = new Cure();
 
-	source->learnMateria(new Ice());
-	source->learnMateria(new Cure());
-	*copy = *source;
+	src->learnMateria(ice);
+	src->learnMateria(cure);
+	*copy = *src;
 	tmp = copy->createMateria("ice");
 	if (tmp == NULL)
 	{
@@ -34,7 +36,7 @@ static int	testMateriaSourceCopy(void)
 		status = -1;
 	}
 	delete tmp;
-	delete source;
+	delete src;
 	tmp = copy->createMateria("cure");
 	if (tmp == NULL)
 	{
@@ -48,24 +50,28 @@ static int	testMateriaSourceCopy(void)
 
 static int	testMateriaSourceCopyConstructor(void)
 {
-	MateriaSource	*source = new MateriaSource;
+	MateriaSource	*src = new MateriaSource;
+	MateriaSource	*copy;
 	AMateria		*tmp;
 	int				status = 0;
+	AMateria	*ice = new Ice();
+	AMateria	*cure = new Cure();
 
-	source->learnMateria(new Ice());
-	source->learnMateria(new Cure());
-	{
-		MateriaSource copy(*source);
-		tmp = copy.createMateria("ice");
-		if (tmp == NULL)
-			status = -1;
-		delete tmp;
-		tmp = copy.createMateria("cure");
-		if (tmp == NULL)
-			status = -1;
-		delete tmp;
-	}
-	delete source;
+	src->learnMateria(ice);
+	src->learnMateria(cure);
+	delete ice;
+	delete cure;
+	copy = new MateriaSource(*src);
+	tmp = copy->createMateria("ice");
+	if (tmp == NULL)
+		status = -1;
+	delete tmp;
+	tmp = copy->createMateria("cure");
+	if (tmp == NULL)
+		status = -1;
+	delete tmp;
+	delete src;
+	delete copy;
 	return (status);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 14:38:21 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 15:13:09 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 15:56:23 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	MateriaSource::learnMateria(AMateria *materia)
 	{
 		if (knownMaterias_[i] == NULL)
 		{
-			knownMaterias_[i] = materia;
+			knownMaterias_[i] = materia->clone();
 			return ;
 		}
 	}

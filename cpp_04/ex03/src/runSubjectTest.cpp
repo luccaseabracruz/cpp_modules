@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:38:58 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 14:41:19 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/10 15:57:49 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@
 
 void	runSubjectTest(void)
 {
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	IMateriaSource	*src = new MateriaSource();
+	AMateria		*ice = new Ice();
+	AMateria		*cure = new Cure();
+
+	src->learnMateria(ice);
+	src->learnMateria(cure);
+	delete ice;
+	delete cure;
 
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
