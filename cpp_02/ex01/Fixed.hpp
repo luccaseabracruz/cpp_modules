@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 17:39:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/25 11:17:09 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/15 13:51:54 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Fixed
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int		toInt(void) const;
-	};
+};
 
 //Stream Operators
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
