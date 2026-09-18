@@ -7,11 +7,21 @@ NAME = bureaucrat
 
 # PATHS
 SRC_PATH	= src
+TESTS_PATH	= $(SRC_PATH)/tests
 BUILD_PATH	= build
 INC_PATH	= include
 
 # SOURCES
-SRC =  $(addprefix $(SRC_PATH)/, )
+TESTS = $(addprefix $(TESTS_PATH)/, \
+	testGetters.cpp \
+	testGrade.cpp \
+	testUtils.cpp \
+)
+SRC =  $(addprefix $(SRC_PATH)/, \
+	Bureaucrat.cpp \
+	main.cpp \
+)
+SRC += $(TESTS)
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
@@ -28,7 +38,7 @@ RMDIR = rm -rf
 #                                    RULES                                     #
 #==============================================================================#
 
-vpath %.cpp $(SRC_PATH)
+vpath %.cpp $(SRC_PATH) $(TESTS_PATH)
 
 .PHONY: all clean fclean re
 
