@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:55:39 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/17 16:55:16 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 11:58:41 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	test(const std::string& title, int (*testFun)(), int headerType)
 	printHeader(title, headerType);
 	if (testFun() != 0)
 	{
-		std::cout << "STATUS: FAILED\n";
+		std::cout << "STATUS [" << title << "]FAILED\n";
 		return (-1);
 	}
 	std::cout << "STATUS [" << title << "]: SUCCESS\n";
