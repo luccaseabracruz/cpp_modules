@@ -6,13 +6,28 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:54:32 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 10:49:47 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 12:37:13 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "tests.hpp"
+
+static int	testValidGrade()
+{
+	try
+	{
+		Bureaucrat	a("A", 1);
+		Bureaucrat	b("B", 150);
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return (-1);
+	}
+	return (0);
+}
 
 static int	testTooHighGrade()
 {
@@ -21,10 +36,15 @@ static int	testTooHighGrade()
 		Bureaucrat("Bob", -1);
 		return (-1);
 	}
-	catch(const std::exception& e)
+	catch(const Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 		return (0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Unexpected exception: " << e.what() << '\n';
+		return (-1);
 	}
 }
 
@@ -35,10 +55,15 @@ static int	testTooLowGrade()
 		Bureaucrat("Bob", 151);
 		return (151);
 	}
-	catch(const std::exception& e)
+	catch(const Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << '\n';
 		return (0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Unexpected exception: " << e.what() << '\n';
+		return (-1);
 	}
 }
 
@@ -127,6 +152,7 @@ static int	testBadDecrementGrade()
 int	testGrade()
 {
 	const std::string	testTitles[] = {
+		"Test valid grade",
 		"Test too high grade",
 		"Test too low grade",
 		"Test increment grade",
@@ -135,6 +161,7 @@ int	testGrade()
 		"Test bad decrement grade"
 	};
 	int (*testFunctions[])() = {
+		testValidGrade,
 		testTooHighGrade,
 		testTooLowGrade,
 		testIncrementGrade,
