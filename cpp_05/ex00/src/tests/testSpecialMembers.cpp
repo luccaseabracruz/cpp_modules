@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:43:44 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 12:41:59 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 14:01:44 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	testDefaultContructor()
 	{
 		Bureaucrat b = Bureaucrat();
 		std::cout << "name: " << b.getName() << '\n';
+		std::cout << "grade: " << b.getGrade() << '\n';
 	}
 	catch(std::exception& e)
 	{
