@@ -6,13 +6,13 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/15 18:57:39 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 10:57:22 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): name_(""), grade_(150) {}
+Bureaucrat::Bureaucrat(): name_("NoName"), grade_(150) {}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
 	: name_(name), grade_(grade)
