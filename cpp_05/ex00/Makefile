@@ -13,9 +13,9 @@ INC_PATH	= include
 
 # SOURCES
 TESTS = $(addprefix $(TESTS_PATH)/, \
-	testGetters.cpp \
 	testSpecialMembers.cpp \
 	testGrade.cpp \
+	testMemberFunctions.cpp \
 	testUtils.cpp \
 )
 SRC =  $(addprefix $(SRC_PATH)/, \
