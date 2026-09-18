@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:24:07 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/17 16:50:35 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 11:56:30 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ int	main()
 {
 	const std::string	testTitles[] = {
 		"Test Grade",
-		"Test Getters"
+		"Test Getters",
+		"Test Special Members"
 	};
 	int (*testFunctions[])() = {
 		testGrade,
-		testGetters
+		testGetters,
+		testSpecialMembers
 	};
 	
 	const int	testCount = sizeof(testFunctions) / sizeof(testFunctions[0]);
