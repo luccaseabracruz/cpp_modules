@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:24:07 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 13:48:53 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 14:02:48 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main()
 {
 	const std::string	testTitles[] = {
 		"Test Grade",
-		"Test Getters",
+		"Test Member Functions",
 		"Test Special Members"
 	};
 	int (*testFunctions[])() = {
