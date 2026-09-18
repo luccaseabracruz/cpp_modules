@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:43:44 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 12:31:49 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 12:41:59 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static int	testAssignmentOperator()
 		Bureaucrat a = Bureaucrat(aName, aGrade);
 		Bureaucrat b = Bureaucrat(bName, bGrade);
 		b = a;
+		b = b;
 		if ((aName != bName && a.getName() == b.getName()) || a.getGrade() != b.getGrade())
 			status = -1;
 	}
