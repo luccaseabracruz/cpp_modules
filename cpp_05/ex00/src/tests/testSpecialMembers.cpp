@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 10:43:44 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 12:20:36 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/18 12:31:49 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	testDefaultContructor()
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << e.what();
+		std::cerr << e.what() << '\n';
 		status = -1;
 	}
 	return (status);
@@ -45,7 +45,7 @@ static int	testContructor()
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << e.what();
+		std::cerr << e.what() << '\n';
 		status = -1;
 	}
 	return (status);
@@ -66,7 +66,7 @@ static int	testCopyContructor()
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << e.what();
+		std::cerr << e.what() << '\n';
 		status = -1;
 	}
 	return (status);
@@ -90,7 +90,7 @@ static int	testAssignmentOperator()
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << e.what();
+		std::cerr << e.what() << '\n';
 		status = -1;
 	}
 	return (status);
