@@ -39,7 +39,7 @@ RMDIR = rm -rf
 #                                    RULES                                     #
 #==============================================================================#
 
-vpath %.cpp $(SRC_PATH) $(TESTS_PATH)
+vpath %.cpp $(SRC_PATH)
 
 .PHONY: all clean fclean re
 
