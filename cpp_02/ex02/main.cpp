@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 16:35:00 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/25 10:47:46 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/21 17:58:02 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main( void )
 // 	Fixed	b(a--);
 // 	std::cout << "b is a-- = " << b << std::endl;
 // 	std::cout << "is a == b? " << (a == b) << std::endl;
+// 	std::cout << "is a == a? " << (a == a) << std::endl;
 // 	std::cout << "now, a is " << a << std::endl;
 // 	Fixed	c(--a);
 // 	std::cout << "c is --a = " << c << std::endl;
