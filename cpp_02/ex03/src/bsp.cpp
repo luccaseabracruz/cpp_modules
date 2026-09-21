@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 14:03:56 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/26 14:44:55 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/21 18:35:40 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ static TriangleS	initTriangleT(const Point& a, const Point& b, const Point& c)
 	return (t);
 }
 
+/**
+ * @brief Tests whether a point lies strictly inside a triangle.
+ *
+ * Computes the signed orientation of the point relative to each edge of the
+ * triangle. If the point is on an edge, the orientation is zero and it is
+ * rejected. Otherwise, the point is inside only if all three orientation
+ * values have the same sign, meaning it lies on the same side of every edge.
+ *
+ * @param a First vertex of the triangle.
+ * @param b Second vertex of the triangle.
+ * @param c Third vertex of the triangle.
+ * @param point Point to test.
+ * @return true if the point is strictly inside the triangle, false otherwise.
+ */
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
 	TriangleS	t = initTriangleT(a, b, c);
@@ -44,11 +58,10 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 	float	d1 = (t.bX - t.aX) * (pY - t.aY) - (t.bY - t.aY) * (pX - t.aX);
 	float	d2 = (t.cX - t.bX) * (pY - t.bY) - (t.cY - t.bY) * (pX - t.bX);
 	float	d3 = (t.aX - t.cX) * (pY - t.cY) - (t.aY - t.cY) * (pX - t.cX);
-	bool	findZero = (d1 == 0 || d2 == 0 || d3 == 0);
-	bool	findPos = (d1 > 0 || d2 > 0 || d3 < 0);
-	bool	findNeg = (d1 < 0 || d2 < 0 || d3 < 0);
 
-	if (findZero || (findPos && findNeg))
+	if (d1 == 0 || d2 == 0 || d3 == 0)
 		return (false);
-	return (true);
+	else if ((d1 > 0 && d2 > 0 && d3 > 0) || (d1 < 0 && d2 < 0 && d3 < 0))
+		return (true);
+	return (false);
 }
