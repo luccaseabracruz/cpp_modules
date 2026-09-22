@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
+#    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/27 11:08:36 by lucca             #+#    #+#              #
-#    Updated: 2026/08/29 10:37:34 by lucca            ###   ########.fr        #
+#    Updated: 2026/09/22 15:30:39 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,21 @@ NAME = flag_trap
 BUILD_PATH	= build
 INC_PATH	= include
 SRC_PATH	= src
+TESTS_PATH	= $(SRC_PATH)/tests
 
 # SOURCES
+TESTS = $(addprefix $(TESTS_PATH)/, \
+	testClapTrap.cpp \
+	testScavTrap.cpp \
+	testFlagTrap.cpp \
+)
 SRC = $(addprefix $(SRC_PATH)/, \
 	ClapTrap.cpp \
 	FlagTrap.cpp \
 	main.cpp \
 	ScavTrap.cpp \
 )
+SRC += $(TESTS)
 
 OBJ = $(addprefix $(BUILD_PATH)/,$(notdir $(SRC:.cpp=.o)))
 
@@ -48,8 +55,8 @@ RMDIR	= rm -rf
 #==============================================================================#
 
 .PHONY: all clean fclean re
-
-vpath %.cpp $(SRC_PATH)
+vpath %.cpp $(SRC_PATH) $(TESTS_PATH)
+vpath %.cpp $(SRC_PATH) $(TESTS)
 
 all: $(NAME)
 	

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   tests.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/27 10:52:04 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/22 15:31:48 by lseabra-         ###   ########.fr       */
+/*   Created: 2026/09/22 15:30:00 by lseabra-          #+#    #+#             */
+/*   Updated: 2026/09/22 15:30:00 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include "tests.hpp"
+#ifndef TESTS_HPP
+# define TESTS_HPP
 
-int	main(int argc, char* argv[])
-{
-	if (argc > 1 && std::string(argv[1]) == "-a")
-	{
-		testClapTrap();
-		testScavTrap();
-	}
-	testFlagTrap();
-	return (0);
-}
+# include <string>
+
+void	printSection(const std::string& title);
+void	printHeader(const std::string& title);
+void	testClapTrap(void);
+void	testScavTrap(void);
+void	testFlagTrap(void);
+
+#endif
