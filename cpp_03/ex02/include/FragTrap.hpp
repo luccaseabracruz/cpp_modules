@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 18:20:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/31 10:48:07 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/22 17:29:49 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAGTRAP_HPP
-# define FLAGTRAP_HPP
+#ifndef FragTRAP_HPP
+# define FragTRAP_HPP
 
 #include <iostream>
 #include "ClapTrap.hpp"
@@ -19,20 +19,20 @@
 //============================================================================//
 //                                  MACROS                                    //
 //============================================================================//
-# define FT_PREFIX "[FlagTrap] "
+# define FT_PREFIX "[FragTrap] "
 
 //============================================================================//
 //                                  CLASSES                                   //
 //============================================================================//
-class	FlagTrap: public ClapTrap
+class	FragTrap: public ClapTrap
 {
 	public:
 		// Special Member functions
-		FlagTrap(void);
-		FlagTrap(const std::string& name);
-		FlagTrap(const FlagTrap& other);
-		FlagTrap&	operator=(const FlagTrap& other);
-		~FlagTrap(void);
+		FragTrap(void);
+		FragTrap(const std::string& name);
+		FragTrap(const FragTrap& other);
+		FragTrap&	operator=(const FragTrap& other);
+		~FragTrap(void);
 
 		// Ability
 		void highFivesGuys(void);

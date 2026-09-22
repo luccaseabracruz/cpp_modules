@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 13:03:59 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/31 18:40:47 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/22 17:30:54 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include "ScavTrap.hpp"
-#include "FlagTrap.hpp"
+#include "FragTrap.hpp"
 
 //============================================================================//
 //                                  MACROS                                    //
@@ -25,7 +25,7 @@
 //============================================================================//
 //                                  CLASSES                                   //
 //============================================================================//
-class	DiamondTrap: public ScavTrap, public FlagTrap
+class	DiamondTrap: public ScavTrap, public FragTrap
 {
 	private:
 		std::string	name_;

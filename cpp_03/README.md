@@ -25,8 +25,8 @@ The module is about understanding relationships:
 |---|---|---|---|
 | ex00 | Aaaaand... OPEN! | classes, constructors, destructors, member functions | Build the ClapTrap base class with proper initialization and member functions. |
 | ex01 | Serena, my love! | single inheritance, constructor chaining, method specialization | Create ScavTrap, which inherits from ClapTrap with different default values and abilities. |
-| ex02 | Repetitive work | inheritance patterns, multiple derived classes | Create FlagTrap (FragTrap), another ClapTrap derivative with its own special ability. |
-| ex03 | Now it's weird! | multiple inheritance, the diamond problem, virtual inheritance | Implement DiamondTrap, which inherits from both ScavTrap and FlagTrap, handling the diamond problem.
+| ex02 | Repetitive work | inheritance patterns, multiple derived classes | Create FragTrap (FragTrap), another ClapTrap derivative with its own special ability. |
+| ex03 | Now it's weird! | multiple inheritance, the diamond problem, virtual inheritance | Implement DiamondTrap, which inherits from both ScavTrap and FragTrap, handling the diamond problem.
 
 ### The story arc of the module
 
@@ -42,7 +42,7 @@ The exercises are designed as a gradual progression in understanding inheritance
    - Understand that derived classes inherit attributes and must specialize their values.
    - See how constructor chaining (base → derived) and destructor order (derived → base) work.
    - Realize that overriding methods allows derived classes to behave differently.
-   - Repeat the pattern with FlagTrap to reinforce the concepts.
+   - Repeat the pattern with FragTrap to reinforce the concepts.
 
 3. **ex03**: Confront the diamond problem
    - Inherit from two classes that both inherit from the same base (ClapTrap).
@@ -93,8 +93,8 @@ This progression teaches that inheritance is about creating *is-a* relationships
 - How to design tests that verify construction order, copy semantics, and method behavior.
 
 **Key implementation notes**:
-- FlagTrap (FragTrap in the subject) is another ClapTrap derivative with different initial values: HP(100), EP(100), AD(30).
-- FlagTrap has its own special ability: `highFivesGuys()`.
+- FragTrap (FragTrap in the subject) is another ClapTrap derivative with different initial values: HP(100), EP(100), AD(30).
+- FragTrap has its own special ability: `highFivesGuys()`.
 - The implementation pattern is nearly identical to ScavTrap, reinforcing that inheritance is reusable.
 - Tests should include both copy constructor and copy assignment operator to verify the orthodox canonical form is maintained.
 
@@ -108,11 +108,11 @@ This progression teaches that inheritance is about creating *is-a* relationships
 - How to use the scope resolution operator to access shadowed members.
 
 **Key implementation notes**:
-- DiamondTrap inherits from both ScavTrap and FlagTrap (which both inherit from ClapTrap).
-- Both ScavTrap and FlagTrap must use `virtual public` inheritance from ClapTrap.
+- DiamondTrap inherits from both ScavTrap and FragTrap (which both inherit from ClapTrap).
+- Both ScavTrap and FragTrap must use `virtual public` inheritance from ClapTrap.
 - DiamondTrap has:
   - A private `name_` attribute (different from ClapTrap's `name_`).
-  - HP and AD from FlagTrap (100, 30).
+  - HP and AD from FragTrap (100, 30).
   - EP from ScavTrap (50).
   - `attack()` from ScavTrap (via override-dominance rules).
 - The copy constructor must handle both parent initializations and the virtual base.
@@ -122,7 +122,7 @@ This progression teaches that inheritance is about creating *is-a* relationships
 
 ## Instructions
 ### Requirements
-- Compile with `c++` and the flags `-Wall -Wextra -Werror`.
+- Compile with `c++` and the Frags `-Wall -Wextra -Werror`.
 - Code must still compile with `-std=c++98`.
 - Class names in `UpperCamelCase`; a class file is named after the class (`ClassName.hpp`, `ClassName.cpp`).
 - Header files must be self-contained (include their own dependencies) and protected with include guards.
@@ -160,11 +160,11 @@ In the Makefile, the common commands are:
 - **Multiple Inheritance** (ex03)
 	- A class can inherit from multiple parent classes: `class Child : public Parent1, public Parent2`.
 	- If both Parent1 and Parent2 inherit from a common base `class Base`, then `Child` has two copies of `Base` (diamond problem).
-	- Example: `DiamondTrap` inherits from `ScavTrap` and `FlagTrap`, which both inherit from `ClapTrap`. Without virtual inheritance, there would be two separate `ClapTrap` instances inside one `DiamondTrap`.
+	- Example: `DiamondTrap` inherits from `ScavTrap` and `FragTrap`, which both inherit from `ClapTrap`. Without virtual inheritance, there would be two separate `ClapTrap` instances inside one `DiamondTrap`.
 - **Virtual Inheritance** (ex03)
 	- Mark an inheritance as `virtual` to ensure the shared base class exists only once. A mechanism to resolve the diamond problem in a multiple inheritance hierarchy.
 	- Syntax: `class Derived : virtual public Base { ... }`
-	- Example: In ex03, both ScavTrap and FlagTrap inherit from ClapTrap using `virtual public`. DiamondTrap then has only one ClapTrap instance, eliminating ambiguity.
+	- Example: In ex03, both ScavTrap and FragTrap inherit from ClapTrap using `virtual public`. DiamondTrap then has only one ClapTrap instance, eliminating ambiguity.
 
 #### Constructor and Destructor Chaining
 - When a derived class is constructed, the base class constructor is called first.
@@ -180,7 +180,7 @@ In the Makefile, the common commands are:
 
 #### Protected Members
 - In a base class, `protected` members are accessible to derived classes but not to outside code, allowing derived classes to access and modify inherited attributes without exposing them publicly.
-- Example: ClapTrap uses `protected` for its attributes so that ScavTrap and FlagTrap can access them.
+- Example: ClapTrap uses `protected` for its attributes so that ScavTrap and FragTrap can access them.
 
 #### The Scope Resolution Operator (`::`)
 - Used to explicitly access a member from a specific class when they have members with the same name, resolving ambiguity.
@@ -188,13 +188,13 @@ In the Makefile, the common commands are:
 
 #### Design Patterns
 - **Inheritance for specialization**: Different classes inherit from a common base class.
-- **Inheritance for code reuse**: ScavTrap and FlagTrap reuse all of ClapTrap's logic.
+- **Inheritance for code reuse**: ScavTrap and FragTrap reuse all of ClapTrap's logic.
 - **Template Method Pattern** (implicit): Derived classes override specific methods while inheriting the rest.
 
 ### Common Pitfalls
 
 #### Forgetting Virtual Inheritance
-- If ScavTrap and FlagTrap inherit from ClapTrap without `virtual`, DiamondTrap will have two copies of ClapTrap.
+- If ScavTrap and FragTrap inherit from ClapTrap without `virtual`, DiamondTrap will have two copies of ClapTrap.
 - This leads to ambiguity: which `hitPoints_` are you referring to?
 - Always use `virtual public` when designing classes that may be used in multiple inheritance.
 

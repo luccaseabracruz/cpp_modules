@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FlagTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 18:21:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/31 15:45:06 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/22 17:45:20 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "FlagTrap.hpp"
+#include "FragTrap.hpp"
 
 //============================================================================//
 //                         SPECIAL MEMBER FUNCTIONS                           //
 //============================================================================//
-FlagTrap::FlagTrap(void): ClapTrap("Noname")
+FragTrap::FragTrap(void): ClapTrap("Noname")
 {
 	std::cout << FT_PREFIX << name_ << " Default Constructor called.\n";
 	hitPoints_ = 100;
@@ -24,7 +24,7 @@ FlagTrap::FlagTrap(void): ClapTrap("Noname")
 	attackDamage_ = 30;
 }
 
-FlagTrap::FlagTrap(const std::string& name): ClapTrap(name)
+FragTrap::FragTrap(const std::string& name): ClapTrap(name)
 {
 	std::cout << FT_PREFIX << name_ << " Constructor called.\n";
 	hitPoints_ = 100;
@@ -32,13 +32,13 @@ FlagTrap::FlagTrap(const std::string& name): ClapTrap(name)
 	attackDamage_ = 30;
 }
 
-FlagTrap::FlagTrap(const FlagTrap& other): ClapTrap()
+FragTrap::FragTrap(const FragTrap& other): ClapTrap()
 {
 	std::cout << FT_PREFIX << name_ << " Copy Constructor called.\n";
 	*this = other;
 }
 
-FlagTrap&	FlagTrap::operator=(const FlagTrap& other)
+FragTrap&	FragTrap::operator=(const FragTrap& other)
 {
 	std::cout << FT_PREFIX << name_ << " Assignment Operator called.\n";
 	if (this != &other)
@@ -51,7 +51,7 @@ FlagTrap&	FlagTrap::operator=(const FlagTrap& other)
 	return (*this);
 }
 
-FlagTrap::~FlagTrap(void)
+FragTrap::~FragTrap(void)
 {
 	std::cout << FT_PREFIX << name_ << " Destructor called.\n";
 }
@@ -59,7 +59,7 @@ FlagTrap::~FlagTrap(void)
 //============================================================================//
 //                                 ABILITY                                    //
 //============================================================================//
-void	FlagTrap::highFivesGuys(void)
+void	FragTrap::highFivesGuys(void)
 {
 	std::cout << "Be kind guys. Give " << FT_PREFIX << name_ << " a HIGH FIVE :)\n";
 }

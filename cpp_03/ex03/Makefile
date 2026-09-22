@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/27 11:08:36 by lucca             #+#    #+#              #
-#    Updated: 2026/09/22 16:04:18 by lseabra-         ###   ########.fr        #
+#    Updated: 2026/09/22 17:30:38 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,13 @@ TESTS_PATH	= $(SRC_PATH)/tests
 TESTS = $(addprefix $(TESTS_PATH)/, \
 	testClapTrap.cpp \
 	testDiamondTrap.cpp \
-	testFlagTrap.cpp \
+	testFragTrap.cpp \
 	testScavTrap.cpp \
 )
 SRC = $(addprefix $(SRC_PATH)/, \
 	ClapTrap.cpp \
 	DiamondTrap.cpp \
-	FlagTrap.cpp \
+	FragTrap.cpp \
 	main.cpp \
 	ScavTrap.cpp \
 )

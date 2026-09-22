@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testFlagTrap.cpp                                   :+:      :+:    :+:   */
+/*   testFragTrap.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/22 15:30:00 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/09/22 15:26:06 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/22 17:40:57 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cassert>
 #include <limits.h>
 #include "tests.hpp"
-#include "FlagTrap.hpp"
+#include "FragTrap.hpp"
 
 //============================================================================//
 //                                  HELPERS                                   //
 //============================================================================//
-static void	assertDefaultState(const FlagTrap& flagTrap)
+static void	assertDefaultState(const FragTrap& fragTrap)
 {
-	assert(flagTrap.getHitPoints() == 100);
-	assert(flagTrap.getEnergyPoints() == 100);
-	assert(flagTrap.getAttackDamage() == 30);
+	assert(fragTrap.getHitPoints() == 100);
+	assert(fragTrap.getEnergyPoints() == 100);
+	assert(fragTrap.getAttackDamage() == 30);
 }
 
 //============================================================================//
@@ -31,11 +31,11 @@ static void	assertDefaultState(const FlagTrap& flagTrap)
 static void	testConstructors(void)
 {
 	printSection("Constructors");
-	FlagTrap defaultTrap;
-	FlagTrap namedTrap("Named FlagTrap");
+	FragTrap defaultTrap;
+	FragTrap namedTrap("Named FragTrap");
 
 	assert(defaultTrap.getName() == "Noname");
-	assert(namedTrap.getName() == "Named FlagTrap");
+	assert(namedTrap.getName() == "Named FragTrap");
 	assertDefaultState(defaultTrap);
 	assertDefaultState(namedTrap);
 }
@@ -43,10 +43,10 @@ static void	testConstructors(void)
 static void	testCopyConstructor(void)
 {
 	printSection("Copy Constructor");
-	FlagTrap original("Original");
+	FragTrap original("Original");
 	original.takeDamage(25);
 	original.attack("Target");
-	FlagTrap copy(original);
+	FragTrap copy(original);
 
 	assert(copy.getName() == original.getName());
 	assert(copy.getHitPoints() == original.getHitPoints());
@@ -57,8 +57,8 @@ static void	testCopyConstructor(void)
 static void	testCopyAssignment(void)
 {
 	printSection("Copy Assignment");
-	FlagTrap original("Original");
-	FlagTrap assigned("Assigned");
+	FragTrap original("Original");
+	FragTrap assigned("Assigned");
 	original.takeDamage(25);
 	original.attack("Target");
 
@@ -77,8 +77,8 @@ static void	testCopyAssignment(void)
 static void	testActions(void)
 {
 	printSection("Actions and Ability");
-	FlagTrap attacker("Attacker");
-	FlagTrap target("Target");
+	FragTrap attacker("Attacker");
+	FragTrap target("Target");
 
 	attacker.attack(target.getName());
 	assert(attacker.getEnergyPoints() == 99);
@@ -93,7 +93,7 @@ static void	testActions(void)
 static void	testEnergyExhaustion(void)
 {
 	printSection("Energy Exhaustion");
-	FlagTrap trap("Energy Trap");
+	FragTrap trap("Energy Trap");
 
 	for (int i = 0; i < 100; ++i)
 		trap.attack("Target");
@@ -105,7 +105,7 @@ static void	testEnergyExhaustion(void)
 static void	testDamageAndDeadBehavior(void)
 {
 	printSection("Damage and Dead Behavior");
-	FlagTrap trap("Damage Trap");
+	FragTrap trap("Damage Trap");
 
 	trap.takeDamage(0);
 	assert(trap.getHitPoints() == 100);
@@ -117,14 +117,14 @@ static void	testDamageAndDeadBehavior(void)
 	trap.beRepaired(50);
 	assert(trap.getHitPoints() == 0);
 
-	FlagTrap overkill("Overkill Trap");
+	FragTrap overkill("Overkill Trap");
 	overkill.takeDamage(UINT_MAX);
 	assert(overkill.getHitPoints() == 0);
 }
 
-void	testFlagTrap(void)
+void	testFragTrap(void)
 {
-	printHeader("Test FlagTrap");
+	printHeader("Test FragTrap");
 	testConstructors();
 	testCopyConstructor();
 	testCopyAssignment();

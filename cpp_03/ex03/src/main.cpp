@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 10:52:04 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/22 16:04:14 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/22 17:31:36 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char* argv[])
 	{
 		testClapTrap();
 		testScavTrap();
-		testFlagTrap();
+		testFragTrap();
 	}
 	testDiamondTrap();
 	return (0);

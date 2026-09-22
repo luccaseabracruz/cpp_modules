@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/27 11:08:36 by lucca             #+#    #+#              #
-#    Updated: 2026/09/22 15:30:39 by lseabra-         ###   ########.fr        #
+#    Updated: 2026/09/22 17:32:43 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 #==============================================================================#
 
 # NAMES
-NAME = flag_trap
+NAME = frag_trap
 
 # PATHS
 BUILD_PATH	= build
@@ -28,11 +28,11 @@ TESTS_PATH	= $(SRC_PATH)/tests
 TESTS = $(addprefix $(TESTS_PATH)/, \
 	testClapTrap.cpp \
 	testScavTrap.cpp \
-	testFlagTrap.cpp \
+	testFragTrap.cpp \
 )
 SRC = $(addprefix $(SRC_PATH)/, \
 	ClapTrap.cpp \
-	FlagTrap.cpp \
+	FragTrap.cpp \
 	main.cpp \
 	ScavTrap.cpp \
 )

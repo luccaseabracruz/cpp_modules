@@ -19,7 +19,7 @@ void	printSection(const std::string& title);
 void	printHeader(const std::string& title);
 void	testClapTrap(void);
 void	testScavTrap(void);
-void	testFlagTrap(void);
+void	testFragTrap(void);
 void	testDiamondTrap(void);
 
 #endif
