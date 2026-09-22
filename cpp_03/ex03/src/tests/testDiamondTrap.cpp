@@ -35,9 +35,9 @@ static void	testConstructors(void)
 	DiamondTrap namedTrap("Named DiamondTrap");
 
 	assert(defaultTrap.getName() == "Noname");
-	assert(defaultTrap.getClapName() == "Noname_clap_name");
+	assert(defaultTrap.ClapTrap::getName() == "Noname_clap_name");
 	assert(namedTrap.getName() == "Named DiamondTrap");
-	assert(namedTrap.getClapName() == "Named DiamondTrap_clap_name");
+	assert(namedTrap.ClapTrap::getName() == "Named DiamondTrap_clap_name");
 	assertDefaultState(defaultTrap);
 	assertDefaultState(namedTrap);
 }
@@ -51,7 +51,7 @@ static void	testCopyConstructor(void)
 	DiamondTrap copy(original);
 
 	assert(copy.getName() == original.getName());
-	assert(copy.getClapName() == original.getClapName());
+	assert(copy.ClapTrap::getName() == original.ClapTrap::getName());
 	assert(copy.getHitPoints() == original.getHitPoints());
 	assert(copy.getEnergyPoints() == original.getEnergyPoints());
 	assert(copy.getAttackDamage() == original.getAttackDamage());
@@ -67,13 +67,13 @@ static void	testCopyAssignment(void)
 
 	assigned = original;
 	assert(assigned.getName() == original.getName());
-	assert(assigned.getClapName() == original.getClapName());
+	assert(assigned.ClapTrap::getName() == original.ClapTrap::getName());
 	assert(assigned.getHitPoints() == 75);
 	assert(assigned.getEnergyPoints() == 49);
 	assert(assigned.getAttackDamage() == 30);
 	assigned.operator=(assigned);
 	assert(assigned.getName() == "Original");
-	assert(assigned.getClapName() == "Original_clap_name");
+	assert(assigned.ClapTrap::getName() == "Original_clap_name");
 	assert(assigned.getHitPoints() == 75);
 	assert(assigned.getEnergyPoints() == 49);
 	assert(assigned.getAttackDamage() == 30);

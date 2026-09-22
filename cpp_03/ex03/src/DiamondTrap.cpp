@@ -81,11 +81,6 @@ std::string	DiamondTrap::getName(void)	const
 	return (DiamondTrap::name_);
 }
 
-std::string	DiamondTrap::getClapName(void)	const
-{
-	return (ClapTrap::name_);
-}
-
 //============================================================================//
 //                                  ABILITY                                   //
 //============================================================================//

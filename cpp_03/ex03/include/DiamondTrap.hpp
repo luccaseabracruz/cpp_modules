@@ -43,7 +43,6 @@ class	DiamondTrap: public ScavTrap, public FragTrap
 
 		// Getters
 		std::string	getName(void)		const;
-		std::string	getClapName(void)	const;
 
 		// Ability
 		void whoAmI(void)	const;
