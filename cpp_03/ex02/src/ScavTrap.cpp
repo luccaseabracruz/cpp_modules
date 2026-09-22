@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 15:40:42 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/29 10:09:25 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/22 14:09:21 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other.getName())
 }
 ScavTrap&	ScavTrap::operator=(const ScavTrap& other)
 {
-	std::cout << ST_PREFIX << name_ << " Copy Asignment Operator called.\n";
 	if (this != &other)
 	{
 		ClapTrap::operator=(other);
+		std::cout << ST_PREFIX << name_ << " Copy Assignment Operator called.\n";
+	}
+	else
+	{
+		std::cout << ST_PREFIX << name_ << " Copy Assignment Operator called.\n";
 	}
 	return (*this);
 }
