@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 11:10:05 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/22 13:34:55 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/22 13:48:21 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,18 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& other)
 {
-	this->name_ = other.getName();
-	std::cout << CT_PREFIX << name_ << " Assignment Operator Constructor called.\n";
-	this->hitPoints_ = other.getHitPoints();
-	this->energyPoints_ = other.getEnergyPoints();
-	this->attackDamage_ = other.getAttackDamage();
+	if (this != &other)
+	{
+		this->name_ = other.getName();
+		std::cout << CT_PREFIX << name_ << " Assignment Operator Constructor called.\n";
+		this->hitPoints_ = other.getHitPoints();
+		this->energyPoints_ = other.getEnergyPoints();
+		this->attackDamage_ = other.getAttackDamage();
+	}
+	else
+	{
+		std::cout << CT_PREFIX << name_ << " Assignment Operator Constructor called.\n";
+	}
 	return (*this);
 }
 
@@ -91,6 +98,11 @@ void	ClapTrap::takeDamage(unsigned int amount)
 }
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	if (hitPoints_ == 0)
+	{
+		std::cout << CT_PREFIX << name_ << " is dead. Impossible to repair.\n";
+		return ;
+	}
 	if (energyPoints_ == 0)
 	{
 		std::cout << CT_PREFIX << name_ << " has no energy to be repaired.\n";

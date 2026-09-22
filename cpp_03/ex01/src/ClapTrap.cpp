@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 11:10:05 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/22 13:34:55 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/22 13:44:58 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,18 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& other)
 {
-	std::cout << CT_PREFIX << name_ << " Assignment Operator Constructor called.\n";
-	this->name_ = other.getName();
-	this->hitPoints_ = other.getHitPoints();
-	this->energyPoints_ = other.getEnergyPoints();
-	this->attackDamage_ = other.getAttackDamage();
+	if (this != &other)
+	{
+		this->name_ = other.getName();
+		std::cout << CT_PREFIX << name_ << " Assignment Operator Constructor called.\n";
+		this->hitPoints_ = other.getHitPoints();
+		this->energyPoints_ = other.getEnergyPoints();
+		this->attackDamage_ = other.getAttackDamage();
+	}
+	else
+	{
+		std::cout << CT_PREFIX << name_ << " Assignment Operator Constructor called.\n";
+	}
 	return (*this);
 }
 
