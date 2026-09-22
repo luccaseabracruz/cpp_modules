@@ -12,18 +12,17 @@
 
 #include <iostream>
 #include <limits.h>
+#include <cassert>
 #include "ClapTrap.hpp"
 
 //============================================================================//
-//                                  DEBUG                                     //
+//                                  HELPERS                                    //
 //============================================================================//
-static void	displayInfo(const ClapTrap& clapTrap)
+static void	assertDefaultState(const ClapTrap& clapTrap)
 {
-	std::cout	<< CT_PREFIX << "INFO\n"
-				<< "Name: " << clapTrap.getName() << '\n'
-				<< "Hit Points: " << clapTrap.getHitPoints() << '\n'
-				<< "Energy Points: " << clapTrap.getEnergyPoints() << '\n'
-				<< "Attack Damage: " << clapTrap.getAttackDamage() << '\n';
+	assert(clapTrap.getHitPoints() == 10);
+	assert(clapTrap.getEnergyPoints() == 10);
+	assert(clapTrap.getAttackDamage() == 0);
 }
 
 static void	printSection(const std::string& title)
@@ -36,11 +35,15 @@ static void	printSection(const std::string& title)
 //============================================================================//
 //                                  TEST                                      //
 //============================================================================//
-static void	testDefaultConstructor(void)
+static void	testConstructors(void)
 {
-	printSection("Test Default Constructor");
-	ClapTrap trap;
-	displayInfo(trap);
+	printSection("Constructors");
+	ClapTrap defaultTrap;
+	ClapTrap namedTrap("Named Trap");
+	assert(defaultTrap.getName() == "Noname");
+	assert(namedTrap.getName() == "Named Trap");
+	assertDefaultState(defaultTrap);
+	assertDefaultState(namedTrap);
 }
 
 static void	testCopyConstructor(void)
@@ -49,8 +52,10 @@ static void	testCopyConstructor(void)
 	ClapTrap original("Trap");
 	ClapTrap copy(original);
 
-	displayInfo(original);
-	displayInfo(copy);
+	assert(copy.getName() == original.getName());
+	assert(copy.getHitPoints() == original.getHitPoints());
+	assert(copy.getEnergyPoints() == original.getEnergyPoints());
+	assert(copy.getAttackDamage() == original.getAttackDamage());
 }
 
 static void	testCopyAssignment(void)
@@ -60,41 +65,69 @@ static void	testCopyAssignment(void)
 	ClapTrap copy;
 
 	copy = original;
-	displayInfo(original);
-	displayInfo(copy);
+	assert(copy.getName() == original.getName());
+	assert(copy.getHitPoints() == original.getHitPoints());
+	assert(copy.getEnergyPoints() == original.getEnergyPoints());
+	assert(copy.getAttackDamage() == original.getAttackDamage());
+	copy.operator=(copy);
+	assert(copy.getName() == "Trap");
 }
 
-static void	testActions(void)
+static void	testDamage(void)
 {
-	printSection("Test Actions");
-	ClapTrap attacker("Trap 1");
-	ClapTrap target("Trap 2");
+	printSection("Damage Boundaries");
+	ClapTrap trap("Damage Trap");
+	trap.takeDamage(0);
+	assert(trap.getHitPoints() == 10);
+	trap.takeDamage(10);
+	assert(trap.getHitPoints() == 0);
+	trap.takeDamage(1);
+	assert(trap.getHitPoints() == 0);
+	ClapTrap overkill("Overkill Trap");
+	overkill.takeDamage(UINT_MAX);
+	assert(overkill.getHitPoints() == 0);
+}
 
-	for (int i = 0; i < 11; ++i)
-	{
-		attacker.attack(target.getName());
-		target.takeDamage(1);
-	}
-	displayInfo(attacker);
-	displayInfo(target);
+static void	testRepair(void)
+{
+	printSection("Repair Energy and Overflow");
+	ClapTrap trap("Repair Trap");
+	trap.takeDamage(5);
+	trap.beRepaired(2);
+	assert(trap.getHitPoints() == 7);
+	assert(trap.getEnergyPoints() == 9);
+	for (int i = 0; i < 9; ++i)
+		trap.beRepaired(0);
+	assert(trap.getEnergyPoints() == 0);
+	trap.beRepaired(1);
+	assert(trap.getHitPoints() == 7);
+	assert(trap.getEnergyPoints() == 0);
 
-	target.attack(attacker.getName());
-	attacker.takeDamage(UINT_MAX);
-	displayInfo(attacker);
-	displayInfo(target);
-	target.beRepaired(1);
-	displayInfo(target);
-	target.beRepaired(UINT_MAX);
-	displayInfo(attacker);
-	displayInfo(target);
+	ClapTrap overflow("Overflow Trap");
+	overflow.takeDamage(1);
+	overflow.beRepaired(UINT_MAX);
+	assert(overflow.getHitPoints() == UINT_MAX);
+}
+
+static void	testDeadBehavior(void)
+{
+	printSection("Dead ClapTrap Behavior");
+	ClapTrap dead("Dead Trap");
+	dead.takeDamage(UINT_MAX);
+	dead.attack("target");
+	dead.beRepaired(1);
+	assert(dead.getHitPoints() == 0);
+	assert(dead.getEnergyPoints() == 10);
 }
 
 int	main(void)
 {
-	testDefaultConstructor();
+	testConstructors();
 	testCopyConstructor();
 	testCopyAssignment();
-	testActions();
+	testDamage();
+	testRepair();
+	testDeadBehavior();
 	std::cout << "SUCCESS :)\n";
 	return (0);
 }
