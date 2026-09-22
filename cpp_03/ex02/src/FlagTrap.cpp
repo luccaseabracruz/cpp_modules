@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 18:21:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/22 15:48:41 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/22 15:50:16 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ FlagTrap&	FlagTrap::operator=(const FlagTrap& other)
 
 FlagTrap::~FlagTrap(void)
 {
-	std::cout << FT_PREFIX << name_ << " Desctructor called.\n";
+	std::cout << FT_PREFIX << name_ << " Destructor called.\n";
 }
 
 //============================================================================//
