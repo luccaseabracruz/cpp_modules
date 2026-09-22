@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 11:10:05 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/27 13:56:38 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/22 13:12:16 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,27 +126,3 @@ unsigned int	ClapTrap::getAttackDamage(void) const
 {
 	return (attackDamage_);
 }
-
-
-//============================================================================//
-//                                 SETTERS                                    //
-//============================================================================//
-// void	ClapTrap::setName(const std::string& name)
-// {
-	
-// }
-
-// void	ClapTrap::setHitPoints(int amount)
-// {
-	
-// }
-
-// void	ClapTrap::setEnergyPoints(int amount)
-// {
-	
-// }
-
-// void	ClapTrap::setAttackDamage(int amount)
-// {
-	
-// }
