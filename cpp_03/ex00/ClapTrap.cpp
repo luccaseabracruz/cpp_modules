@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 11:10:05 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/22 13:20:12 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/22 13:34:55 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << CT_PREFIX << name_ << " has no energy to be repaired.\n";
 		return ;
 	}
+	else
+		energyPoints_--;
 	if (amount > UINT_MAX - hitPoints_)
 		hitPoints_ = UINT_MAX;
 	else

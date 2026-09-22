@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 10:52:04 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/27 16:50:24 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/22 13:27:16 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ static void	testActions(void)
 
 	target.attack(attacker.getName());
 	attacker.takeDamage(UINT_MAX);
+	displayInfo(attacker);
+	displayInfo(target);
 	target.beRepaired(1);
+	displayInfo(target);
 	target.beRepaired(UINT_MAX);
 	displayInfo(attacker);
 	displayInfo(target);
