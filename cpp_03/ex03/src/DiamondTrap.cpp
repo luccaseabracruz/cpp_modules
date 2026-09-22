@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 14:44:53 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/22 18:19:07 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/22 18:22:24 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 	std::cout << DT_PREFIX << DiamondTrap::name_ << " Copy Assignment Operator called.\n";
 	if (this != &other)
 	{
-		ClapTrap::name_ = other.getClapName();
+		ClapTrap::operator=(other);
 		DiamondTrap::name_ = other.getName();
 		hitPoints_ = other.getHitPoints();
 		energyPoints_ = other.getEnergyPoints();
