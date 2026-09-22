@@ -98,6 +98,11 @@ void	ClapTrap::takeDamage(unsigned int amount)
 }
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	if (hitPoints_ == 0)
+	{
+		std::cout << CT_PREFIX << name_ << " is dead. Impossible to repair.\n";
+		return ;
+	}
 	if (energyPoints_ == 0)
 	{
 		std::cout << CT_PREFIX << name_ << " has no energy to be repaired.\n";
