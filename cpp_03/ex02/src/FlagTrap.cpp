@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FlagTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 18:21:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/08/29 10:36:52 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/22 15:48:41 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 //============================================================================//
 FlagTrap::FlagTrap(void): ClapTrap("Noname")
 {
-	std::cout << FT_PREFIX << name_ << " Default Constructor being called.\n";
+	std::cout << FT_PREFIX << name_ << " Default Constructor called.\n";
 	hitPoints_ = 100;
 	energyPoints_ = 100;
 	attackDamage_ = 30;
@@ -26,7 +26,7 @@ FlagTrap::FlagTrap(void): ClapTrap("Noname")
 
 FlagTrap::FlagTrap(const std::string& name): ClapTrap(name)
 {
-	std::cout << FT_PREFIX << name_ << " Constructor being called.\n";
+	std::cout << FT_PREFIX << name_ << " Constructor called.\n";
 	hitPoints_ = 100;
 	energyPoints_ = 100;
 	attackDamage_ = 30;
@@ -34,13 +34,13 @@ FlagTrap::FlagTrap(const std::string& name): ClapTrap(name)
 
 FlagTrap::FlagTrap(const FlagTrap& other): ClapTrap()
 {
-	std::cout << FT_PREFIX << name_ << " Copy Constructor being called.\n";
+	std::cout << FT_PREFIX << name_ << " Copy Constructor called.\n";
 	*this = other;
 }
 
 FlagTrap&	FlagTrap::operator=(const FlagTrap& other)
 {
-	std::cout << FT_PREFIX << name_ << " Assignment Operator being called.\n";
+	std::cout << FT_PREFIX << name_ << " Assignment Operator called.\n";
 	if (this != &other)
 	{
 		this->name_ = other.getName();
@@ -53,7 +53,7 @@ FlagTrap&	FlagTrap::operator=(const FlagTrap& other)
 
 FlagTrap::~FlagTrap(void)
 {
-	std::cout << FT_PREFIX << name_ << " Desctructor being called.\n";
+	std::cout << FT_PREFIX << name_ << " Desctructor called.\n";
 }
 
 //============================================================================//
