@@ -32,7 +32,7 @@ ScavTrap::ScavTrap(const std::string& name): ClapTrap(name)
 	attackDamage_ = 20;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other.getName())
+ScavTrap::ScavTrap(const ScavTrap& other): ClapTrap(other)
 {
 	*this = other;
 	std::cout << ST_PREFIX << name_ << " Copy Constructor called.\n";
