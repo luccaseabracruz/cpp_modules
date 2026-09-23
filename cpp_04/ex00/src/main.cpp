@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 14:57:23 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/23 12:33:33 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/23 13:50:03 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 #include "tests.hpp"
-
-int	test(int (*f)(void), const std::string& title)
-{
-	if (f() != 0)
-	{
-		std::cout << title << ": >>> STATUS: FAIL\n";
-		return (-1);
-	}
-	std::cout << title << ": >>> STATUS: SUCCESS\n";
-	return (0);
-}
 
 int	main(void)
 {

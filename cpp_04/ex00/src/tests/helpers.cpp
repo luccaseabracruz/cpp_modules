@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 10:20:19 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/09/23 12:17:09 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/23 13:50:20 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,15 @@ void	printHeader(const std::string& title)
 	std::cout	<< "===================================================================\n"
 				<< "= " << title << "\n"
 				<< "===================================================================\n";
+}
+
+int	test(int (*f)(void), const std::string& title)
+{
+	if (f() != 0)
+	{
+		std::cout << title << ": >>> STATUS: FAIL\n";
+		return (-1);
+	}
+	std::cout << title << ": >>> STATUS: SUCCESS\n";
+	return (0);
 }
