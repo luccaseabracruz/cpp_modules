@@ -6,12 +6,12 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 14:53:01 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/09/23 15:24:43 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/23 15:27:29 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "AAnimal.hpp"
+#include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "tests.hpp"
