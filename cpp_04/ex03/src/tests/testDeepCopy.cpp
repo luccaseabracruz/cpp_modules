@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testDeepCopy.cpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:42:32 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/11 11:49:34 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/23 15:56:55 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "Character.hpp"
-#include "tests.hpp"
+
+void	printHeader(const std::string& title, int headerType);
 
 static int	testMateriaSourceCopy(void)
 {

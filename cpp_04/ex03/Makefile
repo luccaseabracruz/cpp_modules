@@ -7,6 +7,7 @@ NAME = recap
 
 # PATHS
 SRC_PATH	= src
+TESTS_PATH	= $(SRC_PATH)/tests
 BUILD_PATH	= build
 INC_PATH	= include
 
@@ -18,10 +19,13 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	Ice.cpp \
 	main.cpp \
 	MateriaSource.cpp \
+)
+SRC +=  $(addprefix $(TESTS_PATH)/, \
+	runMyTests.cpp \
 	runSubjectTest.cpp \
 	testDeepCopy.cpp \
-	tests.cpp \
 )
+
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
@@ -38,7 +42,7 @@ RMDIR = rm -rf
 #                                    RULES                                     #
 #==============================================================================#
 
-vpath %.cpp $(SRC_PATH)
+vpath %.cpp $(SRC_PATH) $(TESTS_PATH)
 
 .PHONY: all clean fclean re
 
