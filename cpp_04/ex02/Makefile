@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
+#    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 19:06:02 by lucca             #+#    #+#              #
-#    Updated: 2026/09/09 13:18:51 by lucca            ###   ########.fr        #
+#    Updated: 2026/09/23 15:21:46 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ NAME = abstract
 
 # PATHS
 SRC_PATH	= src
+TESTS_PATH	= $(SRC_PATH)/tests
 BUILD_PATH	= build
 INC_PATH	= include
 
@@ -31,6 +32,13 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	main.cpp \
 	WrongAnimal.cpp \
 	WrongCat.cpp \
+)
+SRC += $(addprefix $(TESTS_PATH)/, \
+	helpers.cpp \
+	subjectTest.cpp \
+	testBrain.cpp \
+	testCat.cpp \
+	testDog.cpp \
 )
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
@@ -48,7 +56,7 @@ RMDIR = rm -rf
 #                                    RULES                                     #
 #==============================================================================#
 
-vpath %.cpp $(SRC_PATH)
+vpath %.cpp $(SRC_PATH) $(TESTS_PATH)
 
 .PHONY: all clean fclean re
 
