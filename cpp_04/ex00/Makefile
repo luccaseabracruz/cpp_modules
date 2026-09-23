@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucca <lucca@student.42.fr>                +#+  +:+       +#+         #
+#    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 19:06:02 by lucca             #+#    #+#              #
-#    Updated: 2026/09/04 18:52:02 by lucca            ###   ########.fr        #
+#    Updated: 2026/09/23 12:10:50 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,19 @@ NAME = make_sound
 
 # PATHS
 SRC_PATH	= src
+TESTS_PATH	= $(SRC_PATH)/tests
 BUILD_PATH	= build
 INC_PATH	= include
 
 # SOURCES
+TESTS = $(addprefix $(TESTS_PATH)/, \
+	helpers.cpp \
+	testAnimal.cpp \
+	testCat.cpp \
+	testDog.cpp \
+	testWrongAnimal.cpp \
+)
+
 SRC =  $(addprefix $(SRC_PATH)/, \
 	Animal.cpp \
 	Cat.cpp \
@@ -31,6 +40,8 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	WrongAnimal.cpp \
 	WrongCat.cpp \
 )
+SRC += $(TESTS)
+
 OBJ = $(addprefix $(BUILD_PATH)/, $(notdir $(SRC:.cpp=.o)))
 
 # FLAGS
@@ -47,7 +58,7 @@ RMDIR = rm -rf
 #                                    RULES                                     #
 #==============================================================================#
 
-vpath %.cpp $(SRC_PATH)
+vpath %.cpp $(SRC_PATH) $(TESTS_PATH)
 
 .PHONY: all clean fclean re
 
