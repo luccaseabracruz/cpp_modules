@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.cpp                                          :+:      :+:    :+:   */
+/*   runMyTests.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:33:53 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/11 11:42:44 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/23 16:52:45 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,7 @@
 #include "Cure.hpp"
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
-
-int	testDeepCopy(void);
-
-void	printHeader(const std::string& title, int headerType)
-{
-	if (headerType == 0)
-	{
-		std::cout << "========================================\n";
-		std::cout << title << '\n';
-		std::cout << "========================================\n";
-	}
-	else
-	{
-		std::cout << "===== [" << title << "]\n";
-	}
-}
+#include "tests.hpp"
 
 static int	testMateriaSourceCapacity(void)
 {
@@ -121,29 +106,15 @@ static int	testCharacterInventoryCapacity(void)
 
 int	runMyTests(void)
 {
-	printHeader("Materia Source Capacity", 1);;
+	printHeader("Materia Source Capacity");
 	if (testMateriaSourceCapacity() != 0)
-	{
-		std::cout << ">>> Test Materia Source Capacity ----> FAILED\n";
 		return (-1);
-	}
-	printHeader("Character Invalid Indexes", 1);
+	printSection("Character Invalid Indexes");
 	if (testCharacterInvalidIndexes() != 0)
-	{
-		std::cout << ">>> Test Character Invalid Indexes ----> FAILED\n";
 		return (-1);
-	}
-	printHeader("Character Inventory Capacity", 1);
+	printSection("Character Inventory Capacity");
 	if (testCharacterInventoryCapacity() != 0)
-	{
-		std::cout << ">>> Test Character Inventory Capacity ----> FAILED\n";
 		return (-1);
-	}
-	printHeader("Deep Copy", 1);
-	if (testDeepCopy() != 0)
-	{
-		std::cout << ">>> Test Deep Copy ----> FAILED\n";
-		return (-1);
-	}
+	printSection("Deep Copy");
 	return (0);
 }

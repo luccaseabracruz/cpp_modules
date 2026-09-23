@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:42:32 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/23 15:56:55 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/23 16:54:30 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "Character.hpp"
-
-void	printHeader(const std::string& title, int headerType);
+#include "tests.hpp"
 
 static int	testMateriaSourceCopy(void)
 {
@@ -110,15 +109,16 @@ static int	testCharacterCopy(void)
 
 int	testDeepCopy(void)
 {
+	printHeader("Test Deep Copy");
 	int	status = 0;
 
-	printHeader("Materia Source Copy", 1);
+	printSection("Materia Source Copy");
 	if (testMateriaSourceCopy() != 0)
 		status = -1;
-	printHeader("Materia Source Copy Constructor", 1);
+	printSection("Materia Source Copy Constructor");
 	if (testMateriaSourceCopyConstructor() != 0)
 		status = -1;
-	printHeader("Character Copy", 1);
+	printSection("Character Copy");
 	if (testCharacterCopy() != 0)
 		status = -1;
 	return (status);

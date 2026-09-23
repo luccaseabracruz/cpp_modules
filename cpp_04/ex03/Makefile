@@ -21,6 +21,7 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	MateriaSource.cpp \
 )
 SRC +=  $(addprefix $(TESTS_PATH)/, \
+	helpers.cpp \
 	runMyTests.cpp \
 	runSubjectTest.cpp \
 	testDeepCopy.cpp \

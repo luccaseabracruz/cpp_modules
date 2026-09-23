@@ -13,8 +13,12 @@
 #ifndef TESTS_HPP
 # define TESTS_HPP
 
-void	printHeader(const std::string& title, int headerType);
-void	runSubjectTest(void);
+# include <string>
+
+void	printSection(const std::string& title);
+void	printHeader(const std::string& title);
+int		test(int (*function)(void), const std::string& title);
+int		subjectTest(void);
 int		testDeepCopy(void);
 int		runMyTests(void);
 

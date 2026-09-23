@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   runSubjectTest.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 14:38:58 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/10 15:57:49 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/23 16:53:16 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 #include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "Character.hpp"
+#include "tests.hpp"
 
-void	runSubjectTest(void)
+int	subjectTest(void)
 {
+	printHeader("Subject Test");
 	IMateriaSource	*src = new MateriaSource();
 	AMateria		*ice = new Ice();
 	AMateria		*cure = new Cure();
@@ -44,4 +46,5 @@ void	runSubjectTest(void)
 	delete bob;
 	delete me;
 	delete src;
+	return (0);
 }
