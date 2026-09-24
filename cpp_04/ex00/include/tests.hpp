@@ -6,7 +6,7 @@
 /*   By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 10:08:45 by lseabra-          #+#    #+#             */
-/*   Updated: 2026/09/23 13:50:39 by lseabra-         ###   ########.fr       */
+/*   Updated: 2026/09/24 15:01:17 by lseabra-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	testAnimal();
 int	testCat();
 int	testDog();
 int	testWrongAnimal();
+int	subjectTests();
 
 #endif

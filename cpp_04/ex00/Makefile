@@ -6,7 +6,7 @@
 #    By: lseabra- <lseabra-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/31 19:06:02 by lucca             #+#    #+#              #
-#    Updated: 2026/09/23 12:10:50 by lseabra-         ###   ########.fr        #
+#    Updated: 2026/09/24 15:01:36 by lseabra-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ INC_PATH	= include
 # SOURCES
 TESTS = $(addprefix $(TESTS_PATH)/, \
 	helpers.cpp \
+	subjectTests.cpp \
 	testAnimal.cpp \
 	testCat.cpp \
 	testDog.cpp \
