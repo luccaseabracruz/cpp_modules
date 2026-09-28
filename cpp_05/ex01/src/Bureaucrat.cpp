@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/28 18:05:56 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/28 18:42:28 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ Bureaucrat::~Bureaucrat(){}
 
 const char*	Bureaucrat::GradeTooHighException::what()	const throw()
 {
-	return ("Error: grade out of range: too high.");
+	return ("Error: Bureaucrat: grade out of range: too high.");
 }
 
 const char*	Bureaucrat::GradeTooLowException::what()	const throw()
 {
-	return ("Error: grade out of range: too low.");
+	return ("Error: Bureaucrat: grade out of range: too low.");
 }
 
 void	Bureaucrat::incrementGrade()
