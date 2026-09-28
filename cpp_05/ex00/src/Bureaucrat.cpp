@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 10:57:22 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/28 14:05:08 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	Bureaucrat::incrementGrade()
 
 void	Bureaucrat::decrementGrade()
 {
-	if (this->grade_ + 1 > 150)
+	if (this->grade_ >= 150)
 		throw GradeTooLowException();
 	else
 		grade_ += 1;
