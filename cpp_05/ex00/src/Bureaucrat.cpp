@@ -6,16 +6,16 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/28 14:05:08 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/28 16:52:11 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): name_("NoName"), grade_(150) {}
+Bureaucrat::Bureaucrat(): _name("NoName"), grade_(150) {}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
-	: name_(name), grade_(grade)
+	: _name(name), grade_(grade)
 {
 	if (grade_ > 150)
 		throw GradeTooLowException();
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
-	: name_(other.name_)
+	: _name(other._name)
 {
 	*this = other;
 }
@@ -68,7 +68,7 @@ void	Bureaucrat::decrementGrade()
 
 std::string	Bureaucrat::getName()	const
 {
-	return (name_);
+	return (_name);
 }
 
 int	Bureaucrat::getGrade()	const

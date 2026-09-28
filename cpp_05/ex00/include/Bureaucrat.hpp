@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 13:28:56 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/15 18:56:00 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/28 16:51:51 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Bureaucrat
 {
 	private:
-		const std::string	name_;
+		const std::string	_name;
 		int					grade_;
 
 	public:
