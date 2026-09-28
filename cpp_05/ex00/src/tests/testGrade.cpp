@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:54:32 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 12:37:13 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/28 16:43:57 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,19 +111,18 @@ static int	testBadIncrementGrade()
 {
 	try
 	{
-		Bureaucrat	b = Bureaucrat("Lula", 150);
-		std::cout << "previous grade: " << b.getGrade() << '\n';
-		std::cout << "increment: " << 150 << '\n';
-		for (int i = 0; i < 150; i++)
-		{
-			b.incrementGrade();
-		}
-		std::cout << "current grade: " << b.getGrade() << '\n';
+		Bureaucrat	b = Bureaucrat("B", 1);
+		b.incrementGrade();
 	}
-	catch(std::exception& e)
+	catch(Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << '\n';
 		return (0);
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << "Unexpected Exception: " << e.what() << '\n';
+		return (-1);
 	}
 	return (-1);
 }
@@ -132,19 +131,18 @@ static int	testBadDecrementGrade()
 {
 	try
 	{
-		Bureaucrat	b = Bureaucrat("Lula", 1);
-		std::cout << "previous grade: " << b.getGrade() << '\n';
-		std::cout << "decrement: " << 150 << '\n';
-		for (int i = 0; i < 150; i++)
-		{
-			b.decrementGrade();
-		}
-		std::cout << "current grade: " << b.getGrade() << '\n';
+		Bureaucrat	b = Bureaucrat("Lula", 150);
+		b.decrementGrade();
 	}
-	catch(std::exception& e)
+	catch(const Bureaucrat::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << '\n';
 		return (0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Unexpected Exception: " << e.what() << '\n';
+		return (-1);
 	}
 	return (-1);
 }
