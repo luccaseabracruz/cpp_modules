@@ -6,13 +6,15 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 19:29:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 13:08:52 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/29 13:24:48 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include "tests.hpp"
+#include <iostream>
+#include <sstream>
 
 static int	testDefaultConstructor()
 {
@@ -152,6 +154,20 @@ static int	testBeSigned()
 	}
 }
 
+static int	testStreamOperator()
+{
+	printHeader("Test Stream Operator", 1);
+	Form				form("Test", 5, 42);
+	std::ostringstream	out;
+	const std::string	expected = "Name: Test; Is Signed: False; Required Grade to Sign: 5; Required Grade to Exec: 42\n";
+
+	out << form;
+	std::cout << form;
+	if (out.str() != expected)
+		return (-1);
+	return (0);
+}
+
 int	testForm()
 {
 	printHeader("Test Form", 0);
@@ -160,7 +176,8 @@ int	testForm()
 		|| testBadConstructor() != 0
 		|| testCopyConstructor() != 0
 		|| testAssignmentOperator() != 0
-		|| testBeSigned() != 0)
+		|| testBeSigned() != 0
+		|| testStreamOperator() != 0)
 	{
 		return (-1);
 	}
