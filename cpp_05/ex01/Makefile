@@ -15,6 +15,7 @@ INC_PATH	= include
 TESTS = $(addprefix $(TESTS_PATH)/, \
 	testBureaucrat.cpp \
 	testForm.cpp \
+	testSigning.cpp \
 	testUtils.cpp \
 )
 SRC =  $(addprefix $(SRC_PATH)/, \

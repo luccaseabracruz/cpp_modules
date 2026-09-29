@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:24:07 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 12:23:15 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/29 16:28:34 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,19 @@
 #include "Form.hpp"
 #include "tests.hpp"
 
-int	main()
+int	main(int argc, char *argv[])
 {
 	int	status = 0;
 
-	if (testBureaucrat() != 0)
+	if (argc > 1 && std::string(argv[1]) == "-a")
 	{
-		std::cout << "STATUS [Test Bureaucrat]: FAILED\n";
+		if (runTest(testBureaucrat, "Test Bureaucrat") != 0)
+			status = 1;
+	}
+	if (runTest(testForm, "Test Form") != 0
+		|| runTest(testSigning, "Test Signing") != 0)
+	{
 		status = 1;
 	}
-	else
-		std::cout << "STATUS [Test Bureaucrat]: SUCCESS\n";
-	if (testForm() != 0)
-	{
-		std::cout << "STATUS [Test Form]: FAILED\n";
-		status = 1;
-	}
-	else
-		std::cout << "STATUS [Test Form]: SUCCESS\n";
 	return (status);
 }

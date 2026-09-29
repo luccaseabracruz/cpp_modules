@@ -12,7 +12,6 @@
 
 #include <sstream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include "tests.hpp"
 
 static int	testDefaultConstructor()
@@ -152,22 +151,6 @@ static int	testStreamOperator()
 	return (0);
 }
 
-static int	testSignForm()
-{
-	Bureaucrat	highB("High Bureaucrat", 1);
-	Bureaucrat	lowB("Low Bureaucrat", 150);
-	Form		form = Form("Contitution", 5, 50);
-	std::ostringstream	out;
-
-	lowB.signForm(form);
-	if (form.getIsSigned())
-		return (-1);
-	highB.signForm(form);
-	if (form.getIsSigned() != true)
-		return (-1);
-	return (0);
-}
-
 int	testBureaucrat()
 {
 	printHeader("Test Bureaucrat", 0);
@@ -178,8 +161,10 @@ int	testBureaucrat()
 		|| testAssignmentOperator() != 0
 		|| testGradeChanges() != 0
 		|| testGradeBoundaries() != 0
-		|| testStreamOperator() != 0
-		|| testSignForm() != 0)
+		|| testStreamOperator() != 0)
+	{
+		std::cout << "STATUS: Failed\n";
 		return (-1);
+	}
 	return (0);
 }

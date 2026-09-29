@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 19:29:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 13:24:48 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/29 16:35:24 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,54 +117,20 @@ static int	testAssignmentOperator()
 	return (0);
 }
 
-static int	testBeSigned()
-{
-	try
-	{
-		Form	form = Form("B", 100, 42);
-		Bureaucrat	bureaucrat = Bureaucrat("B", 100);
-		Bureaucrat	badBureaucrat = Bureaucrat("B", 150);
-
-		form.beSigned(bureaucrat);
-		try
-		{
-			form.beSigned(badBureaucrat);
-		}
-		catch(Form::GradeTooLowException& e)
-		{
-			std::cout << "Expected Error: bad sign: " << e.what() << '\n';
-			return (0);
-		}
-		catch(std::exception& e)
-		{
-			std::cout << "Unexpected Error: bad sign: " << e.what() << '\n';
-			return (-1);
-		}
-		return (-1);
-	}
-	catch(Form::GradeTooLowException& e)
-	{
-		std::cout << "Unexpected Error: " << e.what() << '\n';
-		return (-1);
-	}
-	catch(std::exception& e)
-	{
-		std::cout << "Unexpected Error: " << e.what() << '\n';
-		return (-1);
-	}
-}
-
 static int	testStreamOperator()
 {
 	printHeader("Test Stream Operator", 1);
 	Form				form("Test", 5, 42);
 	std::ostringstream	out;
-	const std::string	expected = "Name: Test; Is Signed: False; Required Grade to Sign: 5; Required Grade to Exec: 42\n";
+	const std::string	expected = "Name: Test; Is Signed: False; Required Grade to Sign: 5; Required Grade to Execute: 42\n";
 
 	out << form;
-	std::cout << form;
 	if (out.str() != expected)
+	{
+		std::cout << "Expected: " << expected;
+		std::cout << "Got:      " << out.str();
 		return (-1);
+	}
 	return (0);
 }
 
@@ -176,9 +142,9 @@ int	testForm()
 		|| testBadConstructor() != 0
 		|| testCopyConstructor() != 0
 		|| testAssignmentOperator() != 0
-		|| testBeSigned() != 0
 		|| testStreamOperator() != 0)
 	{
+		std::cout << "STATUS: Failed\n";
 		return (-1);
 	}
 	return (0);
