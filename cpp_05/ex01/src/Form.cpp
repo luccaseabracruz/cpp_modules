@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 18:07:29 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 13:20:08 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/29 13:39:09 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ std::ostream&	operator<<(std::ostream& out, const Form& form)
 	out	<< "Name: " << form.getName()
 		<< "; Is Signed: " << (form.getIsSigned() ? "True" : "False" )
 		<< "; Required Grade to Sign: " << form.getReqSignGrade()
-		<< "; Required Grade to Exec: " << form.getReqExecGrade() << std::endl;
+		<< "; Required Grade to Execute: " << form.getReqExecGrade() << std::endl;
 	return (out);
 }

@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/28 19:13:44 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/29 13:38:37 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	Bureaucrat::signForm(Form& form)
 	catch(Form::GradeTooLowException& e)
 	{
 		std::cout	<< _name << " couldn’t sign " << form.getName()
-					<< " because grade is lower than required.\n";
+					<< " because form requires a higher grade.\n";
 	}
 }
 
