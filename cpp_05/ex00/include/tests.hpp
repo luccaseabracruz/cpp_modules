@@ -16,9 +16,6 @@
 # include <iostream>
 
 void	printHeader(const std::string& title, int headerType);
-int		test(const std::string& title, int (*testFun)(), int headerType);
-int		testGrade();
-int		testMemberFunctions();
-int		testSpecialMembers();
+int		testBureaucrat();
 
 #endif

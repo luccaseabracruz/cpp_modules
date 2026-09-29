@@ -28,14 +28,3 @@ void	printHeader(const std::string& title, int headerType)
 	}
 }
 
-int	test(const std::string& title, int (*testFun)(), int headerType)
-{
-	printHeader(title, headerType);
-	if (testFun() != 0)
-	{
-		std::cout << "STATUS [" << title << "]: FAILED\n";
-		return (-1);
-	}
-	std::cout << "STATUS [" << title << "]: SUCCESS\n";
-	return (0);
-}

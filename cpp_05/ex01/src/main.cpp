@@ -6,34 +6,32 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:24:07 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/18 14:02:48 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/29 12:23:15 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include "tests.hpp"
 
 int	main()
 {
-	const std::string	testTitles[] = {
-		"Test Grade",
-		"Test Member Functions",
-		"Test Special Members"
-	};
-	int (*testFunctions[])() = {
-		testGrade,
-		testMemberFunctions,
-		testSpecialMembers
-	};
-	
-	const int	testCount = sizeof(testFunctions) / sizeof(testFunctions[0]);
-	int			failed = 0;
+	int	status = 0;
 
-	for (int i = 0; i < testCount; ++i)
+	if (testBureaucrat() != 0)
 	{
-		if (test(testTitles[i], testFunctions[i], 0) != 0)
-			failed = 1;
+		std::cout << "STATUS [Test Bureaucrat]: FAILED\n";
+		status = 1;
 	}
-	return (failed);
+	else
+		std::cout << "STATUS [Test Bureaucrat]: SUCCESS\n";
+	if (testForm() != 0)
+	{
+		std::cout << "STATUS [Test Form]: FAILED\n";
+		status = 1;
+	}
+	else
+		std::cout << "STATUS [Test Form]: SUCCESS\n";
+	return (status);
 }

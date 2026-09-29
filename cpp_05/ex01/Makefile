@@ -13,13 +13,13 @@ INC_PATH	= include
 
 # SOURCES
 TESTS = $(addprefix $(TESTS_PATH)/, \
-	testSpecialMembers.cpp \
-	testGrade.cpp \
-	testMemberFunctions.cpp \
+	testBureaucrat.cpp \
+	testForm.cpp \
 	testUtils.cpp \
 )
 SRC =  $(addprefix $(SRC_PATH)/, \
 	Bureaucrat.cpp \
+	Form.cpp \
 	main.cpp \
 )
 SRC += $(TESTS)

@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 13:28:56 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/28 18:05:39 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/28 18:55:57 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+
+class Form;
 
 class Bureaucrat
 {
@@ -39,12 +41,13 @@ class Bureaucrat
 			public:
 				virtual const char*	what() const throw();
 		};
+		
+		std::string	getName()	const;
+		int			getGrade()	const;
 
 		void	incrementGrade();
 		void	decrementGrade(void);
-
-		std::string	getName()	const;
-		int			getGrade()	const;
+		void	signForm(Form& form);
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat);

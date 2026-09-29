@@ -16,24 +16,11 @@
 
 int	main()
 {
-	const std::string	testTitles[] = {
-		"Test Grade",
-		"Test Member Functions",
-		"Test Special Members"
-	};
-	int (*testFunctions[])() = {
-		testGrade,
-		testMemberFunctions,
-		testSpecialMembers
-	};
-	
-	const int	testCount = sizeof(testFunctions) / sizeof(testFunctions[0]);
-	int			failed = 0;
-
-	for (int i = 0; i < testCount; ++i)
+	if (testBureaucrat() != 0)
 	{
-		if (test(testTitles[i], testFunctions[i], 0) != 0)
-			failed = 1;
+		std::cout << "STATUS [Test Bureaucrat]: FAILED\n";
+		return (1);
 	}
-	return (failed);
+	std::cout << "STATUS [Test Bureaucrat]: SUCCESS\n";
+	return (0);
 }
