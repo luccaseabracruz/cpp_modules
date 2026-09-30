@@ -6,12 +6,12 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 18:23:30 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/30 16:44:47 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(): _name("NoName"), _grade(150) {}
 
@@ -77,14 +77,14 @@ void	Bureaucrat::decrementGrade()
 		_grade += 1;
 }
 
-void	Bureaucrat::signForm(Form& form) const
+void	Bureaucrat::signForm(AForm& form) const
 {
 	try
 	{
 		form.beSigned(*this);
 		std::cout << _name << " signed " << form.getName() << '\n';
 	}
-	catch(Form::GradeTooLowException& e)
+	catch(AForm::GradeTooLowException& e)
 	{
 		std::cout	<< _name << " couldn’t sign " << form.getName()
 					<< " because form requires a higher grade.\n";

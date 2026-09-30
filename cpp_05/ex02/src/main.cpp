@@ -6,13 +6,13 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:24:07 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 16:28:34 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/30 16:47:48 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "tests.hpp"
 
 int	main(int argc, char *argv[])
@@ -24,8 +24,7 @@ int	main(int argc, char *argv[])
 		if (runTest(testBureaucrat, "Test Bureaucrat") != 0)
 			status = 1;
 	}
-	if (runTest(testForm, "Test Form") != 0
-		|| runTest(testSigning, "Test Signing") != 0)
+	if (runTest(testShrubberyCreationForm, "Test Form") != 0)
 	{
 		status = 1;
 	}

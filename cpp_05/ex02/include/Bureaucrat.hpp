@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 13:28:56 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 18:23:18 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/30 16:44:32 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -47,7 +47,7 @@ class Bureaucrat
 
 		void	incrementGrade();
 		void	decrementGrade(void);
-		void	signForm(Form& form) const;
+		void	signForm(AForm& form) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat);
