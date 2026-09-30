@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 16:26:39 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/30 17:03:24 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/30 17:19:54 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,36 @@ static int	testAssignmentOperator()
 	return (0);
 }
 
+static int	testBeSigned()
+{
+	printHeader("Test ShrubberyCreationForm::beSigned()", 1);
+	try
+	{
+		ShrubberyCreationForm	form("target");
+		Bureaucrat	bureaucrat = Bureaucrat("B", 100);
+		Bureaucrat	badBureaucrat = Bureaucrat("B", 150);
+
+		form.beSigned(bureaucrat);
+		try
+		{
+			form.beSigned(badBureaucrat);
+		}
+		catch(ShrubberyCreationForm::GradeTooLowException& e)
+		{}
+		catch(std::exception& e)
+		{
+			std::cout << "Unexpected Error: bad sign: " << e.what() << '\n';
+			return (-1);
+		}
+		return (0);
+	}
+	catch(std::exception& e)
+	{
+		std::cout << "Unexpected Error: " << e.what() << '\n';
+		return (-1);
+	}
+}
+
 static int	testExecution()
 {
 	printHeader("Test Form Execution", 1);
@@ -123,6 +153,22 @@ static int	testExecution()
 	return (0);
 }
 
+static int	testSignForm()
+{
+	printHeader("Test Bureaucrat::signForm()", 1);
+	Bureaucrat	highB("High Bureaucrat", 1);
+	Bureaucrat	lowB("Low Bureaucrat", 150);
+	ShrubberyCreationForm		form("target");
+
+	lowB.signForm(form);
+	if (form.getIsSigned())
+		return (-1);
+	highB.signForm(form);
+	if (form.getIsSigned() != true)
+		return (-1);
+	return (0);
+}
+
 int	testShrubberyCreationForm()
 {
 	printHeader("Test ShrubberyCreationForm", 0);
@@ -130,7 +176,9 @@ int	testShrubberyCreationForm()
 		|| testConstructor() != 0
 		|| testCopyConstructor() != 0
 		|| testAssignmentOperator() != 0
-		|| testExecution() != 0)
+		|| testBeSigned() != 0
+		|| testExecution() != 0
+		|| testSignForm() != 0)
 	{
 		std::cout << "STATUS: Failed\n";
 		return (-1);
