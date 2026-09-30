@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 13:38:37 by lucca            ###   ########.fr       */
+/*   Updated: 2026/09/29 18:23:08 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	Bureaucrat::decrementGrade()
 		_grade += 1;
 }
 
-void	Bureaucrat::signForm(Form& form)
+void	Bureaucrat::signForm(Form& form) const
 {
 	try
 	{
