@@ -14,6 +14,7 @@ INC_PATH	= include
 # SOURCES
 TESTS = $(addprefix $(TESTS_PATH)/, \
 	testBureaucrat.cpp \
+	testPresidentialPardonForm.cpp \
 	testRobotomyRequestForm.cpp \
 	testShrubberyCreationForm.cpp \
 	testUtils.cpp \
@@ -22,6 +23,7 @@ SRC =  $(addprefix $(SRC_PATH)/, \
 	Bureaucrat.cpp \
 	AForm.cpp \
 	main.cpp \
+	PresidentialPardonForm.cpp \
 	RobotomyRequestForm.cpp \
 	ShrubberyCreationForm.cpp \
 )
