@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 16:34:00 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 16:47:25 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,10 @@ void	Bureaucrat::executeForm(AForm const& form) const
 		std::cerr << "Error: " << _name << " could not execute " << form.getName() << ": " << e.what() << '\n';
 	}
 	catch (AForm::GradeTooLowException& e)
+	{
+		std::cerr << "Error: " << _name << " could not execute " << form.getName() << ": " << e.what() << '\n';
+	}
+	catch (std::runtime_error& e)
 	{
 		std::cerr << "Error: " << _name << " could not execute " << form.getName() << ": " << e.what() << '\n';
 	}
