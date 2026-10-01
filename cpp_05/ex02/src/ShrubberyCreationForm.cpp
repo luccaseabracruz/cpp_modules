@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:24:00 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/30 17:02:53 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 15:39:42 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ShrubberyCreationForm::action() const
 	{
 		throw std::runtime_error(
 			"Error: ShrubberyCreationForm::action(): Cannot open "
-			+ filename + " file."
+			+ filename + " file.\n"
 		);
 	}
 	out <<	"           ^^                  \n"
