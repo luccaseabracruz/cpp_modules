@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 16:50:24 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/30 13:00:40 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 15:28:33 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ class AForm
 	int			getReqExecGrade() const;
 
 	void	beSigned(const Bureaucrat& bureaucrat);
-	void	execute(Bureaucrat const & executor);
+	void	execute(Bureaucrat const & executor) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, const AForm& form);

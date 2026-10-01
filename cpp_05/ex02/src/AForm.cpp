@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 18:07:29 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/29 19:05:02 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 15:43:35 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,19 @@ AForm&	AForm::operator=(const AForm& other)
 
 AForm::~AForm(){}
 
-const char*	AForm::GradeTooHighException::what()	const throw()
+const char*	AForm::GradeTooHighException::what() const throw()
 {
-	return ("Error: Form: grade out of range: too high.");
+	return ("AForm: grade out of range: too high.");
 }
 
-const char*	AForm::GradeTooLowException::what()	const throw()
+const char*	AForm::GradeTooLowException::what() const throw()
 {
-	return ("Error: Form: grade out of range: too low.");
+	return ("AForm: grade out of range: too low.");
 }
 
-const char*	AForm::FormNotSignedException::what()	const throw()
+const char*	AForm::FormNotSignedException::what() const throw()
 {
-	return ("Error: Form: cannot execute form because it was not signed yet.");
+	return ("AForm: cannot execute form because it was not signed yet.");
 }
 
 std::string	AForm::getName() const
@@ -89,7 +89,7 @@ void	AForm::beSigned(const Bureaucrat& bureaucrat)
 	_isSigned = true;
 }
 
-void	AForm::execute(Bureaucrat const & executor)
+void	AForm::execute(Bureaucrat const & executor) const
 {
 	if (_isSigned == false)
 		throw FormNotSignedException();
