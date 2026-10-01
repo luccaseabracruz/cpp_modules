@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 16:26:39 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 15:56:37 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 16:34:43 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ static int	testBeSigned()
 		{}
 		catch(std::exception& e)
 		{
-			std::cout << "Unexpected Error: bad sign: " << e.what() << '\n';
+			std::cerr << "Unexpected Error: bad sign: " << e.what() << '\n';
 			return (-1);
 		}
 		return (0);
 	}
 	catch(std::exception& e)
 	{
-		std::cout << "Unexpected Error: " << e.what() << '\n';
+		std::cerr << "Unexpected Error: " << e.what() << '\n';
 		return (-1);
 	}
 }
