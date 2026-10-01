@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 16:26:39 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 15:19:32 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 15:56:37 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,38 +118,12 @@ static int	testExecution()
 	Bureaucrat				assistent("Bruno", 140);
 	PresidentialPardonForm	form(assistent.getName());
 
-	try
-	{
-		form.execute(president);
-	}
-	catch (AForm::FormNotSignedException& e)
-	{}
-	catch (std::exception& e)
-	{
-		std::cout << "Unexpected exception: " << e.what() << '\n';
-		return (-1);
-	}
-	try
-	{
-		form.beSigned(president);
-		form.execute(assistent);
-	}
-	catch (AForm::GradeTooLowException& e)
-	{}
-	catch (std::exception& e)
-	{
-		std::cout << "Unexpected exception: " << e.what() << '\n';
-		return (-1);
-	}
-	try
-	{
-		form.execute(president);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << "Unexpected exception: " << e.what() << '\n';
-		return (-1);
-	}
+	president.executeForm(form);
+
+	president.signForm(form);
+	assistent.executeForm(form);
+
+	president.executeForm(form);
 	return (0);
 }
 

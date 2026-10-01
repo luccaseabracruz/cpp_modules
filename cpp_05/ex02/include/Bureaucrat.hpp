@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 13:28:56 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/30 16:44:32 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 16:25:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class Bureaucrat
 		void	incrementGrade();
 		void	decrementGrade(void);
 		void	signForm(AForm& form) const;
+		void	executeForm(AForm const& form) const;
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat& bureaucrat);

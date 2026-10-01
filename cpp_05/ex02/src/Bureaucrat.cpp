@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 17:44:34 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/30 16:44:47 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 16:32:09 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 
 Bureaucrat::~Bureaucrat(){}
 
-const char*	Bureaucrat::GradeTooHighException::what()	const throw()
+const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Error: Bureaucrat: grade out of range: too high.");
+	return ("Bureaucrat: grade out of range: too high.");
 }
 
-const char*	Bureaucrat::GradeTooLowException::what()	const throw()
+const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Error: Bureaucrat: grade out of range: too low.");
+	return ("Bureaucrat: grade out of range: too low.");
 }
 
 std::string	Bureaucrat::getName()	const
@@ -88,6 +88,23 @@ void	Bureaucrat::signForm(AForm& form) const
 	{
 		std::cout	<< _name << " couldn’t sign " << form.getName()
 					<< " because form requires a higher grade.\n";
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const& form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << ".\n";
+	}
+	catch (AForm::FormNotSignedException& e)
+	{
+		std::cerr << "Error: " << _name << " could not execute " << form.getName() << ": " << e.what() << '\n';
+	}
+	catch (AForm::GradeTooLowException& e)
+	{
+		std::cerr << "Error: " << _name << " could not execute " << form.getName() << ": " << e.what() << '\n';
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 16:26:39 by lucca             #+#    #+#             */
-/*   Updated: 2026/09/30 17:19:54 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/01 15:57:08 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,41 +115,15 @@ static int	testExecution()
 {
 	printHeader("Test Form Execution", 1);
 	ShrubberyCreationForm	form("amazonia");
-	Bureaucrat				high("President", 1);
+	Bureaucrat				president("President", 1);
 	Bureaucrat				assistent("Assistent", 140);
 
-	try
-	{
-		form.execute(high);
-	}
-	catch (AForm::FormNotSignedException& e)
-	{}
-	catch (std::exception& e)
-	{
-		std::cout << "Unexpected exception: " << e.what() << '\n';
-		return (-1);
-	}
-	try
-	{
-		form.beSigned(high);
-		form.execute(assistent);
-	}
-	catch (AForm::GradeTooLowException& e)
-	{}
-	catch (std::exception& e)
-	{
-		std::cout << "Unexpected exception: " << e.what() << '\n';
-		return (-1);
-	}
-	try
-	{
-		form.execute(high);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << "Unexpected exception: " << e.what() << '\n';
-		return (-1);
-	}
+	president.executeForm(form);
+
+	president.signForm(form);
+	assistent.executeForm(form);
+
+	president.executeForm(form);
 	return (0);
 }
 
