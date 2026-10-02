@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/28 16:50:24 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 15:28:33 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/02 11:22:07 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class AForm
 		AForm();
 		AForm(const std::string& name, int reqSignGrade, int reqExecGrade);
 		AForm(const AForm& other);
-		AForm& operator=(const AForm& other);
-		~AForm();
+		AForm&	operator=(const AForm& other);
+		virtual	~AForm();
 
 	class	GradeTooHighException: public std::exception
 	{
