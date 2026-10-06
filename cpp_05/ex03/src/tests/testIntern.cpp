@@ -82,8 +82,10 @@ static int	testMakeForm()
 	{
 		intern.makeForm("Unknown", "target?");
 	}
-	catch(Intern::UnknownFormException&)
-	{}
+	catch(Intern::UnknownFormException& e)
+	{
+		std::cerr << "Expected exception: " << e.what() << '\n';
+	}
 	catch(std::exception& e)
 	{
 		std::cerr << "Unknown exception: " << e.what() << '\n';

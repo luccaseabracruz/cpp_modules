@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/01 17:18:52 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/06 12:36:31 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/06 12:56:32 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ AForm	*Intern::makeForm(const std::string& name, const std::string& target) cons
 			return (_table[i].createFunction(target));
 		}
 	}
-	std::cerr << "Error: Intern::makeForm: unknown/invalid form name: \"" << name << "\".\n";
 	throw UnknownFormException();
 }
 
