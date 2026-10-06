@@ -14,9 +14,22 @@
 
 ## ex01
 ### Learnings
-- 
+- introduction to exceptions as a nested class that inherits from std::exception.
 ### References
 
 ## ex02
 ### Learnings
+- remember how to create a file.
+- use polymorphism and transform the Form into an abstract class
 ### References
+- [cppreference.com - std::rand](https://en.cppreference.com/cpp/numeric/random/rand)
+- [GeesforGeeks - rand() and srand() in C++](https://www.geeksforgeeks.org/cpp/rand-and-srand-in-ccpp/)
+
+## ex03
+### Learnings
+- returning an object with abstract type declared. The user doesn't need to know the concrete type.
+### References
+
+## Where I stopped
+- [ ] Undertand if virtual functions always need to be declared in concrete classes.
+- [ ] makeForm() implementation

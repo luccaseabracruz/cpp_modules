@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:53:54 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 15:15:39 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/02 11:19:18 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ int		testBureaucrat();
 int		testShrubberyCreationForm();
 int		testRobotomyRequestForm();
 int		testPresidentialPardonForm();
+int		testIntern();
 
 #endif

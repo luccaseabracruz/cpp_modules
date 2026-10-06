@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 19:24:07 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 15:16:07 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/02 11:19:42 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ int	main(int argc, char *argv[])
 
 	if (argc > 1 && std::string(argv[1]) == "-a")
 	{
-		if (runTest(testBureaucrat, "Test Bureaucrat") != 0)
+		if (runTest(testBureaucrat, "Test Bureaucrat") != 0
+			||runTest(testShrubberyCreationForm, "Test Form") != 0
+			|| runTest(testRobotomyRequestForm, "Test Form") != 0
+			|| runTest(testPresidentialPardonForm, "Test Form") != 0)
+		{
 			status = 1;
+		}
 	}
-	if (runTest(testShrubberyCreationForm, "Test Form") != 0
-		|| runTest(testRobotomyRequestForm, "Test Form") != 0
-		|| runTest(testPresidentialPardonForm, "Test Form") != 0)
+	if (runTest(testIntern, "Test Intern") != 0)
 	{
 		status = 1;
 	}
