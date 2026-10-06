@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/29 18:24:00 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 15:39:42 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/06 12:46:14 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void	ShrubberyCreationForm::action() const
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	: AForm("ShrubberyCreationForm", 147, 137), _target("Default")
+	: AForm("ShrubberyCreationForm", 145, 137), _target("Default")
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-	: AForm("ShrubberyCreationForm", 147, 137), _target(target)
+	: AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)

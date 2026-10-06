@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/30 16:26:39 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/01 16:35:07 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/06 12:46:21 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	checkAFormAttributes(const ShrubberyCreationForm& form)
 {
 	if (form.getName() != "ShrubberyCreationForm"
 		|| form.getIsSigned() == true
-		|| form.getReqSignGrade() != 147
+		|| form.getReqSignGrade() != 145
 		|| form.getReqExecGrade() != 137)
 	{
 		return (-1);
