@@ -80,13 +80,13 @@ static int	testMakeForm()
 
 	try
 	{
-		intern.makeForm("Unkown", "target?");
+		intern.makeForm("Unknown", "target?");
 	}
-	catch(Intern::UnkownFormException&)
+	catch(Intern::UnknownFormException&)
 	{}
 	catch(std::exception& e)
 	{
-		std::cerr << "Unkknown Exeption: " << e.what() << '\n';
+		std::cerr << "Unknown exception: " << e.what() << '\n';
 		return (-1);
 	}
 	try
@@ -102,7 +102,7 @@ static int	testMakeForm()
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << "Unkknown Exeption: " << e.what() << '\n';
+		std::cerr << "Unknown exception: " << e.what() << '\n';
 		return (-1);
 	}
 	return (0);

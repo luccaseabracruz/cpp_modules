@@ -22,7 +22,7 @@ class	Intern
 		Intern&	operator=(const Intern& other);
 		~Intern();
 
-		class	UnkownFormException: public std::exception
+		class	UnknownFormException: public std::exception
 		{
 			public:
 				virtual const char	*what() const throw();

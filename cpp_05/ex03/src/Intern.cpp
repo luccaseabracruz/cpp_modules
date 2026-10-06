@@ -31,9 +31,9 @@ Intern&	Intern::operator=(const Intern& other)
 
 Intern::~Intern(){}
 
-const char*	Intern::UnkownFormException::what() const throw()
+const char*	Intern::UnknownFormException::what() const throw()
 {
-	return ("Intern: cannot create form: unkown form name.");
+	return ("Intern: cannot create form: unknown form name.");
 }
 
 AForm	*Intern::makeForm(const std::string& name, const std::string& target) const
@@ -48,8 +48,8 @@ AForm	*Intern::makeForm(const std::string& name, const std::string& target) cons
 			return (_table[i].createFunction(target));
 		}
 	}
-	std::cerr << "Error: Intern::makeForm: unkown/invalid form name: \"" << name << "\".\n";
-	throw UnkownFormException();
+	std::cerr << "Error: Intern::makeForm: unknown/invalid form name: \"" << name << "\".\n";
+	throw UnknownFormException();
 }
 
 AForm	*Intern::createShrubberyCreation(const std::string& target)
