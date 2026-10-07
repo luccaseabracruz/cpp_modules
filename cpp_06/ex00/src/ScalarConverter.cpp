@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 19:26:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/07 15:35:43 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/07 15:37:46 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static double	getDouble(const char* literal)
 
 void	ScalarConverter::convert(const char* literal)
 {
-	bool	num;
+	double	num;
+
 	if (!literal)
 		throw std::invalid_argument("pointer argument is Null");
 	if (std::string(literal).length() == 1 && literal[0] && !std::isdigit(static_cast<unsigned char>(literal[0])))
