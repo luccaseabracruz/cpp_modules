@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 19:26:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/08 16:58:15 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/08 17:00:22 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ static void	printFloat(const double& num)
 	if (num < -std::numeric_limits<float>::max() || num > std::numeric_limits<float>::max())
 		std::cout << "impossible";
 	else
-		std::cout << std::fixed << std::setprecision(2) << static_cast<float>(num) << 'f';
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(num) << 'f';
 	std::cout << std::endl;
 }
 
@@ -157,7 +157,7 @@ static void	printDouble(const double& num)
 	if (num < -std::numeric_limits<double>::max() || num > std::numeric_limits<double>::max())
 		std::cout << "impossible";
 	else
-		std::cout << std::fixed << std::setprecision(2) << static_cast<double>(num);
+		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(num);
 	std::cout << std::endl;
 }
 
