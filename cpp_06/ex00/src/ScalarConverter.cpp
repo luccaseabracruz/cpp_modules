@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 19:26:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/08 16:36:17 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/08 16:47:21 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ static void	parseFloat(ScalarData& dt)
 
 	if (end && *end && *end != 'f')
 		throw std::invalid_argument("parseFloat(): invalid literal: " + std::string(dt.literal));
-	if (doubleValue < std::numeric_limits<float>::min() || doubleValue > std::numeric_limits<float>::max())
+	if (doubleValue < -std::numeric_limits<float>::max() || doubleValue > std::numeric_limits<float>::max())
 		throw std::range_error("parseFloat(): impossible to convert literal into float");
 	floatValue = static_cast<float>(doubleValue);
 	dt.num = static_cast<double>(floatValue);
@@ -131,7 +131,7 @@ static void	parseFloat(ScalarData& dt)
 static void	printFloat(const double& num)
 {
 	std::cout << "float: ";
-	if (num < std::numeric_limits<float>::min() || num > std::numeric_limits<float>::max())
+	if (num < -std::numeric_limits<float>::max() || num > std::numeric_limits<float>::max())
 		std::cout << "impossible";
 	else
 		std::cout << std::fixed << std::setprecision(2) << static_cast<float>(num) << 'f';
@@ -154,7 +154,7 @@ static void	parseDouble(ScalarData& dt)
 static void	printDouble(const double& num)
 {
 	std::cout << "double: ";
-	if (num < std::numeric_limits<double>::min() || num > std::numeric_limits<double>::max())
+	if (num < -std::numeric_limits<double>::max() || num > std::numeric_limits<double>::max())
 		std::cout << "impossible";
 	else
 		std::cout << std::fixed << std::setprecision(2) << static_cast<double>(num);
