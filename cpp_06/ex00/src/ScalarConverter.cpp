@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 19:26:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/08 17:00:22 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/08 17:28:20 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,9 +130,14 @@ static void	parseFloat(ScalarData& dt)
 
 static void	printFloat(const double& num)
 {
+	const double	infinity = std::numeric_limits<double>::infinity();
+
 	std::cout << "float: ";
-	if (num < -std::numeric_limits<float>::max() || num > std::numeric_limits<float>::max())
+	if (num != infinity && num != -infinity
+		&& (num < -std::numeric_limits<float>::max() || num > std::numeric_limits<float>::max()))
+	{
 		std::cout << "impossible";
+	}
 	else
 		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(num) << 'f';
 	std::cout << std::endl;
@@ -153,8 +158,11 @@ static void	parseDouble(ScalarData& dt)
 
 static void	printDouble(const double& num)
 {
+	const double	infinity = std::numeric_limits<double>::infinity();
+
 	std::cout << "double: ";
-	if (num < -std::numeric_limits<double>::max() || num > std::numeric_limits<double>::max())
+	if (num != infinity && num != -infinity
+		&& (num < -std::numeric_limits<double>::max() || num > std::numeric_limits<double>::max()))
 		std::cout << "impossible";
 	else
 		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(num);
