@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 19:26:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/08 16:47:21 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/08 16:58:15 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ static void	parseScalarType(ScalarData& dt)
 		{
 			if (std::isdigit(str[i]))
 				continue ;
-			else if (str[i] == '.' && dt.type != FLOAT && dt.type != DOUBLE
+			else if (str[i] == '.' && dt.type == INT
 				&& ((i > 0 && std::isdigit(str[i - 1])) || (i + 1 < len && std::isdigit(str[i + 1]))))
 			{
 				dt.type = DOUBLE;
 			}
-			else if (str[i] == 'f' && dt.type != FLOAT)
+			else if (str[i] == 'f' && dt.type == DOUBLE)
 				dt.type = FLOAT;
 			else
 				throw std::invalid_argument("parseScalarType(): " + str);
