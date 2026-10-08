@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 19:26:03 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/08 17:28:20 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/08 17:51:37 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	parseScalarType(ScalarData& dt)
 			{
 				dt.type = DOUBLE;
 			}
-			else if (str[i] == 'f' && dt.type == DOUBLE)
+			else if (str[i] == 'f' && !str[i + 1] && dt.type == DOUBLE)
 				dt.type = FLOAT;
 			else
 				throw std::invalid_argument("parseScalarType(): " + str);
@@ -89,11 +89,14 @@ static void	printChar(const double& num)
 static void	parseInt(ScalarData& dt)
 {
 	char*	end = NULL;
+	errno = 0;
 	long	longValue = std::strtol(dt.literal, &end, 10);
 	int		intValue;
 
 	if (end && *end)
 		throw std::invalid_argument("parseInt(): " + std::string(dt.literal));
+	if (errno == ERANGE)
+		throw std::range_error("parseInt(): literal is outside the range of long");
 	if (longValue < std::numeric_limits<int>::min() || longValue > std::numeric_limits<int>::max())
 		throw std::range_error("parseInt(): impossible to convert string into int");
 	intValue = static_cast<int>(longValue);
@@ -117,11 +120,14 @@ static void	printInt(const double& num)
 static void	parseFloat(ScalarData& dt)
 {
 	char*	end = NULL;
+	errno = 0;
 	double	doubleValue = std::strtod(dt.literal, &end);
 	float	floatValue;
 
 	if (end && *end && *end != 'f')
-		throw std::invalid_argument("parseFloat(): invalid literal: " + std::string(dt.literal));
+		throw std::invalid_argument("parseFloat(): " + std::string(dt.literal));
+	if (errno == ERANGE)
+		throw std::range_error("parseFloat(): literal is outside the range of double");
 	if (doubleValue < -std::numeric_limits<float>::max() || doubleValue > std::numeric_limits<float>::max())
 		throw std::range_error("parseFloat(): impossible to convert literal into float");
 	floatValue = static_cast<float>(doubleValue);
@@ -149,7 +155,7 @@ static void	parseDouble(ScalarData& dt)
 	errno = 0;
 	double	doubleValue = std::strtod(dt.literal, &end);
 
-	if (end && *end && *end != 'f')
+	if (end && *end && *end != 'f' && *(end + 1) == 0)
 		throw std::invalid_argument("printDouble(): " + std::string(dt.literal));
 	if (errno == ERANGE)
 		throw std::range_error("parseFloat(): impossible to convert literal into double");
