@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/06 19:22:53 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/07 14:47:07 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/08 14:52:34 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,25 @@ class	ScalarConverter
 		ScalarConverter&	operator=(const ScalarConverter& other);
 		~ScalarConverter();
 
-		static char			doubleToChar(double num);
-		static int			doubleToInt(double num);
-		static float		doubleToFloat(double num);
-		static double		doubleToDouble(double num);
-
 	public:
-		
 		static void	convert(const char* literal);
+};
+
+enum	ScalarType
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	PSEUDO_LITERAL
+};
+
+struct	ScalarData
+{
+	const char*	literal;
+	std::string	strValues[4];
+	ScalarType	type;
+	double		num;
 };
 
 #endif
