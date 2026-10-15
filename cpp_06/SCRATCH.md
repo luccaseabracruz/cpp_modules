@@ -18,8 +18,14 @@
 - understand what reinterpret_cast does and how to use it. It's a low-level type casting operator that converts objects, references and pointers to unrelated types, reinterpreting the bit pattern into the other type. It has little type safety.
 
 ### References
+- [GeeksforGeeks - Implicit and Explicit type casting](https://www.geeksforgeeks.org/dsa/implicit-and-explicit-type-casting/)
+- [GeeksforGeeks - Type Conversion in C++](https://www.geeksforgeeks.org/cpp/type-conversion-in-c/)
 
 ## ex02
 ### Learnings
 - understand how dynamic_cast work for identify the class type in runtime. Its an operator to upcast or downcast an object. When the object isn't from the class that is trying to cast, it returns Null in case of pointer and throws an error in case of reference.
+- remembering how to use std::rand and std::srand with time() to get a random number using the rest of the division to get the probability.
 ### References
+- [cplusplus.com - srand](https://cplusplus.com/reference/cstdlib/srand/)
+- [cplusplus.com - rand](https://cplusplus.com/reference/cstdlib/rand/)
+- [cplusplus.com - ctime](https://cplusplus.com/reference/ctime/ctime/)
