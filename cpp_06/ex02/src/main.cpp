@@ -6,7 +6,7 @@
 /*   By: lucca <lucca@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:18:32 by lucca             #+#    #+#             */
-/*   Updated: 2026/10/14 13:09:52 by lucca            ###   ########.fr       */
+/*   Updated: 2026/10/15 16:49:11 by lucca            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	main()
 	identify(a);
 	identify(b);
 	identify(c);
+	delete ptr;
 	return (0);
 }
